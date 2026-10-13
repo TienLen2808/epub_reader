@@ -33,17 +33,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="78dp"
             android:text="1/1"
             android:textColor="#888888"
             android:textSize="10sp"
             android:elevation="1dp" />
 
         <WebView
-            android:layout_marginTop="15dp"
             android:id="@+id/webViewContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="70dp" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -52,6 +53,14 @@
             android:layout_gravity="center"
             android:visibility="gone" />
     </FrameLayout>
+
+    <!-- Bottom 70dp Ad Banner Container -->
+    <FrameLayout
+        android:id="@+id/adBannerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:elevation="4dp" />
 
     <!-- Header Toolbar Overlay -->
     <LinearLayout
@@ -114,6 +123,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="70dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="16dp"

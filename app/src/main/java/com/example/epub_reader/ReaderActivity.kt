@@ -13,13 +13,17 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.updateLayoutParams
+import com.example.epub_reader.AdsManager.AdsManager
 import com.example.epub_reader.databinding.ActivityReaderBinding
 import com.example.epub_reader.databinding.DialogReaderSettingsBinding
 import com.example.epub_reader.epub.BookHolder
 import com.example.epub_reader.epub.EpubBook
+import com.example.epub_reader.utils.AdPosition
+import com.example.epub_reader.utils.DisabledAdType
 import com.example.epub_reader.utils.PreferencesHelper
 import com.example.epub_reader.utils.dpToPx
 import com.example.epub_reader.utils.getStatusBarHeight
+import com.example.epub_reader.utils.removeSubviews
 import kotlin.math.abs
 
 class ReaderActivity : LocalizeBaseActivity() {
@@ -81,6 +85,25 @@ class ReaderActivity : LocalizeBaseActivity() {
         setupSwipeGesture()
         setupToolbarOverlay()
         loadCurrentChapter()
+    }
+
+    override fun loadAd() {
+        super.loadAd()
+        if (canShowBanner(DisabledAdType.previewBanner)) {
+            AdsManager.getInstance(this).loadApplovinInlineAdaptiveBannerWithTricky(
+                this,
+                DisabledAdType.previewBanner,
+                AdPosition.preview,
+                binding.adBannerContainer,
+                AdsManager.RETRY_COUNT,
+                {}
+            )
+        } else {
+            binding.adBannerContainer.removeSubviews()
+            binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = 0 }
+            binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = dpToPx(8) }
+            binding.bottomNav.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = 0 }
+        }
     }
 
     private fun setupToolbarOverlay() {
