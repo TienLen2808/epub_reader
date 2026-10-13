@@ -102,18 +102,17 @@ class ReaderActivity : LocalizeBaseActivity() {
             binding.adBannerContainer.removeSubviews()
             binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = 0 }
             binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = dpToPx(8) }
-            binding.bottomNav.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = 0 }
         }
     }
 
     private fun setupToolbarOverlay() {
         val statusBarHeight = getStatusBarHeight()
         binding.headerToolbar.updateLayoutParams<ViewGroup.LayoutParams> {
-            height = statusBarHeight + dpToPx(56)
+            height = (statusBarHeight * 2/3) + dpToPx(40)
         }
         binding.headerToolbar.setPadding(
             binding.headerToolbar.paddingLeft,
-            statusBarHeight,
+            (statusBarHeight * 2/3),
             binding.headerToolbar.paddingRight,
             binding.headerToolbar.paddingBottom
         )
@@ -123,8 +122,9 @@ class ReaderActivity : LocalizeBaseActivity() {
             binding.headerToolbar.translationY = -h
         }
         binding.bottomNav.post {
-            val h = binding.bottomNav.height.toFloat().let { if (it > 0) it else 200f }
-            binding.bottomNav.translationY = h
+            val bottomH = binding.bottomNav.height.toFloat().let { if (it > 0) it else dpToPx(56).toFloat() }
+            val distanceToHide = bottomH + dpToPx(70)
+            binding.bottomNav.translationY = distanceToHide
         }
     }
 
@@ -152,14 +152,15 @@ class ReaderActivity : LocalizeBaseActivity() {
         if (!areToolbarsVisible) return
         areToolbarsVisible = false
         val headerH = binding.headerToolbar.height.toFloat().let { if (it > 0) it else 200f }
-        val bottomH = binding.bottomNav.height.toFloat().let { if (it > 0) it else 200f }
+        val bottomH = binding.bottomNav.height.toFloat().let { if (it > 0) it else dpToPx(56).toFloat() }
+        val distanceToHide = bottomH + dpToPx(70)
 
         binding.headerToolbar.animate()
             .translationY(-headerH)
             .setDuration(250)
             .start()
         binding.bottomNav.animate()
-            .translationY(bottomH)
+            .translationY(distanceToHide)
             .setDuration(250)
             .start()
     }
