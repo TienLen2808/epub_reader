@@ -1,25 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/readerRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".ReaderActivity">
 
-    <!-- Header Toolbar -->
+    <!-- Reading Content Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top-Left Small Chapter Title (10sp) -->
+        <TextView
+            android:id="@+id/tvSmallChapterHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Mục lục"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:elevation="1dp" />
+
+        <!-- Bottom-Right Small Page Progress (10sp) -->
+        <TextView
+            android:id="@+id/tvSmallPageProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="1/1"
+            android:textColor="#888888"
+            android:textSize="10sp"
+            android:elevation="1dp" />
+
+        <WebView
+            android:id="@+id/webViewContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Header Toolbar Overlay -->
     <LinearLayout
         android:id="@+id/headerToolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_gravity="top"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:background="#FAFAFA"
-        android:elevation="4dp">
+        android:elevation="8dp">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -63,36 +107,18 @@
             android:contentDescription="Reader Settings" />
     </LinearLayout>
 
-    <!-- Reading Content WebView -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <WebView
-            android:id="@+id/webViewContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />
-    </FrameLayout>
-
-    <!-- Bottom Navigation Bar -->
+    <!-- Bottom Navigation Bar Overlay -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_gravity="bottom"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:background="#FAFAFA"
-        android:elevation="4dp">
+        android:elevation="8dp">
 
         <Button
             android:id="@+id/btnPrevChapter"
@@ -124,4 +150,4 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

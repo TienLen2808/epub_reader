@@ -35,6 +35,8 @@ class ReaderActivity : LocalizeBaseActivity() {
         LIGHT, SEPIA, DARK
     }
 
+    private var areToolbarsVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReaderBinding.inflate(layoutInflater)
@@ -64,7 +66,55 @@ class ReaderActivity : LocalizeBaseActivity() {
         setupWebView()
         setupListeners()
         setupSwipeGesture()
+        setupToolbarOverlay()
         loadCurrentChapter()
+    }
+
+    private fun setupToolbarOverlay() {
+        binding.headerToolbar.post {
+            val h = binding.headerToolbar.height.toFloat().let { if (it > 0) it else 200f }
+            binding.headerToolbar.translationY = -h
+        }
+        binding.bottomNav.post {
+            val h = binding.bottomNav.height.toFloat().let { if (it > 0) it else 200f }
+            binding.bottomNav.translationY = h
+        }
+    }
+
+    private fun toggleToolbars() {
+        if (areToolbarsVisible) {
+            hideToolbars()
+        } else {
+            showToolbars()
+        }
+    }
+
+    private fun showToolbars() {
+        areToolbarsVisible = true
+        binding.headerToolbar.animate()
+            .translationY(0f)
+            .setDuration(250)
+            .start()
+        binding.bottomNav.animate()
+            .translationY(0f)
+            .setDuration(250)
+            .start()
+    }
+
+    private fun hideToolbars() {
+        if (!areToolbarsVisible) return
+        areToolbarsVisible = false
+        val headerH = binding.headerToolbar.height.toFloat().let { if (it > 0) it else 200f }
+        val bottomH = binding.bottomNav.height.toFloat().let { if (it > 0) it else 200f }
+
+        binding.headerToolbar.animate()
+            .translationY(-headerH)
+            .setDuration(250)
+            .start()
+        binding.bottomNav.animate()
+            .translationY(bottomH)
+            .setDuration(250)
+            .start()
     }
 
     @SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
@@ -120,6 +170,7 @@ class ReaderActivity : LocalizeBaseActivity() {
                 val diffY = e2.y - e1.y
                 if (abs(diffX) > abs(diffY)) {
                     if (abs(diffX) > SWIPE_THRESHOLD && abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                        hideToolbars()
                         if (diffX < 0) {
                             goToNextPage()
                         } else {
@@ -139,13 +190,17 @@ class ReaderActivity : LocalizeBaseActivity() {
                 val rightZone = width * 0.70f
 
                 if (x < leftZone) {
+                    hideToolbars()
                     goToPrevPage()
                     return true
                 } else if (x > rightZone) {
+                    hideToolbars()
                     goToNextPage()
                     return true
+                } else {
+                    toggleToolbars()
+                    return true
                 }
-                return false
             }
         })
 
@@ -207,7 +262,9 @@ class ReaderActivity : LocalizeBaseActivity() {
         val chapter = chapters[currentChapterIndex]
         binding.progressBar.visibility = View.VISIBLE
 
-        binding.tvBookTitle.text = if (chapter.title.isNotBlank()) chapter.title else currentBook.title
+        val displayTitle = if (chapter.title.isNotBlank()) chapter.title else currentBook.title
+        binding.tvBookTitle.text = displayTitle
+        binding.tvSmallChapterHeader.text = displayTitle
 
         val htmlContent = formatChapterHtml(chapter.contentHtml, chapter.href)
         binding.webViewContent.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null)
@@ -223,6 +280,7 @@ class ReaderActivity : LocalizeBaseActivity() {
         val pageDisplay = "${currentPageIndex + 1}/$totalPagesInChapter"
         val chapterDisplay = "Ch. ${currentChapterIndex + 1}/$chaptersCount"
         binding.tvChapterProgress.text = "$pageDisplay  •  $chapterDisplay"
+        binding.tvSmallPageProgress.text = pageDisplay
 
         binding.btnPrevChapter.isEnabled = !(currentChapterIndex == 0 && currentPageIndex == 0)
         binding.btnNextChapter.isEnabled = !(currentChapterIndex == chaptersCount - 1 && currentPageIndex == totalPagesInChapter - 1)
@@ -465,10 +523,10 @@ class ReaderActivity : LocalizeBaseActivity() {
     }
 
     private fun updateThemeColors() {
-        val (rootBg, toolbarBg, textColor) = when (readerTheme) {
-            ThemeMode.LIGHT -> Triple(Color.parseColor("#FFFFFF"), Color.parseColor("#FAFAFA"), Color.parseColor("#000000"))
-            ThemeMode.SEPIA -> Triple(Color.parseColor("#FBF0D9"), Color.parseColor("#F4E6C8"), Color.parseColor("#5F4B32"))
-            ThemeMode.DARK -> Triple(Color.parseColor("#121212"), Color.parseColor("#1E1E1E"), Color.parseColor("#FFFFFF"))
+        val (rootBg, toolbarBg, textColor, subTextColor) = when (readerTheme) {
+            ThemeMode.LIGHT -> Quadruple(Color.parseColor("#FFFFFF"), Color.parseColor("#FAFAFA"), Color.parseColor("#000000"), Color.parseColor("#888888"))
+            ThemeMode.SEPIA -> Quadruple(Color.parseColor("#FBF0D9"), Color.parseColor("#F4E6C8"), Color.parseColor("#5F4B32"), Color.parseColor("#8C765C"))
+            ThemeMode.DARK -> Quadruple(Color.parseColor("#121212"), Color.parseColor("#1E1E1E"), Color.parseColor("#FFFFFF"), Color.parseColor("#AAAAAA"))
         }
 
         binding.readerRoot.setBackgroundColor(rootBg)
@@ -476,7 +534,11 @@ class ReaderActivity : LocalizeBaseActivity() {
         binding.bottomNav.setBackgroundColor(toolbarBg)
         binding.tvBookTitle.setTextColor(textColor)
         binding.tvChapterProgress.setTextColor(textColor)
+        binding.tvSmallChapterHeader.setTextColor(subTextColor)
+        binding.tvSmallPageProgress.setTextColor(subTextColor)
     }
+
+    private data class Quadruple<A, B, C, D>(val first: A, val second: B, val third: C, val fourth: D)
 
     private fun showTableOfContentsDialog() {
         val chapters = book?.chapters ?: return
