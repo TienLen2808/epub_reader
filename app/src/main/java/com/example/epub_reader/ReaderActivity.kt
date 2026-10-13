@@ -130,6 +130,23 @@ class ReaderActivity : LocalizeBaseActivity() {
                 }
                 return false
             }
+
+            override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                val width = binding.webViewContent.width
+                if (width <= 0) return false
+                val x = e.x
+                val leftZone = width * 0.30f
+                val rightZone = width * 0.70f
+
+                if (x < leftZone) {
+                    goToPrevPage()
+                    return true
+                } else if (x > rightZone) {
+                    goToNextPage()
+                    return true
+                }
+                return false
+            }
         })
 
         binding.webViewContent.setOnTouchListener { _, event ->
