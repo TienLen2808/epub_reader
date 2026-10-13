@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">epub_reader</string>
+    <string name="ad_loading">Loading ad...</string>
+    <string name="thanks_for_your_review">Thanks for your review!</string>
+    <string name="d_seconds_remaining">%1$d seconds remaining</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="no_internet_message">Please check your internet connection and try again.</string>
+    <string name="setting">Settings</string>
+
+    <string name="admob_app_id">ca-app-pub-4669810164009246~7480873187</string>
+    <string name="default_max_open_id">5f58c8db75747cfa</string>
+    <string name="default_max_native_id">15b909f408c626f2</string>
+    <string name="default_max_banner_id">5982a3ee39a2f8e9</string>
+    <string name="default_max_mrec_id">02511d2412a86912</string>
+    <string name="default_max_inter_main">5a630d7c67516ee6</string>
+    <string name="default_max_inter_medium">88c333852e5ce848</string>
+    <string name="default_max_inter_high">222370f9e560cc53</string>
+    <string name="default_max_reward_main">e02225da5a0e0d48</string>
+    <string name="default_max_reward_medium">6c63a0f985187ea5</string>
+    <string name="default_max_reward_high">5d0556e2dfd36efa</string>
+</resources>
