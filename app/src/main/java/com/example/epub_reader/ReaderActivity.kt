@@ -7,15 +7,19 @@ import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.updateLayoutParams
 import com.example.epub_reader.databinding.ActivityReaderBinding
 import com.example.epub_reader.databinding.DialogReaderSettingsBinding
 import com.example.epub_reader.epub.BookHolder
 import com.example.epub_reader.epub.EpubBook
 import com.example.epub_reader.utils.PreferencesHelper
+import com.example.epub_reader.utils.dpToPx
+import com.example.epub_reader.utils.getStatusBarHeight
 import kotlin.math.abs
 
 class ReaderActivity : LocalizeBaseActivity() {
@@ -41,8 +45,17 @@ class ReaderActivity : LocalizeBaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReaderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupMainLayout(binding.readerRoot)
-
+        val statusBarHeight = getStatusBarHeight() // Lấy chiều cao status bar
+        binding.tvSmallChapterHeader.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = if(statusBarHeight >= 50) statusBarHeight - dpToPx(30) else dpToPx(24)
+        }
+        binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            topMargin = if(statusBarHeight >= 50) statusBarHeight - dpToPx(20) else dpToPx(30) // Chiều cao Status Bar + 8dp
+            bottomMargin = dpToPx(24)
+        }
+        binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+            bottomMargin = dpToPx(20)
+        }
         book = BookHolder.currentBook
         if (book == null || book?.chapters.isNullOrEmpty()) {
             Toast.makeText(this, "No book content available to read", Toast.LENGTH_SHORT).show()
@@ -71,8 +84,19 @@ class ReaderActivity : LocalizeBaseActivity() {
     }
 
     private fun setupToolbarOverlay() {
+        val statusBarHeight = getStatusBarHeight()
+        binding.headerToolbar.updateLayoutParams<ViewGroup.LayoutParams> {
+            height = statusBarHeight + dpToPx(56)
+        }
+        binding.headerToolbar.setPadding(
+            binding.headerToolbar.paddingLeft,
+            statusBarHeight,
+            binding.headerToolbar.paddingRight,
+            binding.headerToolbar.paddingBottom
+        )
+
         binding.headerToolbar.post {
-            val h = binding.headerToolbar.height.toFloat().let { if (it > 0) it else 200f }
+            val h = binding.headerToolbar.height.toFloat().let { if (it > 0) it else (statusBarHeight + dpToPx(56)).toFloat() }
             binding.headerToolbar.translationY = -h
         }
         binding.bottomNav.post {
