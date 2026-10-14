@@ -546,13 +546,22 @@ class ReaderActivity : LocalizeBaseActivity() {
                     #reader-content ul {
                         list-style: none !important;
                         list-style-type: none !important;
-                        padding-left: 14px !important;
+                        padding-left: 4px !important;
                         margin-left: 0 !important;
                         margin-right: 0 !important;
                         margin-top: 0.4em !important;
                     }
+                    #reader-content p {
+                        padding-left: 0 !important;
+                        padding-right: 0 !important;
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                        margin-bottom: 0.6em !important;
+                        line-height: ${themeManager.lineSpacingRatio} !important;
+                        text-align: left !important;
+                        text-indent: 2em !important;
+                    }
                     #reader-content li, 
-                    #reader-content p, 
                     #reader-content div {
                         padding-left: 0 !important;
                         padding-right: 0 !important;
@@ -570,9 +579,26 @@ class ReaderActivity : LocalizeBaseActivity() {
                         margin-right: 0 !important;
                         line-height: ${themeManager.lineSpacingRatio} !important;
                     }
+                    /* Thụt đầu dòng cho đoạn văn: p, div "lá", và đoạn tách bởi <br> */
+                    #reader-content p,
+                    #reader-content div:not(:has(p, div, ul, ol, li, table, h1, h2, h3, h4, h5, h6)),
+                    #reader-content .rd-para {
+                        text-indent: 0.6em !important;
+                    }
+                    #reader-content .rd-para {
+                        display: block;
+                        margin-bottom: 0.6em;
+                    }
+                    #reader-content p:has(img),
+                    #reader-content div:has(img),
+                    #reader-content .rd-para:has(img) {
+                        text-indent: 0 !important;
+                    }
+                    /* Mục lục / danh sách: giữ thẳng hàng, không thụt */
                     #reader-content li p, 
                     #reader-content li div,
                     #reader-content li span,
+                    #reader-content li .rd-para,
                     #reader-content li {
                         text-indent: 0 !important;
                         text-align: left !important;
@@ -606,6 +632,42 @@ class ReaderActivity : LocalizeBaseActivity() {
                     }
                 </style>
                 <script>
+                    function splitBreaks() {
+                        var root = document.getElementById('reader-content');
+                        if (!root) return;
+                        var blockTags = {P:1, DIV:1, UL:1, OL:1, LI:1, TABLE:1, H1:1, H2:1, H3:1, H4:1, H5:1, H6:1};
+                        var holders = Array.prototype.slice.call(root.querySelectorAll('p, div, li'));
+                        holders.forEach(function (el) {
+                            var hasBr = false;
+                            for (var n = el.firstChild; n; n = n.nextSibling) {
+                                if (n.nodeName === 'BR') { hasBr = true; break; }
+                            }
+                            if (!hasBr) return;
+                            if (el.closest('li, ol, ul')) return;
+                            var nodes = Array.prototype.slice.call(el.childNodes);
+                            var frag = document.createDocumentFragment();
+                            var cur = null;
+                            nodes.forEach(function (n) {
+                                if (n.nodeName === 'BR') { cur = null; return; }
+                                if (n.nodeType === 1 && blockTags[n.nodeName]) {
+                                    frag.appendChild(n);
+                                    cur = null;
+                                    return;
+                                }
+                                if (n.nodeType === 3 && !cur && !n.textContent.trim()) return;
+                                if (!cur) {
+                                    cur = document.createElement('span');
+                                    cur.className = 'rd-para';
+                                    frag.appendChild(cur);
+                                }
+                                cur.appendChild(n);
+                            });
+                            while (el.firstChild) el.removeChild(el.firstChild);
+                            el.appendChild(frag);
+                        });
+                    }
+                    document.addEventListener('DOMContentLoaded', splitBreaks);
+
                     function getPageCount() {
                         var content = document.getElementById('reader-content');
                         if (!content) return 1;
