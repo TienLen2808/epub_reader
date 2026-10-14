@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutTocSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet_rounded"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <!-- Top Header: Title + Close (X) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvTocBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="[Dịch] Tạp Đồ - Phương Tưởng.epub"
+            android:textColor="#222222"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/btnCloseToc"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close" />
+    </LinearLayout>
+
+    <!-- Subtitle: Global Page Progress & Percentage (320/8387  3.80%) -->
+    <TextView
+        android:id="@+id/tvTocProgressSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="320/8387  3.80%"
+        android:textColor="#777777"
+        android:textSize="13sp" />
+
+    <!-- 3 Segmented Tabs Bar: Mục lục | Ghi chú | Dấu trang -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        android:background="#F2F2F2"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/tabToc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Mục lục"
+            android:textColor="#222222"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_segmented_tab_active" />
+
+        <TextView
+            android:id="@+id/tabNotes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ghi chú"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/tabBookmarks"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Dấu trang"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:background="?attr/selectableItemBackground" />
+    </LinearLayout>
+
+    <!-- RecyclerView for Chapters / Notes / Bookmarks -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTocChapters"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
+
+</LinearLayout>

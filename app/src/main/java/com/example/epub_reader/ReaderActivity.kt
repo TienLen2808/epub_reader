@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
@@ -19,8 +19,11 @@ import com.example.epub_reader.databinding.ActivityReaderBinding
 import com.example.epub_reader.epub.BookHolder
 import com.example.epub_reader.epub.EpubBook
 import com.example.epub_reader.ui.ReaderProgressPanelController
+import com.example.epub_reader.ui.ReaderSearchBottomSheet
 import com.example.epub_reader.ui.ReaderSettingsPanelController
+import com.example.epub_reader.ui.ReaderTocBottomSheet
 import com.example.epub_reader.utils.AdPosition
+import com.example.epub_reader.utils.BookmarkManager
 import com.example.epub_reader.utils.DisabledAdType
 import com.example.epub_reader.utils.ReaderSessionState
 import com.example.epub_reader.utils.ReaderThemeManager
@@ -38,6 +41,7 @@ class ReaderActivity : LocalizeBaseActivity() {
     private val readerState = ReaderSessionState()
     private lateinit var settingsPanelController: ReaderSettingsPanelController
     private lateinit var progressPanelController: ReaderProgressPanelController
+    private var activeSearchKeyword: String? = null
 
     enum class ThemeMode {
         LIGHT, SEPIA, DARK
@@ -155,21 +159,43 @@ class ReaderActivity : LocalizeBaseActivity() {
     override fun loadAd() {
         super.loadAd()
         if (canShowBanner(DisabledAdType.previewBanner)) {
+            adjustLayoutForAdState(isAdLoaded = false)
             AdsManager.getInstance(this).loadApplovinInlineAdaptiveBannerWithTricky(
                 this,
                 DisabledAdType.previewBanner,
                 AdPosition.preview,
                 binding.adBannerContainer,
                 AdsManager.RETRY_COUNT,
-                {}
+                {
+                    adjustLayoutForAdState(isAdLoaded = true)
+                }
             )
         } else {
-            val insets = ViewCompat.getRootWindowInsets(binding.readerRoot)
-            val bottomSystemInset = insets?.getInsets(WindowInsetsCompat.Type.systemBars())?.bottom ?: 0
+            adjustLayoutForAdState(isAdLoaded = false)
+        }
+    }
 
+    private fun adjustLayoutForAdState(isAdLoaded: Boolean) {
+        val insets = ViewCompat.getRootWindowInsets(binding.readerRoot)
+        val bottomSystemInset = insets?.getInsets(WindowInsetsCompat.Type.systemBars())?.bottom ?: 0
+
+        if (isAdLoaded) {
+            binding.adBannerContainer.visibility = View.VISIBLE
+            binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = bottomSystemInset + dpToPx(70)
+            }
+            binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = bottomSystemInset + dpToPx(78)
+            }
+        } else {
             binding.adBannerContainer.removeSubviews()
-            binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = bottomSystemInset }
-            binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> { bottomMargin = bottomSystemInset + dpToPx(8) }
+            binding.adBannerContainer.visibility = View.GONE
+            binding.webViewContent.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = bottomSystemInset + dpToPx(10)
+            }
+            binding.tvSmallPageProgress.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = bottomSystemInset + dpToPx(16)
+            }
         }
     }
 
@@ -283,11 +309,19 @@ class ReaderActivity : LocalizeBaseActivity() {
             if (readerState.isPendingGoToLastPage) {
                 readerState.isPendingGoToLastPage = false
                 readerState.currentPageIndex = readerState.totalPagesInChapter - 1
-            } else if (readerState.currentPageIndex >= readerState.totalPagesInChapter) {
-                readerState.currentPageIndex = readerState.totalPagesInChapter - 1
+                updatePagePosition()
+            } else {
+                binding.webViewContent.evaluateJavascript("scrollToSearchTargetIfNeeded();") { targetPageStr ->
+                    val targetPage = targetPageStr?.toIntOrNull() ?: -1
+                    if (targetPage >= 0) {
+                        readerState.currentPageIndex = targetPage.coerceIn(0, readerState.totalPagesInChapter - 1)
+                    } else if (readerState.currentPageIndex >= readerState.totalPagesInChapter) {
+                        readerState.currentPageIndex = readerState.totalPagesInChapter - 1
+                    }
+                    updatePagePosition()
+                }
             }
 
-            updatePagePosition()
             binding.progressBar.visibility = View.GONE
         }
     }
@@ -354,7 +388,19 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
 
         binding.btnSearch.setOnClickListener {
-            Toast.makeText(this, "Tìm kiếm", Toast.LENGTH_SHORT).show()
+            if (::settingsPanelController.isInitialized) settingsPanelController.hide()
+            if (::progressPanelController.isInitialized) progressPanelController.hide()
+
+            val sheet = ReaderSearchBottomSheet(
+                book = book,
+                onSearchResultClicked = { chapterIdx, keyword ->
+                    activeSearchKeyword = keyword
+                    readerState.currentChapterIndex = chapterIdx
+                    readerState.currentPageIndex = 0
+                    loadCurrentChapter()
+                }
+            )
+            sheet.show(supportFragmentManager, ReaderSearchBottomSheet.TAG)
         }
 
         binding.btnAudio.setOnClickListener {
@@ -362,7 +408,41 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
 
         binding.btnBookmark.setOnClickListener {
-            Toast.makeText(this, "Đã lưu đánh dấu trang", Toast.LENGTH_SHORT).show()
+            val currentBook = book ?: return@setOnClickListener
+            val chapters = currentBook.chapters
+            if (readerState.currentChapterIndex !in chapters.indices) return@setOnClickListener
+
+            val chapter = chapters[readerState.currentChapterIndex]
+            val chapterTitle = if (chapter.title.isNotBlank()) chapter.title else "Chương ${readerState.currentChapterIndex + 1}"
+
+            val totalBookPages = readerState.calculateGlobalTotalPages()
+            val globalCurrentPage = readerState.calculateGlobalCurrentPage()
+
+            val cleanText = try {
+                HtmlCompat.fromHtml(chapter.contentHtml, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                    .toString()
+                    .replace(Regex("\\s+"), " ")
+                    .trim()
+            } catch (_: Exception) {
+                chapter.contentHtml
+                    .replace(Regex("<.*?>"), " ")
+                    .replace(Regex("\\s+"), " ")
+                    .trim()
+            }
+            val snippet = if (cleanText.length > 120) cleanText.take(120) + "..." else cleanText
+
+            val isAdded = BookmarkManager.instance.toggleBookmark(
+                bookTitle = currentBook.title,
+                chapterIndex = readerState.currentChapterIndex,
+                chapterTitle = chapterTitle,
+                pageIndexInChapter = readerState.currentPageIndex,
+                globalPage = globalCurrentPage,
+                globalTotalPages = totalBookPages,
+                snippetText = snippet
+            )
+
+            val msg = if (isAdded) "Đã lưu dấu trang ($globalCurrentPage/$totalBookPages)" else "Đã bỏ dấu trang ($globalCurrentPage/$totalBookPages)"
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
 
         binding.btnToc.setOnClickListener {
@@ -460,10 +540,37 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
     }
 
+    private fun highlightSearchKeywordInHtml(bodyHtml: String, keyword: String): String {
+        if (keyword.isBlank() || keyword.length < 2) return bodyHtml
+        return try {
+            var isFirst = true
+            val textNodeRegex = Regex("(?<=^|>)([^<]+)(?=<|$)", RegexOption.IGNORE_CASE)
+            textNodeRegex.replace(bodyHtml) { matchResult ->
+                val textNode = matchResult.value
+                val keywordRegex = Regex("(${Regex.escape(keyword)})", RegexOption.IGNORE_CASE)
+                keywordRegex.replace(textNode) { kwMatch ->
+                    val idAttr = if (isFirst) {
+                        isFirst = false
+                        "id=\"search-target\" "
+                    } else ""
+                    "<mark ${idAttr}style=\"background-color: #FFA726; color: #000000; font-weight: bold; border-radius: 2px; padding: 2px 4px; display: inline;\">${kwMatch.value}</mark>"
+                }
+            }
+        } catch (_: Exception) {
+            bodyHtml
+        }
+    }
+
     private fun formatChapterHtml(bodyHtml: String, chapterHref: String): String {
         val config = themeManager.getCurrentThemeConfig()
 
         var cleaned = inlineImagesInHtml(bodyHtml, chapterHref)
+
+        val kw = activeSearchKeyword
+        if (!kw.isNullOrBlank()) {
+            cleaned = highlightSearchKeywordInHtml(cleaned, kw)
+        }
+
         if (cleaned.contains("<body", ignoreCase = true)) {
             cleaned = cleaned.replace(Regex("<body.*?>", RegexOption.IGNORE_CASE), "")
                 .replace(Regex("</body>", RegexOption.IGNORE_CASE), "")
@@ -684,6 +791,16 @@ class ReaderActivity : LocalizeBaseActivity() {
                         var offsetVw = -(pageIndex * 100);
                         content.style.transform = 'translateX(' + offsetVw + 'vw)';
                     }
+
+                    function scrollToSearchTargetIfNeeded() {
+                        var target = document.getElementById('search-target');
+                        if (!target) return -1;
+                        var clientW = window.innerWidth;
+                        if (clientW <= 0) return -1;
+                        var offsetLeft = target.offsetLeft;
+                        var pageIdx = Math.floor(offsetLeft / clientW);
+                        return pageIdx < 0 ? 0 : pageIdx;
+                    }
                 </script>
             </head>
             <body>
@@ -806,21 +923,32 @@ class ReaderActivity : LocalizeBaseActivity() {
     }
 
     private fun showTableOfContentsDialog() {
-        val chapters = book?.chapters ?: return
-        val chapterTitles = chapters.mapIndexed { index, chapter ->
-            val titleStr = if (chapter.title.isNotBlank()) chapter.title else "Chapter ${index + 1}"
-            if (index == readerState.currentChapterIndex) "► $titleStr" else "   $titleStr"
-        }.toTypedArray()
+        if (::settingsPanelController.isInitialized) settingsPanelController.hide()
+        if (::progressPanelController.isInitialized) progressPanelController.hide()
 
-        AlertDialog.Builder(this)
-            .setTitle("Table of Contents (${chapters.size} chapters)")
-            .setItems(chapterTitles) { _, which ->
-                readerState.currentChapterIndex = which
+        val chapters = book?.chapters ?: return
+        val totalBookPages = readerState.calculateGlobalTotalPages()
+        val globalCurrentPage = readerState.calculateGlobalCurrentPage()
+
+        val sheet = ReaderTocBottomSheet(
+            bookTitle = book?.title ?: "EPUB Reader",
+            chapters = chapters,
+            activeChapterIndex = readerState.currentChapterIndex,
+            globalCurrentPage = globalCurrentPage,
+            globalTotalPages = totalBookPages,
+            chapterPageCounts = readerState.chapterPageCounts,
+            onChapterSelected = { selectedIndex ->
+                readerState.currentChapterIndex = selectedIndex
                 readerState.currentPageIndex = 0
                 loadCurrentChapter()
+            },
+            onBookmarkSelected = { bookmarkItem ->
+                readerState.currentChapterIndex = bookmarkItem.chapterIndex
+                readerState.currentPageIndex = bookmarkItem.pageIndexInChapter
+                loadCurrentChapter()
             }
-            .setNegativeButton("Cancel", null)
-            .show()
+        )
+        sheet.show(supportFragmentManager, ReaderTocBottomSheet.TAG)
     }
 
     private fun showSettingsDialog() {

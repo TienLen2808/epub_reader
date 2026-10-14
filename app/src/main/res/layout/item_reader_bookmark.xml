@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Snippet Text (Lines 1 & 2) -->
+    <TextView
+        android:id="@+id/tvBookmarkSnippet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dụng tất cả lực lượng để tìm ra mình.\nTrần Mộ đối với mình có nhận thức rất tỉnh táo..."
+        android:textColor="#333333"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:lineSpacingExtra="2dp" />
+
+    <!-- Bottom Metadata Row (Line 3: Chapter Title on Left, Timestamp on Right) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvBookmarkChapter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="29. Chương 37: Bị Thương"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tvBookmarkTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14:37 13/10/26"
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginTop="12dp"
+        android:background="#EFEFEF" />
+
+</LinearLayout>
