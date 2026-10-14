@@ -2,7 +2,10 @@ package com.example.epub_reader
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.media.AudioAttributes
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -30,6 +33,7 @@ import com.example.epub_reader.utils.ReaderThemeManager
 import com.example.epub_reader.utils.dpToPx
 import com.example.epub_reader.utils.getStatusBarHeight
 import com.example.epub_reader.utils.removeSubviews
+import java.util.Locale
 import kotlin.math.abs
 
 class ReaderActivity : LocalizeBaseActivity() {
@@ -42,6 +46,10 @@ class ReaderActivity : LocalizeBaseActivity() {
     private lateinit var settingsPanelController: ReaderSettingsPanelController
     private lateinit var progressPanelController: ReaderProgressPanelController
     private var activeSearchKeyword: String? = null
+
+    private var textToSpeech: TextToSpeech? = null
+    private var isTtsSpeaking = false
+    private var isWaitingTtsForChapterLoad = false
 
     enum class ThemeMode {
         LIGHT, SEPIA, DARK
@@ -100,6 +108,7 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
 
         initChapterPageEstimates()
+        initTts()
         setupSettingsPanelController()
         setupProgressPanelController()
         setupWebView()
@@ -323,6 +332,13 @@ class ReaderActivity : LocalizeBaseActivity() {
             }
 
             binding.progressBar.visibility = View.GONE
+
+            if (isWaitingTtsForChapterLoad) {
+                isWaitingTtsForChapterLoad = false
+                binding.webViewContent.postDelayed({
+                    speakCurrentPageText()
+                }, 500)
+            }
         }
     }
 
@@ -404,7 +420,7 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
 
         binding.btnAudio.setOnClickListener {
-            Toast.makeText(this, "Đọc thành tiếng", Toast.LENGTH_SHORT).show()
+            toggleTts()
         }
 
         binding.btnBookmark.setOnClickListener {
@@ -503,6 +519,10 @@ class ReaderActivity : LocalizeBaseActivity() {
         val currentBook = book ?: return
         val chapters = currentBook.chapters
         if (readerState.currentChapterIndex !in chapters.indices) return
+
+        if (isTtsSpeaking) {
+            isWaitingTtsForChapterLoad = true
+        }
 
         val chapter = chapters[readerState.currentChapterIndex]
         binding.progressBar.visibility = View.VISIBLE
@@ -801,6 +821,34 @@ class ReaderActivity : LocalizeBaseActivity() {
                         var pageIdx = Math.floor(offsetLeft / clientW);
                         return pageIdx < 0 ? 0 : pageIdx;
                     }
+
+                    function getCurrentPageText() {
+                        var root = document.getElementById('reader-content');
+                        if (!root) return '';
+                        var clientW = window.innerWidth;
+                        if (clientW <= 0) return root.innerText || '';
+                        
+                        var nodes = root.querySelectorAll('p, div, li, h1, h2, h3, h4, h5, h6');
+                        var currentText = '';
+                        var pageLeft = Math.abs(parseFloat(root.style.transform.replace(/[^\d.-]/g, '')) || 0);
+                        
+                        nodes.forEach(function(node) {
+                            var offset = node.offsetLeft;
+                            if (offset >= pageLeft - 40 && offset < pageLeft + clientW + 40) {
+                                var txt = (node.innerText || '').trim();
+                                if (txt.length > 0) {
+                                    if (!/[.!?:]$/.test(txt)) {
+                                        txt += '.';
+                                    }
+                                    currentText += txt + ' ';
+                                }
+                            }
+                        });
+                        
+                        var result = currentText.trim();
+                        if (!result) result = root.innerText || '';
+                        return result.replace(/[\n\r\t]/g, ' ').replace(/\s+/g, ' ');
+                    }
                 </script>
             </head>
             <body>
@@ -958,5 +1006,135 @@ class ReaderActivity : LocalizeBaseActivity() {
         if (::settingsPanelController.isInitialized) {
             settingsPanelController.toggle()
         }
+    }
+
+    private fun initTts() {
+        textToSpeech = TextToSpeech(this) { status ->
+            if (status == TextToSpeech.SUCCESS) {
+                val audioAttributes = AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .build()
+                textToSpeech?.setAudioAttributes(audioAttributes)
+
+                val viLocale = Locale("vi", "VN")
+                val viResult = textToSpeech?.setLanguage(viLocale)
+                if (viResult == TextToSpeech.LANG_MISSING_DATA || viResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    val defResult = textToSpeech?.setLanguage(Locale.getDefault())
+                    if (defResult == TextToSpeech.LANG_MISSING_DATA || defResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        textToSpeech?.setLanguage(Locale.US)
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Không thể khởi tạo công cụ đọc giọng nói", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun toggleTts() {
+        if (isTtsSpeaking) {
+            stopTts()
+            Toast.makeText(this, "Đã dừng đọc", Toast.LENGTH_SHORT).show()
+        } else {
+            isTtsSpeaking = true
+            Toast.makeText(this, "Bắt đầu đọc...", Toast.LENGTH_SHORT).show()
+            speakCurrentPageText()
+        }
+    }
+
+    private fun stopTts() {
+        isTtsSpeaking = false
+        textToSpeech?.stop()
+    }
+
+    private fun speakCurrentPageText() {
+        if (!isTtsSpeaking) return
+
+        binding.webViewContent.evaluateJavascript("getCurrentPageText();") { resultRaw ->
+            var cleanText = ""
+            if (!resultRaw.isNullOrBlank() && resultRaw != "null" && resultRaw != "\"\"") {
+                cleanText = try {
+                    val unquoted = if (resultRaw.startsWith("\"") && resultRaw.endsWith("\"") && resultRaw.length > 2) {
+                        resultRaw.substring(1, resultRaw.length - 1)
+                    } else resultRaw
+
+                    unquoted.replace("\\n", " ")
+                        .replace("\\\"", "\"")
+                        .replace("\\\\", "\\")
+                        .trim()
+                } catch (_: Exception) {
+                    ""
+                }
+            }
+
+            if (cleanText.isBlank()) {
+                val chapters = book?.chapters ?: emptyList()
+                if (readerState.currentChapterIndex in chapters.indices) {
+                    val rawHtml = chapters[readerState.currentChapterIndex].contentHtml
+                    cleanText = HtmlCompat.fromHtml(rawHtml, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+                        .replace(Regex("\\s+"), " ")
+                        .trim()
+                }
+            }
+
+            if (cleanText.isNotBlank()) {
+                val utteranceId = "reader_tts_${System.currentTimeMillis()}"
+                textToSpeech?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+                    override fun onStart(utteranceId: String?) {}
+
+                    override fun onDone(utteranceId: String?) {
+                        runOnUiThread {
+                            if (isTtsSpeaking) {
+                                val lastChapter = readerState.currentChapterIndex
+                                val lastPage = readerState.currentPageIndex
+
+                                goToNextPage()
+
+                                if (readerState.currentChapterIndex == lastChapter) {
+                                    if (readerState.currentPageIndex != lastPage) {
+                                        binding.webViewContent.postDelayed({
+                                            speakCurrentPageText()
+                                        }, 600)
+                                    } else {
+                                        stopTts()
+                                        Toast.makeText(this@ReaderActivity, "Đã đọc xong cuốn sách", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    @Deprecated("Deprecated in Java")
+                    override fun onError(utteranceId: String?) {
+                        runOnUiThread {
+                            Toast.makeText(this@ReaderActivity, "Lỗi phát âm thanh", Toast.LENGTH_SHORT).show()
+                            stopTts()
+                        }
+                    }
+                })
+
+                val params = Bundle()
+                params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId)
+                val speakResult = textToSpeech?.speak(cleanText, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
+                if (speakResult == TextToSpeech.ERROR) {
+                    Toast.makeText(this, "Không thể phát âm thanh giọng nói", Toast.LENGTH_SHORT).show()
+                    stopTts()
+                }
+            } else {
+                Toast.makeText(this, "Không tìm thấy văn bản để đọc", Toast.LENGTH_SHORT).show()
+                stopTts()
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopTts()
+    }
+
+    override fun onDestroy() {
+        stopTts()
+        textToSpeech?.shutdown()
+        super.onDestroy()
     }
 }
