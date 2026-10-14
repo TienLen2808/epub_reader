@@ -59,8 +59,6 @@
             android:visibility="gone" />
     </FrameLayout>
 
-
-
     <!-- Header Toolbar Overlay -->
     <LinearLayout
         android:id="@+id/headerToolbar"
@@ -85,83 +83,190 @@
             android:src="@android:drawable/ic_menu_revert"
             android:contentDescription="Back" />
 
-        <TextView
-            android:id="@+id/tvBookTitle"
+        <View
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="EPUB Reader"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="1" />
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/btnToc"
+            android:id="@+id/btnSearch"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_sort_by_size"
-            android:contentDescription="Table of Contents" />
+            android:src="@android:drawable/ic_menu_search"
+            android:contentDescription="Search" />
 
         <ImageView
-            android:id="@+id/btnReaderSettings"
+            android:id="@+id/btnAudio"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_preferences"
-            android:contentDescription="Reader Settings" />
+            android:src="@android:drawable/ic_menu_call"
+            android:contentDescription="Audio" />
+
+        <ImageView
+            android:id="@+id/btnBookmark"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:contentDescription="Bookmark" />
     </LinearLayout>
 
-    <!-- Bottom Navigation Bar Overlay -->
+    <!-- Embedded Reader Settings Panel (Floats directly above bottomNav) -->
+    <include
+        android:id="@+id/readerSettingsPanel"
+        layout="@layout/dialog_reader_settings_sheet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Embedded Reader Progress Panel (Floats directly above bottomNav) -->
+    <include
+        android:id="@+id/readerProgressPanel"
+        layout="@layout/dialog_reader_progress_sheet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom Navigation Bar Overlay (4 items: Mục lục, Tiến trình, Ngày/Đêm, Cài đặt) -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="70dp"
+        android:layout_height="64dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:background="#FAFAFA"
-        android:elevation="8dp"
+        android:elevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
-            android:id="@+id/btnPrevChapter"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="&lt; Prev"
-            android:textSize="13sp"
-            android:textAllCaps="false"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-
-        <TextView
-            android:id="@+id/tvChapterProgress"
+        <!-- Item 1: Mục lục -->
+        <LinearLayout
+            android:id="@+id/btnToc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:orientation="vertical"
             android:gravity="center"
-            android:text="Chapter 1 / 1"
-            android:textColor="#555555"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="?attr/selectableItemBackground">
 
-        <Button
-            android:id="@+id/btnNextChapter"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Next &gt;"
-            android:textSize="13sp"
-            android:textAllCaps="false"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                android:contentDescription="Mục lục" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Mục lục"
+                android:textColor="#333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Item 2: Tiến trình -->
+        <LinearLayout
+            android:id="@+id/btnProgress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_compass"
+                android:contentDescription="Tiến trình" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Tiến trình"
+                android:textColor="#333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Item 3: Ngày / Đêm -->
+        <LinearLayout
+            android:id="@+id/btnTheme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/imgThemeIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_day"
+                android:contentDescription="Theme" />
+
+            <TextView
+                android:id="@+id/tvThemeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Ngày"
+                android:textColor="#333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Item 4: Cài đặt -->
+        <LinearLayout
+            android:id="@+id/btnReaderSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_preferences"
+                android:contentDescription="Cài đặt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Cài đặt"
+                android:textColor="#333333"
+                android:textSize="11sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!-- Bottom 70dp Ad Banner Container -->

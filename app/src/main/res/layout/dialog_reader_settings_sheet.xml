@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardSettingsPanel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/white">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Main Settings Layout -->
+        <LinearLayout
+            android:id="@+id/layoutMainSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Top Row: Font Controls & Spacing Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <!-- Font Size Group -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
+                    android:background="@drawable/bg_rounded_border">
+
+                    <TextView
+                        android:id="@+id/btnFontDecrease"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="A-"
+                        android:textColor="#333333"
+                        android:textSize="16sp"
+                        android:background="?attr/selectableItemBackground" />
+
+                    <TextView
+                        android:id="@+id/tvFontSizeValue"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="17"
+                        android:textColor="#333333"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnFontIncrease"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="A+"
+                        android:textColor="#333333"
+                        android:textSize="16sp"
+                        android:background="?attr/selectableItemBackground" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <!-- Line Spacing Button -->
+                <TextView
+                    android:id="@+id/btnLineSpacing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:gravity="center"
+                    android:text="Khoảng cách"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:background="@drawable/bg_rounded_border" />
+            </LinearLayout>
+
+            <!-- Theme Color Circles Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!-- Theme 1: White -->
+                <FrameLayout
+                    android:id="@+id/btnThemeWhite"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp">
+                    <View
+                        android:id="@+id/viewThemeWhite"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_white" />
+                </FrameLayout>
+
+                <!-- Theme 2: Selected White / Light Blue Ring -->
+                <FrameLayout
+                    android:id="@+id/btnThemeBlue"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp">
+                    <View
+                        android:id="@+id/viewThemeBlue"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_blue" />
+                </FrameLayout>
+
+                <!-- Theme 3: Sepia (Pro) -->
+                <FrameLayout
+                    android:id="@+id/btnThemeSepia"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp">
+                    <View
+                        android:id="@+id/viewThemeSepia"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_sepia" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:text="Pro"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:background="@drawable/bg_badge_pro" />
+                </FrameLayout>
+
+                <!-- Theme 4: Mint Green (Pro) -->
+                <FrameLayout
+                    android:id="@+id/btnThemeGreen"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp">
+                    <View
+                        android:id="@+id/viewThemeGreen"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_green" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:text="Pro"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:background="@drawable/bg_badge_pro" />
+                </FrameLayout>
+
+                <!-- Theme 5: Dark Mint (Pro) -->
+                <FrameLayout
+                    android:id="@+id/btnThemeDark"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp">
+                    <View
+                        android:id="@+id/viewThemeDark"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_circle_dark" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|end"
+                        android:text="Pro"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:background="@drawable/bg_badge_pro" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Spacing Settings Layout (Shown when 'Khoảng cách' is clicked) -->
+        <LinearLayout
+            android:id="@+id/layoutSpacingSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/btnBackToMainSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khoảng cách..."
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:background="?attr/selectableItemBackground" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- Spacing Adjuster Group [-  10  +] -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:background="@drawable/bg_rounded_border">
+
+                <TextView
+                    android:id="@+id/btnSpacingDecrease"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <TextView
+                    android:id="@+id/tvSpacingValue"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnSpacingIncrease"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#333333"
+                    android:textSize="18sp"
+                    android:background="?attr/selectableItemBackground" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

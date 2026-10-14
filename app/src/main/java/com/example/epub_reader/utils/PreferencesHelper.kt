@@ -45,6 +45,14 @@ class PreferencesHelper private constructor(context: Context) {
         return sharedPreferences.getInt(key, defaultValue)
     }
 
+    fun putFloat(key: String, value: Float) {
+        sharedPreferences.edit().putFloat(key, value).commit()
+    }
+
+    fun getFloat(key: String, defaultValue: Float = 0f): Float {
+        return sharedPreferences.getFloat(key, defaultValue)
+    }
+
     fun putLong(key: String, value: Long) {
         sharedPreferences.edit().putLong(key, value).commit()
     }
