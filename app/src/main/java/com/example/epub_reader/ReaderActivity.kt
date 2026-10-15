@@ -50,6 +50,7 @@ class ReaderActivity : LocalizeBaseActivity() {
     private var textToSpeech: TextToSpeech? = null
     private var isTtsSpeaking = false
     private var isWaitingTtsForChapterLoad = false
+    private var ttsRetryCount = 0
 
     enum class ThemeMode {
         LIGHT, DARK, REALTIME, SEPIA
@@ -457,6 +458,8 @@ class ReaderActivity : LocalizeBaseActivity() {
                 snippetText = snippet
             )
 
+            updateBookmarkIconState()
+
             val msg = if (isAdded) "Đã lưu dấu trang ($globalCurrentPage/$totalBookPages)" else "Đã bỏ dấu trang ($globalCurrentPage/$totalBookPages)"
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
@@ -549,6 +552,7 @@ class ReaderActivity : LocalizeBaseActivity() {
         val globalCurrentPage = readerState.calculateGlobalCurrentPage()
 
         binding.tvSmallPageProgress.text = "$globalCurrentPage/$totalBookPages"
+        updateBookmarkIconState()
 
         if (::progressPanelController.isInitialized) {
             val chapters = book?.chapters ?: emptyList()
@@ -562,6 +566,22 @@ class ReaderActivity : LocalizeBaseActivity() {
                 globalPage = globalCurrentPage,
                 globalTotalPages = totalBookPages
             )
+        }
+    }
+
+    private fun updateBookmarkIconState() {
+        val currentBook = book ?: return
+        val isBookmarked = BookmarkManager.instance.isBookmarked(
+            bookTitle = currentBook.title,
+            chapterIndex = readerState.currentChapterIndex,
+            pageIndexInChapter = readerState.currentPageIndex
+        )
+
+        if (isBookmarked) {
+            val yellowColor = Color.parseColor("#FFC107")
+            binding.btnBookmark.setColorFilter(yellowColor)
+        } else {
+            binding.btnBookmark.clearColorFilter()
         }
     }
 
@@ -1105,27 +1125,38 @@ class ReaderActivity : LocalizeBaseActivity() {
                 }
             }
 
+            if (cleanText.isBlank() && ttsRetryCount < 3) {
+                ttsRetryCount++
+                binding.webViewContent.postDelayed({ speakCurrentPageText() }, 400)
+                return@evaluateJavascript
+            }
+            ttsRetryCount = 0
+
             if (cleanText.isNotBlank()) {
-                val utteranceId = "reader_tts_${System.currentTimeMillis()}"
+                val chunks = cleanText.chunked(2000)
+                val lastUtteranceId = "reader_tts_${System.currentTimeMillis()}_last"
+
                 textToSpeech?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
                     override fun onStart(utteranceId: String?) {}
 
                     override fun onDone(utteranceId: String?) {
-                        runOnUiThread {
-                            if (isTtsSpeaking) {
-                                val lastChapter = readerState.currentChapterIndex
-                                val lastPage = readerState.currentPageIndex
+                        if (utteranceId == lastUtteranceId) {
+                            runOnUiThread {
+                                if (isTtsSpeaking) {
+                                    val lastChapter = readerState.currentChapterIndex
+                                    val lastPage = readerState.currentPageIndex
 
-                                goToNextPage()
+                                    goToNextPage()
 
-                                if (readerState.currentChapterIndex == lastChapter) {
-                                    if (readerState.currentPageIndex != lastPage) {
-                                        binding.webViewContent.postDelayed({
-                                            speakCurrentPageText()
-                                        }, 600)
-                                    } else {
-                                        stopTts()
-                                        Toast.makeText(this@ReaderActivity, "Đã đọc xong cuốn sách", Toast.LENGTH_SHORT).show()
+                                    if (readerState.currentChapterIndex == lastChapter) {
+                                        if (readerState.currentPageIndex != lastPage) {
+                                            binding.webViewContent.postDelayed({
+                                                speakCurrentPageText()
+                                            }, 600)
+                                        } else {
+                                            stopTts()
+                                            Toast.makeText(this@ReaderActivity, "Đã đọc xong cuốn sách", Toast.LENGTH_SHORT).show()
+                                        }
                                     }
                                 }
                             }
@@ -1135,18 +1166,28 @@ class ReaderActivity : LocalizeBaseActivity() {
                     @Deprecated("Deprecated in Java")
                     override fun onError(utteranceId: String?) {
                         runOnUiThread {
-                            Toast.makeText(this@ReaderActivity, "Lỗi phát âm thanh", Toast.LENGTH_SHORT).show()
-                            stopTts()
+                            if (isTtsSpeaking && ttsRetryCount < 2) {
+                                ttsRetryCount++
+                                binding.webViewContent.postDelayed({ speakCurrentPageText() }, 500)
+                            } else {
+                                Toast.makeText(this@ReaderActivity, "Lỗi phát âm thanh", Toast.LENGTH_SHORT).show()
+                                stopTts()
+                            }
                         }
                     }
                 })
 
-                val params = Bundle()
-                params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, utteranceId)
-                val speakResult = textToSpeech?.speak(cleanText, TextToSpeech.QUEUE_FLUSH, params, utteranceId)
-                if (speakResult == TextToSpeech.ERROR) {
-                    Toast.makeText(this, "Không thể phát âm thanh giọng nói", Toast.LENGTH_SHORT).show()
-                    stopTts()
+                chunks.forEachIndexed { index, chunk ->
+                    val chunkId = if (index == chunks.size - 1) lastUtteranceId else "reader_tts_${System.currentTimeMillis()}_$index"
+                    val params = Bundle()
+                    params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, chunkId)
+                    val queueMode = if (index == 0) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD
+                    val speakResult = textToSpeech?.speak(chunk, queueMode, params, chunkId)
+                    if (speakResult == TextToSpeech.ERROR) {
+                        Toast.makeText(this, "Không thể phát âm thanh giọng nói", Toast.LENGTH_SHORT).show()
+                        stopTts()
+                        return@evaluateJavascript
+                    }
                 }
             } else {
                 Toast.makeText(this, "Không tìm thấy văn bản để đọc", Toast.LENGTH_SHORT).show()
