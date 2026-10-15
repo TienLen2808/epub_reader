@@ -75,6 +75,10 @@ class ReaderThemeManager private constructor() {
             ThemeMode.LIGHT -> LIGHT_THEME
             ThemeMode.SEPIA -> SEPIA_THEME
             ThemeMode.DARK -> DARK_THEME
+            ThemeMode.REALTIME -> {
+                val hour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+                if (hour in 6..18) LIGHT_THEME else DARK_THEME
+            }
         }
     }
 

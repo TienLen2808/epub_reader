@@ -52,7 +52,7 @@ class ReaderActivity : LocalizeBaseActivity() {
     private var isWaitingTtsForChapterLoad = false
 
     enum class ThemeMode {
-        LIGHT, SEPIA, DARK
+        LIGHT, DARK, REALTIME, SEPIA
     }
 
     private var areToolbarsVisible = false
@@ -479,7 +479,12 @@ class ReaderActivity : LocalizeBaseActivity() {
     }
 
     private fun toggleLightDarkTheme() {
-        themeManager.themeMode = if (themeManager.themeMode == ThemeMode.DARK) ThemeMode.LIGHT else ThemeMode.DARK
+        themeManager.themeMode = when (themeManager.themeMode) {
+            ThemeMode.LIGHT -> ThemeMode.DARK
+            ThemeMode.DARK -> ThemeMode.REALTIME
+            ThemeMode.REALTIME -> ThemeMode.LIGHT
+            else -> ThemeMode.LIGHT
+        }
         loadCurrentChapter()
     }
 
@@ -961,12 +966,23 @@ class ReaderActivity : LocalizeBaseActivity() {
         binding.tvSmallChapterHeader.setTextColor(Color.parseColor("#888888"))
         binding.tvSmallPageProgress.setTextColor(Color.parseColor("#888888"))
 
-        if (themeManager.themeMode == ThemeMode.DARK) {
-            binding.tvThemeLabel.text = "Đêm"
-            binding.imgThemeIcon.setImageResource(android.R.drawable.ic_menu_view)
-        } else {
-            binding.tvThemeLabel.text = "Ngày"
-            binding.imgThemeIcon.setImageResource(android.R.drawable.ic_menu_day)
+        when (themeManager.themeMode) {
+            ThemeMode.LIGHT -> {
+                binding.tvThemeLabel.text = "Sáng"
+                binding.imgThemeIcon.setImageResource(R.drawable.ic_light_mode)
+            }
+            ThemeMode.DARK -> {
+                binding.tvThemeLabel.text = "Tối"
+                binding.imgThemeIcon.setImageResource(R.drawable.ic_dark_mode)
+            }
+            ThemeMode.REALTIME -> {
+                binding.tvThemeLabel.text = "Tự động"
+                binding.imgThemeIcon.setImageResource(R.drawable.ic_real_time_mode)
+            }
+            else -> {
+                binding.tvThemeLabel.text = "Sáng"
+                binding.imgThemeIcon.setImageResource(R.drawable.ic_light_mode)
+            }
         }
     }
 
@@ -1008,6 +1024,18 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
     }
 
+    private fun detectBookLocale(): Locale {
+        val sampleText = book?.chapters?.firstOrNull()?.contentHtml ?: book?.title ?: ""
+        val hasVietnameseDiacritics = sampleText.contains(
+            Regex("[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]", RegexOption.IGNORE_CASE)
+        )
+        return if (hasVietnameseDiacritics) {
+            Locale("vi", "VN")
+        } else {
+            Locale.UK
+        }
+    }
+
     private fun initTts() {
         textToSpeech = TextToSpeech(this) { status ->
             if (status == TextToSpeech.SUCCESS) {
@@ -1017,12 +1045,12 @@ class ReaderActivity : LocalizeBaseActivity() {
                     .build()
                 textToSpeech?.setAudioAttributes(audioAttributes)
 
-                val viLocale = Locale("vi", "VN")
-                val viResult = textToSpeech?.setLanguage(viLocale)
-                if (viResult == TextToSpeech.LANG_MISSING_DATA || viResult == TextToSpeech.LANG_NOT_SUPPORTED) {
+                val targetLocale = detectBookLocale()
+                val langResult = textToSpeech?.setLanguage(targetLocale)
+                if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
                     val defResult = textToSpeech?.setLanguage(Locale.getDefault())
                     if (defResult == TextToSpeech.LANG_MISSING_DATA || defResult == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        textToSpeech?.setLanguage(Locale.US)
+                        textToSpeech?.setLanguage(Locale.UK)
                     }
                 }
             } else {
