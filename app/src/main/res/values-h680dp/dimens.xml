@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding on screens at least 680dp tall (most phones): sizes of the design mockup -->
+    <dimen name="onboarding_title_text_size">32sp</dimen>
+    <dimen name="onboarding_desc_text_size">17sp</dimen>
+    <dimen name="onboarding_illustration_gap">36dp</dimen>
+</resources>

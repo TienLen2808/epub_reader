@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edit bar: "di chuyển đến thư mục" (folder + arrow) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:autoMirrored="true"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M4,8.6Q4,6.6 6,6.6H10.6Q11.4,6.6 11.9,7.2L13.1,8.6H22Q24,8.6 24,10.6V20.4Q24,22.4 22,22.4H6Q4,22.4 4,20.4Z"
+        android:strokeWidth="1.6"
+        android:strokeColor="#007AFF"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M9.6,15.5H18.4M15.2,12.3L18.4,15.5L15.2,18.7"
+        android:strokeWidth="1.6"
+        android:strokeColor="#007AFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

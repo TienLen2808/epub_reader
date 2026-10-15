@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS UIAlertController (.alert) with a dynamic list of buttons -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutActionsRoot"
+    android:layout_width="270dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_ios_alert"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvActionsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="19dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/ios_label"
+        android:textSize="17sp"
+        tools:text="Dropbox" />
+
+    <TextView
+        android:id="@+id/tvActionsMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="1dp"
+        android:paddingStart="16dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/ios_label"
+        android:textSize="13sp"
+        tools:text="Hỗ trợ tải lên hàng loạt" />
+
+    <View
+        android:id="@+id/viewActionsHeaderSpace"
+        android:layout_width="match_parent"
+        android:layout_height="19dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutActionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+</LinearLayout>

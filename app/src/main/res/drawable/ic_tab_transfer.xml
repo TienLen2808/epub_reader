@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tab bar: "Chuyển tệp" (folder with ⇄). Tinted at runtime. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <path
+        android:fillColor="#A0A0A0"
+        android:fillType="evenOdd"
+        android:pathData="M3,8.2Q3,5.8 5.4,5.8H10.4Q11.3,5.8 11.9,6.5L13.2,8H22.6Q25,8 25,10.4V21.2Q25,23.6 22.6,23.6H5.4Q3,23.6 3,21.2ZM9,12.6H16.4V10.6L19.8,13.4L16.4,16.2V14.2H9ZM19,17.8H11.6V15.8L8.2,18.6L11.6,21.4V19.4H19Z" />
+</vector>

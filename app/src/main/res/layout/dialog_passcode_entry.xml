@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_passcode_dialog"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="24dp"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/imgLockIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_lock_idle_lock"
+        app:tint="#D84315"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Lock" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_passcode"
+        android:textColor="#222222"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/protect_your_file"
+        android:textColor="#888888"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+        android:id="@+id/etPasscode"
+        android:layout_width="160dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_passcode_input"
+        android:gravity="center"
+        android:hint="****"
+        android:inputType="numberPassword"
+        android:maxLength="4"
+        android:textColor="#222222"
+        android:textSize="28sp"
+        android:letterSpacing="0.4"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/wrong_password"
+        android:textColor="#E53935"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/cancel_action"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="#666666"
+            android:textStyle="bold"
+            android:background="@drawable/bg_btn_secondary"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btnConfirm"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/confirm"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/bg_btn_primary"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</LinearLayout>

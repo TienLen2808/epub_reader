@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding on short screens (and landscape): smaller texts leave room for the illustration.
+         Taller screens use values-h680dp/dimens.xml -->
+    <dimen name="onboarding_title_text_size">26sp</dimen>
+    <dimen name="onboarding_desc_text_size">15sp</dimen>
+    <dimen name="onboarding_illustration_gap">24dp</dimen>
+</resources>

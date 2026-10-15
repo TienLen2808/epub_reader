@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Transfer: Files (blue folder) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
+    <path
+        android:fillColor="#5AA9F5"
+        android:pathData="M3,8.5Q3,6 5.5,6H11.3Q12.3,6 13,6.8L14.6,8.5H24.5Q27,8.5 27,11V22.5Q27,25 24.5,25H5.5Q3,25 3,22.5Z" />
+    <path
+        android:fillColor="#2E8BF0"
+        android:pathData="M3,12.2Q3,10.5 4.7,10.5H25.3Q27,10.5 27,12.2V22.5Q27,25 24.5,25H5.5Q3,25 3,22.5Z" />
+</vector>

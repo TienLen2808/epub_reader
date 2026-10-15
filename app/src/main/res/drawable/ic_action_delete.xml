@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edit bar: "Xóa bỏ" (trash) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M4.5,7.2H23.5M10.8,7.2V5.4Q10.8,4 12.2,4H15.8Q17.2,4 17.2,5.4V7.2"
+        android:strokeWidth="1.6"
+        android:strokeColor="#007AFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M6.6,7.2L7.7,22.4Q7.85,24.2 9.6,24.2H18.4Q20.15,24.2 20.3,22.4L21.4,7.2"
+        android:strokeWidth="1.6"
+        android:strokeColor="#007AFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M11.6,11.2V20M16.4,11.2V20"
+        android:strokeWidth="1.5"
+        android:strokeColor="#007AFF"
+        android:strokeLineCap="round" />
+</vector>

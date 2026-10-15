@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardProgressPanel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="29. Chương 37: Bị Thương"
+            tools:text="29. Chương 37: Bị Thương"
             android:textColor="#333333"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -36,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text="320/8387"
+            tools:text="320/8387"
             android:textColor="#666666"
             android:textSize="14sp" />
 

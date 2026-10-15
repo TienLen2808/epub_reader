@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- French -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">Chargement de la pub…</string>
+    <string name="thanks_for_your_review">Merci pour votre avis !</string>
+    <string name="d_seconds_remaining">Encore %1$d secondes</string>
+    <string name="no_internet">Pas de connexion Internet</string>
+    <string name="no_internet_message">Vérifiez votre connexion Internet et réessayez.</string>
+    <string name="setting">Réglages</string>
+    <string name="language">Langue</string>
+    <string name="files">Fichiers</string>
+    <string name="file_transfer">Transfert</string>
+    <string name="settings">Réglages</string>
+    <string name="table_of_contents">Sommaire</string>
+    <string name="progress">Progression</string>
+    <string name="date">Date</string>
+    <string name="rename">Renommer</string>
+    <string name="move_to_folder">Déplacer vers un dossier</string>
+    <string name="send_open">Envoyer/Ouvrir…</string>
+    <string name="upload_google_drive">Envoyer vers Google Drive</string>
+    <string name="copy">Copier</string>
+    <string name="delete">Supprimer</string>
+    <string name="cancel">Annuler</string>
+    <string name="enter_passcode">Saisir le code</string>
+    <string name="protect_your_file">Protégez vos fichiers avec un code</string>
+    <string name="wrong_password">Code incorrect</string>
+    <string name="cancel_action">Annuler</string>
+    <string name="confirm">Confirmer</string>
+    <string name="passcode_lock">Verrouillage par code</string>
+    <string name="search">Rechercher</string>
+    <string name="reader_settings">Réglages de lecture</string>
+    <string name="font_size">Taille du texte</string>
+    <string name="reading_theme">Thème de lecture</string>
+    <string name="light">Clair</string>
+    <string name="sepia">Sépia</string>
+    <string name="dark">Sombre</string>
+    <string name="spacing">Interligne</string>
+    <string name="spacing_ellipsis">Interligne…</string>
+    <string name="notes">Notes</string>
+    <string name="bookmarks">Signets</string>
+    <string name="edit">Modifier</string>
+    <string name="name">Nom</string>
+    <string name="category">Type</string>
+    <string name="time">Heure</string>
+    <string name="no_files_yet">Aucun fichier pour l’instant</string>
+    <string name="share">Partager</string>
+    <string name="general_features">GÉNÉRAL</string>
+    <string name="vietnamese">Vietnamien</string>
+    <string name="feedback">AVIS</string>
+    <string name="rate_us">Notez-nous</string>
+    <string name="feedback_opinions">Envoyer un avis</string>
+    <string name="share_uppercase">PARTAGER</string>
+    <string name="tell_a_friend">Recommander à un ami</string>
+    <string name="import_files_icloud_drive">Importer depuis Fichiers / iCloud Drive</string>
+    <string name="wifi_transfer">Transfert Wi-Fi</string>
+    <string name="import_from_pc">Importer depuis le PC</string>
+    <string name="itunes_file_sharing">Partage de fichiers iTunes</string>
+    <string name="support_batch_upload">Envoi de plusieurs fichiers</string>
+    <string name="login_google_drive">Se connecter à Google Drive</string>
+    <string name="error_no_book_content">Ce livre n’a aucun contenu à lire</string>
+    <string name="error_init_tts">Impossible de démarrer la synthèse vocale</string>
+    <string name="tts_stopped">Lecture arrêtée</string>
+    <string name="tts_started">Lecture démarrée…</string>
+    <string name="tts_finished">Lecture du livre terminée</string>
+    <string name="tts_error_audio">Erreur de lecture audio</string>
+    <string name="tts_error_voice">Impossible de lire la voix</string>
+    <string name="tts_error_no_text">Aucun texte à lire</string>
+    <string name="please_select_file">Sélectionnez un fichier à ouvrir</string>
+    <string name="deleted_selected_files">Fichiers sélectionnés supprimés</string>
+    <string name="select_at_least_one_file">Sélectionnez au moins 1 fichier à supprimer</string>
+    <string name="share_multiple_files">Partager %1$s fichiers</string>
+    <string name="move_files">Déplacer les fichiers</string>
+    <string name="copy_files">Copier les fichiers</string>
+    <string name="zip_files">Compresser les fichiers</string>
+    <string name="error_launch_file_picker">Impossible d’ouvrir le sélecteur de fichiers</string>
+    <string name="added_file">%1$s ajouté</string>
+    <string name="deleted_file">%1$s supprimé</string>
+    <string name="renamed_to">Renommé en %1$s</string>
+    <string name="share_file">Partager %1$s</string>
+    <string name="error_read_epub">Erreur : impossible de lire le fichier EPUB</string>
+    <string name="wrong_password_exclamation">Code incorrect !</string>
+    <string name="cannot_open_file">Impossible d’ouvrir %1$s</string>
+    <string name="file_not_found">Fichier introuvable : %1$s</string>
+    <string name="passcode_removed">Code supprimé</string>
+    <string name="passcode_set">Code activé</string>
+    <string name="thanks_for_5_stars">Merci pour les 5 étoiles !</string>
+    <string name="send_feedback">Envoyer un avis</string>
+    <string name="share_app_with_friends">Partager l’app avec vos amis</string>
+    <string name="import_from_icloud">Importer depuis Fichiers / iCloud Drive</string>
+    <string name="import_from_wifi">Importer depuis le PC par Wi-Fi</string>
+    <string name="share_itunes">Partage de fichiers iTunes / PC</string>
+    <string name="login_dropbox">Se connecter à Dropbox</string>
+    <string name="storage_permission_required">L’accès au stockage est nécessaire pour importer des fichiers</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">Espace libre</string>
+    <string name="done">OK</string>
+    <string name="search_hint">Rechercher</string>
+    <string name="select_all">Tout sélectionner</string>
+    <string name="add_file">Ajouter un fichier</string>
+    <string name="clear_search">Effacer la recherche</string>
+    <string name="file_info">Infos du fichier</string>
+    <string name="save">Enregistrer</string>
+    <string name="no_results">Aucun résultat</string>
+    <string name="copied_files">Fichiers copiés : %1$d</string>
+    <string name="cannot_copy_file">Impossible de copier %1$s</string>
+    <string name="zipped_to">Compressé en %1$s</string>
+    <string name="zip_failed">Impossible de compresser les fichiers</string>
+    <string name="archive_name">Archive</string>
+    <string name="txt_part">Partie %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">Les fichiers importés apparaissent dans « Fichiers ».</string>
+    <string name="transfer_importing">Importation des fichiers…</string>
+    <string name="transfer_import_failed">Impossible d’importer les fichiers</string>
+    <string name="transfer_imported_files">Fichiers importés dans Fichiers : %1$d</string>
+    <string name="ok">OK</string>
+    <string name="guide">Mode d’emploi</string>
+    <string name="refresh">Actualiser</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">Actif</string>
+    <string name="wifi_starting">Démarrage…</string>
+    <string name="wifi_status_no_wifi">Non connecté au Wi-Fi</string>
+    <string name="wifi_server_failed">Impossible de démarrer le transfert Wi-Fi</string>
+    <string name="wifi_open_browser">Ouvrez un navigateur sur votre ordinateur et allez à cette adresse :</string>
+    <string name="copy_address">Copier l’adresse</string>
+    <string name="address_copied">Adresse copiée</string>
+    <string name="wifi_step_1">1.  Connectez le téléphone et l’ordinateur au même réseau Wi-Fi.</string>
+    <string name="wifi_step_2">2.  Ouvrez un navigateur (Chrome, Safari, Edge…) sur l’ordinateur et saisissez l’adresse ci-dessus.</string>
+    <string name="wifi_step_3">3.  Cliquez sur « Choisir des fichiers… » ou glissez des fichiers sur la page. Ils apparaîtront dans « Fichiers ».</string>
+    <string name="received_files">Fichiers reçus</string>
+    <string name="no_received_files">Aucun fichier pour l’instant</string>
+    <string name="wifi_keep_open">Laissez cet écran ouvert pendant le transfert.</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">Importer des fichiers depuis un ordinateur par USB</string>
+    <string name="usb_header_sub">Remplace le partage de fichiers iTunes de l’iPhone</string>
+    <string name="usb_step_1">1.  Branchez le téléphone à l’ordinateur avec un câble USB.</string>
+    <string name="usb_step_2">2.  Sur le téléphone, choisissez le mode USB « Transfert de fichiers ».</string>
+    <string name="usb_step_3">3.  Sur l’ordinateur, ouvrez ce dossier dans la mémoire du téléphone :</string>
+    <string name="usb_mac_note">Mac : utilisez Android File Transfer ou OpenMTP.</string>
+    <string name="usb_step_4">4.  Copiez les fichiers dans ce dossier, puis touchez « Importer les fichiers » ci-dessous.</string>
+    <string name="copy_path">Copier le chemin</string>
+    <string name="path_copied">Chemin copié</string>
+    <string name="pending_files">Fichiers dans le dossier</string>
+    <string name="usb_no_files">Aucun fichier dans le dossier</string>
+    <string name="usb_copying">Copie en cours…</string>
+    <string name="usb_import_none">Importer les fichiers</string>
+    <string name="usb_import_count">Importer %1$d fichiers dans Fichiers</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Importer depuis Dropbox</string>
+    <string name="cloud_upload_dropbox">Envoyer vers Dropbox</string>
+    <string name="cloud_info_dropbox">Sélectionnez plusieurs fichiers à la fois pour les importer de Dropbox dans l’app, ou pour envoyer plusieurs fichiers de l’app vers Dropbox.\n\nL’app Dropbox doit être installée et connectée.</string>
+    <string name="cloud_import_drive">Importer depuis Google Drive</string>
+    <string name="cloud_upload_drive">Envoyer vers Google Drive</string>
+    <string name="cloud_info_drive">Sélectionnez plusieurs fichiers à la fois pour les importer de Google Drive dans l’app, ou pour envoyer plusieurs fichiers de l’app vers Google Drive.\n\nL’app Google Drive doit être installée et connectée.</string>
+    <string name="app_not_installed_title">%1$s n’est pas installé</string>
+    <string name="app_not_installed_message">Installez l’app %1$s depuis Google Play pour utiliser cette fonction.</string>
+    <string name="install_app">Installer</string>
+    <string name="choose_from_files">Choisir dans Fichiers</string>
+    <string name="no_files_to_upload">Aucun fichier à envoyer</string>
+    <string name="select_files">Sélectionner des fichiers</string>
+    <string name="upload">Envoyer</string>
+    <string name="pick_files_hint">Sélectionnez les fichiers à envoyer</string>
+    <string name="selected_count">Sélection : %1$d</string>
+    <string name="deselect_all">Tout désélectionner</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">Langue de lecture</string>
+    <string name="tts_language_subtitle">Choisissez la langue du livre pour que la voix la prononce correctement.</string>
+    <string name="tts_section_suggested">Suggéré pour ce livre</string>
+    <string name="tts_section_other">Autres langues</string>
+    <string name="tts_section_languages">Langues</string>
+    <string name="tts_badge_detected">Détectée</string>
+    <string name="tts_badge_previous">Dernier choix</string>
+    <string name="tts_status_needs_download">Voix à télécharger</string>
+    <string name="tts_status_not_supported">Non disponible sur cet appareil</string>
+    <string name="tts_start_reading">Lancer la lecture</string>
+    <string name="tts_open_settings">Réglages vocaux de l’appareil</string>
+    <string name="tts_settings_footnote">Les voix proviennent du moteur de synthèse vocale de votre appareil. Dans les réglages, vous pouvez télécharger d’autres voix ou passer au moteur de Google.</string>
+    <string name="tts_preparing">Préparation de la voix…</string>
+    <string name="tts_started_language">Lecture · %1$s</string>
+    <string name="tts_voice_missing_title">Voix non téléchargée</string>
+    <string name="tts_voice_missing_message">La voix %1$s n’est pas téléchargée sur cet appareil. Téléchargez-la, puis touchez à nouveau lire.</string>
+    <string name="tts_voice_unsupported_title">%1$s n’est pas pris en charge</string>
+    <string name="tts_voice_unsupported_message">Le moteur vocal de cet appareil ne sait pas lire la langue suivante : %1$s. Choisissez le moteur de Google dans les réglages vocaux, ou une autre langue.</string>
+    <string name="tts_download_voice">Télécharger la voix</string>
+    <string name="tts_install_google">Installer Synthèse vocale Google</string>
+    <string name="tts_choose_other_language">Choisir une autre langue</string>
+    <string name="tts_lang_vi">Vietnamien</string>
+    <string name="tts_lang_en">Anglais</string>
+    <string name="tts_lang_zh_cn">Chinois (simplifié)</string>
+    <string name="tts_lang_zh_tw">Chinois (traditionnel)</string>
+    <string name="tts_lang_th">Thaï</string>
+    <string name="tts_lang_ja">Japonais</string>
+    <string name="tts_lang_ko">Coréen</string>
+    <string name="tts_lang_fr">Français</string>
+    <string name="tts_lang_de">Allemand</string>
+    <string name="tts_lang_es">Espagnol</string>
+    <string name="tts_lang_pt">Portugais</string>
+    <string name="tts_lang_it">Italien</string>
+    <string name="tts_lang_ru">Russe</string>
+    <string name="tts_lang_uk">Ukrainien</string>
+    <string name="tts_lang_id">Indonésien</string>
+    <string name="tts_lang_ms">Malais</string>
+    <string name="tts_lang_fil">Filipino</string>
+    <string name="tts_lang_km">Khmer</string>
+    <string name="tts_lang_lo">Lao</string>
+    <string name="tts_lang_my">Birman</string>
+    <string name="tts_lang_hi">Hindi</string>
+    <string name="tts_lang_ar">Arabe</string>
+    <string name="tts_lang_tr">Turc</string>
+    <string name="tts_lang_pl">Polonais</string>
+    <string name="tts_lang_nl">Néerlandais</string>
+    <string name="tts_lang_sv">Suédois</string>
+    <string name="tts_lang_da">Danois</string>
+    <string name="tts_lang_nb">Norvégien</string>
+    <string name="tts_lang_fi">Finnois</string>
+    <string name="tts_lang_cs">Tchèque</string>
+    <string name="tts_lang_ro">Roumain</string>
+    <string name="tts_lang_hu">Hongrois</string>
+    <string name="tts_lang_el">Grec</string>
+    <string name="tts_lang_he">Hébreu</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">Chapitre %1$d</string>
+    <string name="theme_mode_light">Clair</string>
+    <string name="theme_mode_dark">Sombre</string>
+    <string name="theme_mode_auto">Auto</string>
+    <string name="bookmark_added">Signet ajouté (%1$d/%2$d)</string>
+    <string name="bookmark_removed">Signet supprimé (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">Créer un nouveau code</string>
+    <string name="passcode_verify_title">Saisissez le code pour ouvrir</string>
+    <string name="passcode_remove_title">Saisissez le code pour le supprimer</string>
+    <string name="passcode_need_4_digits">Saisissez les 4 chiffres</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">Saisissez un mot-clé…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">Français</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">Copiez des fichiers (EPUB, TXT, PDF…) dans ce dossier, puis ouvrez l’app &gt; Transfert &gt; Partage de fichiers iTunes &gt; Importer les fichiers.</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Transfert de fichiers par Wi-Fi</string>
+    <string name="web_drop_title">Déposez vos fichiers ici</string>
+    <string name="web_drop_hint">ou cliquez sur le bouton ci-dessous pour choisir des fichiers (EPUB, TXT, PDF…)</string>
+    <string name="web_choose_files">Choisir des fichiers…</string>
+    <string name="web_uploading">Envoi en cours</string>
+    <string name="web_files_on_phone">Fichiers sur le téléphone</string>
+    <string name="web_loading">Chargement…</string>
+    <string name="web_footer">Laissez l’écran « Transfert Wi-Fi » ouvert sur le téléphone pendant le transfert.</string>
+    <string name="web_waiting">En attente</string>
+    <string name="web_done">Terminé</string>
+    <string name="web_error">Erreur</string>
+    <string name="web_connection_lost">Connexion au téléphone perdue</string>
+    <string name="web_no_files">Aucun fichier pour l’instant</string>
+    <string name="web_download">Télécharger</string>
+    <string name="web_cannot_connect">Impossible de se connecter au téléphone</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">Téléchargez et importez vos livres facilement</string>
+    <string name="onboarding_desc_import">Ajoutez des fichiers EPUB depuis votre téléphone, le Wi-Fi, Google Drive ou Dropbox en quelques gestes.</string>
+    <string name="onboarding_title_listen">Lisez et écoutez sans interruption</string>
+    <string name="onboarding_desc_listen">Vos livres sont lus à voix haute automatiquement, avec une voix expressive.</string>
+    <string name="onboarding_title_share">Partagez et explorez votre bibliothèque</string>
+    <string name="onboarding_desc_share">Gardez votre bibliothèque bien rangée et partagez vos livres préférés avec vos amis.</string>
+    <string name="onboarding_next">Suivant</string>
+    <string name="onboarding_start">Commencer</string>
+</resources>

@@ -2,4 +2,53 @@
 <resources>
 
     <style name="Theme.Epub_reader" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+
+    <!-- Full screen iOS style pages opened from the tabs (Chuyển Wifi, iTunes, chọn tệp...) -->
+    <style name="Theme.Epub_reader.IosFullScreenDialog" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/ios_grouped_bg</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Epub_reader.IosPush</item>
+        <item name="colorPrimary">@color/ios_blue</item>
+        <item name="colorPrimaryVariant">@color/ios_blue</item>
+        <item name="colorSecondary">@color/ios_blue</item>
+        <item name="colorAccent">@color/ios_blue</item>
+    </style>
+
+    <!-- iOS push / pop -->
+    <style name="Animation.Epub_reader.IosPush" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/ios_push_in</item>
+        <item name="android:windowExitAnimation">@anim/ios_push_out</item>
+    </style>
+
+    <!-- iOS style bottom sheets: the container is transparent, the layout draws the rounded sheet -->
+    <style name="ThemeOverlay.Epub_reader.IosSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Epub_reader.IosSheet</item>
+    </style>
+
+    <style name="Widget.Epub_reader.IosSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Launch screen. Until the layout is drawn the window shows the gradient with the logo in the middle
+         (Android 11 and older). Android 12+ adds its own launch screen: see values-v31/themes.xml -->
+    <style name="Base.Theme.Epub_reader.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_splash_window</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Epub_reader.Splash" parent="Base.Theme.Epub_reader.Splash" />
+
+    <!-- Onboarding (first launch): always light, white background -->
+    <style name="Theme.Epub_reader.Onboarding" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">@color/onboarding_orange</item>
+        <item name="colorPrimaryVariant">@color/onboarding_orange</item>
+        <item name="colorSecondary">@color/onboarding_orange</item>
+    </style>
 </resources>

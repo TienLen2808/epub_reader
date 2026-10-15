@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Japanese -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">広告を読み込み中…</string>
+    <string name="thanks_for_your_review">レビューありがとうございます！</string>
+    <string name="d_seconds_remaining">残り%1$d秒</string>
+    <string name="no_internet">インターネットに接続されていません</string>
+    <string name="no_internet_message">インターネット接続を確認して、もう一度お試しください。</string>
+    <string name="setting">設定</string>
+    <string name="language">言語</string>
+    <string name="files">ファイル</string>
+    <string name="file_transfer">転送</string>
+    <string name="settings">設定</string>
+    <string name="table_of_contents">目次</string>
+    <string name="progress">進行状況</string>
+    <string name="date">日付</string>
+    <string name="rename">名前を変更</string>
+    <string name="move_to_folder">フォルダに移動</string>
+    <string name="send_open">送信／開く…</string>
+    <string name="upload_google_drive">Google ドライブにアップロード</string>
+    <string name="copy">コピー</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+    <string name="enter_passcode">パスコードを入力</string>
+    <string name="protect_your_file">パスコードでファイルを保護</string>
+    <string name="wrong_password">パスコードが違います</string>
+    <string name="cancel_action">キャンセル</string>
+    <string name="confirm">確認</string>
+    <string name="passcode_lock">パスコードロック</string>
+    <string name="search">検索</string>
+    <string name="reader_settings">表示設定</string>
+    <string name="font_size">文字サイズ</string>
+    <string name="reading_theme">テーマ</string>
+    <string name="light">ライト</string>
+    <string name="sepia">セピア</string>
+    <string name="dark">ダーク</string>
+    <string name="spacing">行間</string>
+    <string name="spacing_ellipsis">行間…</string>
+    <string name="notes">メモ</string>
+    <string name="bookmarks">ブックマーク</string>
+    <string name="edit">編集</string>
+    <string name="name">名前</string>
+    <string name="category">種類</string>
+    <string name="time">時刻</string>
+    <string name="no_files_yet">ファイルはまだありません</string>
+    <string name="share">共有</string>
+    <string name="general_features">一般</string>
+    <string name="vietnamese">ベトナム語</string>
+    <string name="feedback">フィードバック</string>
+    <string name="rate_us">評価する</string>
+    <string name="feedback_opinions">ご意見を送る</string>
+    <string name="share_uppercase">共有</string>
+    <string name="tell_a_friend">友達に教える</string>
+    <string name="import_files_icloud_drive">ファイル / iCloud Drive から読み込む</string>
+    <string name="wifi_transfer">Wi-Fi 転送</string>
+    <string name="import_from_pc">PC から読み込む</string>
+    <string name="itunes_file_sharing">iTunes ファイル共有</string>
+    <string name="support_batch_upload">複数ファイルの一括アップロード対応</string>
+    <string name="login_google_drive">Google ドライブにログイン</string>
+    <string name="error_no_book_content">読める内容がありません</string>
+    <string name="error_init_tts">読み上げエンジンを起動できません</string>
+    <string name="tts_stopped">読み上げを停止しました</string>
+    <string name="tts_started">読み上げを開始しました…</string>
+    <string name="tts_finished">本の読み上げが終わりました</string>
+    <string name="tts_error_audio">音声再生エラー</string>
+    <string name="tts_error_voice">音声を再生できません</string>
+    <string name="tts_error_no_text">読み上げるテキストが見つかりません</string>
+    <string name="please_select_file">開くファイルを選択してください</string>
+    <string name="deleted_selected_files">選択したファイルを削除しました</string>
+    <string name="select_at_least_one_file">削除するファイルを1つ以上選択してください</string>
+    <string name="share_multiple_files">%1$s 個のファイルを共有</string>
+    <string name="move_files">ファイルを移動</string>
+    <string name="copy_files">ファイルをコピー</string>
+    <string name="zip_files">ファイルを圧縮</string>
+    <string name="error_launch_file_picker">ファイル選択画面を開けません</string>
+    <string name="added_file">%1$s を追加しました</string>
+    <string name="deleted_file">%1$s を削除しました</string>
+    <string name="renamed_to">%1$s に名前を変更しました</string>
+    <string name="share_file">%1$s を共有</string>
+    <string name="error_read_epub">エラー：EPUB ファイルを読み込めませんでした</string>
+    <string name="wrong_password_exclamation">パスコードが違います！</string>
+    <string name="cannot_open_file">%1$s を開けません</string>
+    <string name="file_not_found">ファイルが見つかりません：%1$s</string>
+    <string name="passcode_removed">パスコードを解除しました</string>
+    <string name="passcode_set">パスコードを設定しました</string>
+    <string name="thanks_for_5_stars">5つ星の評価ありがとうございます！</string>
+    <string name="send_feedback">ご意見を送る</string>
+    <string name="share_app_with_friends">このアプリを友達に共有</string>
+    <string name="import_from_icloud">ファイル / iCloud Drive から読み込む</string>
+    <string name="import_from_wifi">Wi-Fi 経由で PC から読み込む</string>
+    <string name="share_itunes">iTunes / PC ファイル共有</string>
+    <string name="login_dropbox">Dropbox にログイン</string>
+    <string name="storage_permission_required">ファイルを読み込むにはストレージへのアクセス許可が必要です</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">空き容量</string>
+    <string name="done">完了</string>
+    <string name="search_hint">検索</string>
+    <string name="select_all">すべて選択</string>
+    <string name="add_file">ファイルを追加</string>
+    <string name="clear_search">検索をクリア</string>
+    <string name="file_info">ファイル情報</string>
+    <string name="save">保存</string>
+    <string name="no_results">結果なし</string>
+    <string name="copied_files">コピーしたファイル：%1$d</string>
+    <string name="cannot_copy_file">%1$s をコピーできません</string>
+    <string name="zipped_to">%1$s に圧縮しました</string>
+    <string name="zip_failed">ファイルを圧縮できませんでした</string>
+    <string name="archive_name">アーカイブ</string>
+    <string name="txt_part">パート %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">読み込んだファイルは「ファイル」に表示されます。</string>
+    <string name="transfer_importing">ファイルを読み込み中…</string>
+    <string name="transfer_import_failed">ファイルを読み込めませんでした</string>
+    <string name="transfer_imported_files">「ファイル」に読み込みました：%1$d</string>
+    <string name="ok">OK</string>
+    <string name="guide">使い方</string>
+    <string name="refresh">更新</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">稼働中</string>
+    <string name="wifi_starting">起動中…</string>
+    <string name="wifi_status_no_wifi">Wi-Fi に接続されていません</string>
+    <string name="wifi_server_failed">Wi-Fi 転送を開始できません</string>
+    <string name="wifi_open_browser">パソコンでブラウザを開き、次のアドレスにアクセスしてください：</string>
+    <string name="copy_address">アドレスをコピー</string>
+    <string name="address_copied">アドレスをコピーしました</string>
+    <string name="wifi_step_1">1.  スマートフォンとパソコンを同じ Wi-Fi に接続します。</string>
+    <string name="wifi_step_2">2.  パソコンでブラウザ（Chrome、Safari、Edge など）を開き、上のアドレスを入力します。</string>
+    <string name="wifi_step_3">3.  「ファイルを選択…」をクリックするか、ファイルをページにドラッグします。ファイルは「ファイル」に表示されます。</string>
+    <string name="received_files">受信したファイル</string>
+    <string name="no_received_files">ファイルはまだありません</string>
+    <string name="wifi_keep_open">転送中はこの画面を開いたままにしてください。</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">USB ケーブルでパソコンからファイルを読み込む</string>
+    <string name="usb_header_sub">iPhone の iTunes ファイル共有の代わりに使えます</string>
+    <string name="usb_step_1">1.  USB ケーブルでスマートフォンをパソコンに接続します。</string>
+    <string name="usb_step_2">2.  スマートフォンで USB モードを「ファイル転送」にします。</string>
+    <string name="usb_step_3">3.  パソコンで、スマートフォンのストレージにある次のフォルダを開きます：</string>
+    <string name="usb_mac_note">Mac の場合：Android File Transfer または OpenMTP を使用してください。</string>
+    <string name="usb_step_4">4.  そのフォルダにファイルをコピーし、下の「ファイルを読み込む」をタップします。</string>
+    <string name="copy_path">パスをコピー</string>
+    <string name="path_copied">パスをコピーしました</string>
+    <string name="pending_files">フォルダ内のファイル</string>
+    <string name="usb_no_files">フォルダにファイルはまだありません</string>
+    <string name="usb_copying">コピー中…</string>
+    <string name="usb_import_none">ファイルを読み込む</string>
+    <string name="usb_import_count">%1$d 個のファイルを「ファイル」に読み込む</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Dropbox から読み込む</string>
+    <string name="cloud_upload_dropbox">Dropbox にアップロード</string>
+    <string name="cloud_info_dropbox">複数のファイルをまとめて選択して、Dropbox からアプリに読み込んだり、アプリから Dropbox にアップロードしたりできます。\n\nDropbox アプリをインストールしてログインしておく必要があります。</string>
+    <string name="cloud_import_drive">Google ドライブから読み込む</string>
+    <string name="cloud_upload_drive">Google ドライブにアップロード</string>
+    <string name="cloud_info_drive">複数のファイルをまとめて選択して、Google ドライブからアプリに読み込んだり、アプリから Google ドライブにアップロードしたりできます。\n\nGoogle ドライブ アプリをインストールしてログインしておく必要があります。</string>
+    <string name="app_not_installed_title">%1$s がインストールされていません</string>
+    <string name="app_not_installed_message">この機能を使うには、Google Play から %1$s アプリをインストールしてください。</string>
+    <string name="install_app">インストール</string>
+    <string name="choose_from_files">ファイルから選択</string>
+    <string name="no_files_to_upload">アップロードできるファイルはまだありません</string>
+    <string name="select_files">ファイルを選択</string>
+    <string name="upload">アップロード</string>
+    <string name="pick_files_hint">アップロードするファイルを選択してください</string>
+    <string name="selected_count">選択済み：%1$d</string>
+    <string name="deselect_all">すべての選択を解除</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">読み上げの言語</string>
+    <string name="tts_language_subtitle">正しく発音されるように、本の言語を選んでください。</string>
+    <string name="tts_section_suggested">この本へのおすすめ</string>
+    <string name="tts_section_other">その他の言語</string>
+    <string name="tts_section_languages">言語</string>
+    <string name="tts_badge_detected">自動検出</string>
+    <string name="tts_badge_previous">前回使用</string>
+    <string name="tts_status_needs_download">音声のダウンロードが必要</string>
+    <string name="tts_status_not_supported">この端末では利用できません</string>
+    <string name="tts_start_reading">読み上げを開始</string>
+    <string name="tts_open_settings">端末の音声設定</string>
+    <string name="tts_settings_footnote">音声は端末のテキスト読み上げエンジンを使用します。設定で音声を追加したり、Google のエンジンに切り替えたりできます。</string>
+    <string name="tts_preparing">音声を準備中…</string>
+    <string name="tts_started_language">読み上げ中・%1$s</string>
+    <string name="tts_voice_missing_title">音声がダウンロードされていません</string>
+    <string name="tts_voice_missing_message">この端末には%1$sの音声がダウンロードされていません。ダウンロードしてから、もう一度読み上げをタップしてください。</string>
+    <string name="tts_voice_unsupported_title">%1$sには対応していません</string>
+    <string name="tts_voice_unsupported_message">この端末の音声エンジンは%1$sを読み上げられません。音声設定で Google のエンジンを選ぶか、別の言語を選んでください。</string>
+    <string name="tts_download_voice">音声をダウンロード</string>
+    <string name="tts_install_google">Google 音声サービスをインストール</string>
+    <string name="tts_choose_other_language">別の言語を選ぶ</string>
+    <string name="tts_lang_vi">ベトナム語</string>
+    <string name="tts_lang_en">英語</string>
+    <string name="tts_lang_zh_cn">中国語（簡体字）</string>
+    <string name="tts_lang_zh_tw">中国語（繁体字）</string>
+    <string name="tts_lang_th">タイ語</string>
+    <string name="tts_lang_ja">日本語</string>
+    <string name="tts_lang_ko">韓国語</string>
+    <string name="tts_lang_fr">フランス語</string>
+    <string name="tts_lang_de">ドイツ語</string>
+    <string name="tts_lang_es">スペイン語</string>
+    <string name="tts_lang_pt">ポルトガル語</string>
+    <string name="tts_lang_it">イタリア語</string>
+    <string name="tts_lang_ru">ロシア語</string>
+    <string name="tts_lang_uk">ウクライナ語</string>
+    <string name="tts_lang_id">インドネシア語</string>
+    <string name="tts_lang_ms">マレー語</string>
+    <string name="tts_lang_fil">フィリピン語</string>
+    <string name="tts_lang_km">クメール語</string>
+    <string name="tts_lang_lo">ラオ語</string>
+    <string name="tts_lang_my">ミャンマー語</string>
+    <string name="tts_lang_hi">ヒンディー語</string>
+    <string name="tts_lang_ar">アラビア語</string>
+    <string name="tts_lang_tr">トルコ語</string>
+    <string name="tts_lang_pl">ポーランド語</string>
+    <string name="tts_lang_nl">オランダ語</string>
+    <string name="tts_lang_sv">スウェーデン語</string>
+    <string name="tts_lang_da">デンマーク語</string>
+    <string name="tts_lang_nb">ノルウェー語</string>
+    <string name="tts_lang_fi">フィンランド語</string>
+    <string name="tts_lang_cs">チェコ語</string>
+    <string name="tts_lang_ro">ルーマニア語</string>
+    <string name="tts_lang_hu">ハンガリー語</string>
+    <string name="tts_lang_el">ギリシャ語</string>
+    <string name="tts_lang_he">ヘブライ語</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">第%1$d章</string>
+    <string name="theme_mode_light">ライト</string>
+    <string name="theme_mode_dark">ダーク</string>
+    <string name="theme_mode_auto">自動</string>
+    <string name="bookmark_added">ブックマークを追加しました（%1$d/%2$d）</string>
+    <string name="bookmark_removed">ブックマークを削除しました（%1$d/%2$d）</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">新しいパスコードを作成</string>
+    <string name="passcode_verify_title">開くにはパスコードを入力</string>
+    <string name="passcode_remove_title">解除するにはパスコードを入力</string>
+    <string name="passcode_need_4_digits">4桁すべて入力してください</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">キーワードを入力…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">日本語</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">このフォルダにファイル（EPUB、TXT、PDF など）をコピーし、アプリの「転送」&gt;「iTunes ファイル共有」&gt;「ファイルを読み込む」を開いてください。</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Wi-Fi ファイル転送</string>
+    <string name="web_drop_title">ここにファイルをドロップ</string>
+    <string name="web_drop_hint">または下のボタンをクリックしてファイルを選択（EPUB、TXT、PDF など）</string>
+    <string name="web_choose_files">ファイルを選択…</string>
+    <string name="web_uploading">アップロード中</string>
+    <string name="web_files_on_phone">スマートフォンのファイル</string>
+    <string name="web_loading">読み込み中…</string>
+    <string name="web_footer">転送中は、スマートフォンの「Wi-Fi 転送」画面を開いたままにしてください。</string>
+    <string name="web_waiting">待機中</string>
+    <string name="web_done">完了</string>
+    <string name="web_error">エラー</string>
+    <string name="web_connection_lost">スマートフォンとの接続が切れました</string>
+    <string name="web_no_files">ファイルはまだありません</string>
+    <string name="web_download">ダウンロード</string>
+    <string name="web_cannot_connect">スマートフォンに接続できません</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">本をかんたんに取り込み</string>
+    <string name="onboarding_desc_import">スマホ、Wi-Fi、Google Drive、Dropbox から EPUB ファイルを数タップで追加できます。</string>
+    <string name="onboarding_title_listen">読む・聴くをシームレスに</string>
+    <string name="onboarding_desc_listen">表情豊かな音声で本を自動で読み上げます。</string>
+    <string name="onboarding_title_share">ライブラリを共有して楽しもう</string>
+    <string name="onboarding_desc_share">ライブラリをすっきり整理して、お気に入りの本を友だちと共有しましょう。</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_start">今すぐ始める</string>
+</resources>

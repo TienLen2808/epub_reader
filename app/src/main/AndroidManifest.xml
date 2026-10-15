@@ -6,6 +6,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
+    <!-- Android 11+ package visibility: Dropbox / Google Drive (transfer tab), text-to-speech engines (reader) -->
+    <queries>
+        <package android:name="com.dropbox.android" />
+        <package android:name="com.google.android.apps.docs" />
+        <!-- Text-to-speech engines: TextToSpeech can only bind to them when they are visible (Android 11+) -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
     <application
         android:name=".BaseApp"
         android:allowBackup="true"
@@ -30,12 +40,11 @@
             android:resource="@xml/gma_ad_services_config"
             tools:replace="android:resource" />
 
+        <!-- Launch screen: gradient + logo, then onboarding (first launch) or the home screen -->
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Epub_reader"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.Epub_reader.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,10 +53,50 @@
         </activity>
 
         <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Epub_reader.Onboarding" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Epub_reader"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".ReaderActivity"
             android:exported="false"
             android:theme="@style/Theme.Epub_reader"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.LanguageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Epub_reader"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Keeps the language chosen in Settings > Language after the app restarts (Android 12 and older;
+             Android 13+ stores it itself). Used by AppCompatDelegate.setApplicationLocales(). -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- Share / open files created by the app (duplicates, zip archives) -->
+        <provider
+            android:name=".utils.AppFileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
     </application>
 
 </manifest>

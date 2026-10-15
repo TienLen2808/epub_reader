@@ -18,4 +18,60 @@
     <color name="tricky_red">#80FF0000</color>
     <color name="transparent">#00000000</color>
     <color name="red">#FF0000</color>
+
+    <!-- iOS look (home screen) -->
+    <color name="ios_blue">#007AFF</color>
+    <color name="ios_red">#FF3B30</color>
+    <color name="ios_label">#000000</color>
+    <color name="ios_secondary_label">#B4B4B4</color>
+    <color name="ios_placeholder">#8E8E93</color>
+    <color name="ios_bar_bg">#F7F7F7</color>
+    <color name="ios_bar_separator">#D8D7DC</color>
+    <color name="ios_grouped_bg">#F2F2F7</color>
+    <color name="ios_segment_bg">#E3E2E8</color>
+    <color name="ios_segment_divider">#C9C9CE</color>
+    <color name="ios_row_separator">#E3E3E5</color>
+    <color name="ios_row_selected">#D2D1D7</color>
+    <color name="ios_row_pressed">#D9D9DE</color>
+    <color name="ios_thumb_bg">#EFEFEF</color>
+    <color name="ios_action_bar_bg">#D6D6D6</color>
+    <color name="ios_action_bar_separator">#C4C4C6</color>
+    <color name="ios_tab_bg">#F7F7F7</color>
+    <color name="ios_tab_separator">#DADADA</color>
+    <color name="ios_tab_selected">#C4703F</color>
+    <color name="ios_tab_unselected">#A0A0A0</color>
+    <color name="ios_alert_bg">#F1F1F3</color>
+    <color name="ios_alert_separator">#D3D3D6</color>
+    <color name="ios_alert_pressed">#DCDCDF</color>
+    <color name="ios_search_field_bg">#E5E5EA</color>
+    <color name="ios_green">#34C759</color>
+    <color name="ios_orange">#FF9500</color>
+    <color name="ios_grabber">#C7C7CC</color>
+    <color name="ios_badge_blue_bg">#E3EEFF</color>
+
+    <!-- Transfer tab cloud icons -->
+    <color name="dropbox_blue">#0061FF</color>
+    <color name="drive_green">#1EA362</color>
+
+    <!-- File type colors (doc icon stroke / doc icon fill) -->
+    <color name="file_green">#8AC43F</color>
+    <color name="file_green_fill">#EFFBDA</color>
+    <color name="file_red">#E5534B</color>
+    <color name="file_red_fill">#FDECEA</color>
+    <color name="file_blue">#3D82F0</color>
+    <color name="file_blue_fill">#E8F1FE</color>
+    <color name="file_orange">#E9A23B</color>
+    <color name="file_orange_fill">#FDF3E3</color>
+
+    <!-- Splash: vertical gradient (top / middle / bottom). The middle color is also the Android 12+ launch screen color -->
+    <color name="splash_gradient_top">#FCAE69</color>
+    <color name="splash_gradient_center">#F59665</color>
+    <color name="splash_gradient_bottom">#F27B62</color>
+    <color name="splash_version_text">#D9FFFFFF</color>
+
+    <!-- Onboarding -->
+    <color name="onboarding_orange">#E28D5A</color>
+    <color name="onboarding_title">#111111</color>
+    <color name="onboarding_body">#333333</color>
+    <color name="onboarding_dot_inactive">#D7D9D8</color>
 </resources>

@@ -8,7 +8,9 @@ data class EpubBook(
     val coverBitmap: Bitmap? = null,
     val chapters: List<EpubChapter> = emptyList(),
     val filePath: String? = null,
-    val images: Map<String, ByteArray> = emptyMap()
+    val images: Map<String, ByteArray> = emptyMap(),
+    /** Raw <dc:language> of the OPF ("en", "vi-VN", "zh-Hant"...), null when missing */
+    val language: String? = null
 )
 
 data class EpubChapter(

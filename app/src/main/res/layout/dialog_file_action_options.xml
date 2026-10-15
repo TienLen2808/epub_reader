@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS UIAlertController (.alert) shown when tapping the (i) button of a file -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutAlertRoot"
+    android:layout_width="270dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_ios_alert"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvDialogFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="4"
+        android:paddingStart="16dp"
+        android:paddingTop="19dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="19dp"
+        android:textColor="@color/ios_label"
+        android:textSize="17sp"
+        tools:text="[Dịch] Tạp Đồ - Phương Tưởng.epub" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnRename"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/rename"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnMove"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/move_to_folder"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/send_open"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnUploadDrive"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/upload_google_drive"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnCopy"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/copy"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/delete"
+        android:textColor="@color/ios_red"
+        android:textSize="17sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_alert_separator" />
+
+    <TextView
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_ios_alert_button"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/cancel"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+</LinearLayout>

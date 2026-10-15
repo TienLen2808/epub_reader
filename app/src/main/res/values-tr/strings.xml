@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Turkish -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">Reklam yükleniyor…</string>
+    <string name="thanks_for_your_review">Değerlendirmeniz için teşekkürler!</string>
+    <string name="d_seconds_remaining">%1$d saniye kaldı</string>
+    <string name="no_internet">İnternet bağlantısı yok</string>
+    <string name="no_internet_message">Lütfen internet bağlantınızı kontrol edip tekrar deneyin.</string>
+    <string name="setting">Ayarlar</string>
+    <string name="language">Dil</string>
+    <string name="files">Dosyalar</string>
+    <string name="file_transfer">Aktarım</string>
+    <string name="settings">Ayarlar</string>
+    <string name="table_of_contents">İçindekiler</string>
+    <string name="progress">İlerleme</string>
+    <string name="date">Tarih</string>
+    <string name="rename">Yeniden adlandır</string>
+    <string name="move_to_folder">Klasöre taşı</string>
+    <string name="send_open">Gönder/Aç…</string>
+    <string name="upload_google_drive">Google Drive’a yükle</string>
+    <string name="copy">Kopyala</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">İptal</string>
+    <string name="enter_passcode">Parolayı girin</string>
+    <string name="protect_your_file">Dosyalarınızı parolayla koruyun</string>
+    <string name="wrong_password">Yanlış parola</string>
+    <string name="cancel_action">İptal</string>
+    <string name="confirm">Onayla</string>
+    <string name="passcode_lock">Parola kilidi</string>
+    <string name="search">Ara</string>
+    <string name="reader_settings">Okuma ayarları</string>
+    <string name="font_size">Yazı boyutu</string>
+    <string name="reading_theme">Okuma teması</string>
+    <string name="light">Açık</string>
+    <string name="sepia">Sepya</string>
+    <string name="dark">Koyu</string>
+    <string name="spacing">Aralık</string>
+    <string name="spacing_ellipsis">Aralık…</string>
+    <string name="notes">Notlar</string>
+    <string name="bookmarks">Yer imleri</string>
+    <string name="edit">Düzenle</string>
+    <string name="name">Ad</string>
+    <string name="category">Tür</string>
+    <string name="time">Saat</string>
+    <string name="no_files_yet">Henüz dosya yok</string>
+    <string name="share">Paylaş</string>
+    <string name="general_features">GENEL</string>
+    <string name="vietnamese">Vietnamca</string>
+    <string name="feedback">GERİ BİLDİRİM</string>
+    <string name="rate_us">Bizi puanlayın</string>
+    <string name="feedback_opinions">Geri bildirim gönder</string>
+    <string name="share_uppercase">PAYLAŞ</string>
+    <string name="tell_a_friend">Bir arkadaşına söyle</string>
+    <string name="import_files_icloud_drive">Dosyalar / iCloud Drive’dan içe aktar</string>
+    <string name="wifi_transfer">Wi-Fi Aktarımı</string>
+    <string name="import_from_pc">Bilgisayardan içe aktar</string>
+    <string name="itunes_file_sharing">iTunes Dosya Paylaşımı</string>
+    <string name="support_batch_upload">Toplu yüklemeyi destekler</string>
+    <string name="login_google_drive">Google Drive’da oturum aç</string>
+    <string name="error_no_book_content">Kitapta okunacak içerik yok</string>
+    <string name="error_init_tts">Metin okuma motoru başlatılamadı</string>
+    <string name="tts_stopped">Okuma durduruldu</string>
+    <string name="tts_started">Okuma başladı…</string>
+    <string name="tts_finished">Kitabın okunması bitti</string>
+    <string name="tts_error_audio">Ses çalma hatası</string>
+    <string name="tts_error_voice">Ses çalınamıyor</string>
+    <string name="tts_error_no_text">Okunacak metin bulunamadı</string>
+    <string name="please_select_file">Açmak için bir dosya seçin</string>
+    <string name="deleted_selected_files">Seçilen dosyalar silindi</string>
+    <string name="select_at_least_one_file">Silmek için en az 1 dosya seçin</string>
+    <string name="share_multiple_files">%1$s dosyayı paylaş</string>
+    <string name="move_files">Dosyaları taşı</string>
+    <string name="copy_files">Dosyaları kopyala</string>
+    <string name="zip_files">Dosyaları sıkıştır</string>
+    <string name="error_launch_file_picker">Dosya seçici açılamıyor</string>
+    <string name="added_file">%1$s eklendi</string>
+    <string name="deleted_file">%1$s silindi</string>
+    <string name="renamed_to">Yeni ad: %1$s</string>
+    <string name="share_file">%1$s dosyasını paylaş</string>
+    <string name="error_read_epub">Hata: EPUB dosyası okunamadı</string>
+    <string name="wrong_password_exclamation">Yanlış parola!</string>
+    <string name="cannot_open_file">%1$s açılamıyor</string>
+    <string name="file_not_found">Dosya bulunamadı: %1$s</string>
+    <string name="passcode_removed">Parola kaldırıldı</string>
+    <string name="passcode_set">Parola ayarlandı</string>
+    <string name="thanks_for_5_stars">5 yıldız için teşekkürler!</string>
+    <string name="send_feedback">Geri bildirim gönder</string>
+    <string name="share_app_with_friends">Uygulamayı arkadaşlarınla paylaş</string>
+    <string name="import_from_icloud">Dosyalar / iCloud Drive’dan içe aktar</string>
+    <string name="import_from_wifi">Wi-Fi ile bilgisayardan içe aktar</string>
+    <string name="share_itunes">iTunes / Bilgisayar Dosya Paylaşımı</string>
+    <string name="login_dropbox">Dropbox’ta oturum aç</string>
+    <string name="storage_permission_required">Dosyaları içe aktarmak için depolama izni gerekiyor</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">Boş alan</string>
+    <string name="done">Bitti</string>
+    <string name="search_hint">Ara</string>
+    <string name="select_all">Tümünü seç</string>
+    <string name="add_file">Dosya ekle</string>
+    <string name="clear_search">Aramayı temizle</string>
+    <string name="file_info">Dosya bilgisi</string>
+    <string name="save">Kaydet</string>
+    <string name="no_results">Sonuç yok</string>
+    <string name="copied_files">Kopyalanan dosyalar: %1$d</string>
+    <string name="cannot_copy_file">%1$s kopyalanamıyor</string>
+    <string name="zipped_to">%1$s olarak sıkıştırıldı</string>
+    <string name="zip_failed">Dosyalar sıkıştırılamadı</string>
+    <string name="archive_name">Arşiv</string>
+    <string name="txt_part">Bölüm %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">İçe aktarılan dosyalar “Dosyalar” bölümünde görünür.</string>
+    <string name="transfer_importing">Dosyalar içe aktarılıyor…</string>
+    <string name="transfer_import_failed">Dosyalar içe aktarılamadı</string>
+    <string name="transfer_imported_files">Dosyalar’a aktarılan: %1$d</string>
+    <string name="ok">Tamam</string>
+    <string name="guide">Nasıl yapılır</string>
+    <string name="refresh">Yenile</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">Çalışıyor</string>
+    <string name="wifi_starting">Başlatılıyor…</string>
+    <string name="wifi_status_no_wifi">Wi-Fi’a bağlı değil</string>
+    <string name="wifi_server_failed">Wi-Fi aktarımı başlatılamadı</string>
+    <string name="wifi_open_browser">Bilgisayarınızda bir tarayıcı açıp şu adrese gidin:</string>
+    <string name="copy_address">Adresi kopyala</string>
+    <string name="address_copied">Adres kopyalandı</string>
+    <string name="wifi_step_1">1.  Telefonu ve bilgisayarı aynı Wi-Fi ağına bağlayın.</string>
+    <string name="wifi_step_2">2.  Bilgisayarda bir tarayıcı (Chrome, Safari, Edge…) açın ve yukarıdaki adresi girin.</string>
+    <string name="wifi_step_3">3.  “Dosya seç…” düğmesine tıklayın veya dosyaları sayfaya sürükleyin. Dosyalar “Dosyalar” bölümünde görünür.</string>
+    <string name="received_files">Alınan dosyalar</string>
+    <string name="no_received_files">Henüz dosya yok</string>
+    <string name="wifi_keep_open">Dosya aktarırken bu ekranı açık tutun.</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">Bilgisayardan USB ile dosya içe aktar</string>
+    <string name="usb_header_sub">iPhone’daki iTunes Dosya Paylaşımı’nın yerine geçer</string>
+    <string name="usb_step_1">1.  Telefonu USB kablosuyla bilgisayara bağlayın.</string>
+    <string name="usb_step_2">2.  Telefonda USB modu olarak “Dosya aktarımı”nı seçin.</string>
+    <string name="usb_step_3">3.  Bilgisayarda telefon depolamasındaki şu klasörü açın:</string>
+    <string name="usb_mac_note">Mac: Android File Transfer veya OpenMTP kullanın.</string>
+    <string name="usb_step_4">4.  Dosyaları bu klasöre kopyalayın, ardından aşağıdaki “Dosyaları içe aktar” düğmesine dokunun.</string>
+    <string name="copy_path">Yolu kopyala</string>
+    <string name="path_copied">Yol kopyalandı</string>
+    <string name="pending_files">Klasördeki dosyalar</string>
+    <string name="usb_no_files">Klasörde henüz dosya yok</string>
+    <string name="usb_copying">Kopyalanıyor…</string>
+    <string name="usb_import_none">Dosyaları içe aktar</string>
+    <string name="usb_import_count">%1$d dosyayı Dosyalar’a aktar</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Dropbox’tan içe aktar</string>
+    <string name="cloud_upload_dropbox">Dropbox’a yükle</string>
+    <string name="cloud_info_dropbox">Birden fazla dosyayı aynı anda seçerek Dropbox’tan uygulamaya aktarın veya uygulamadaki dosyaları Dropbox’a yükleyin.\n\nDropbox uygulaması yüklü olmalı ve oturum açılmış olmalıdır.</string>
+    <string name="cloud_import_drive">Google Drive’dan içe aktar</string>
+    <string name="cloud_upload_drive">Google Drive’a yükle</string>
+    <string name="cloud_info_drive">Birden fazla dosyayı aynı anda seçerek Google Drive’dan uygulamaya aktarın veya uygulamadaki dosyaları Google Drive’a yükleyin.\n\nGoogle Drive uygulaması yüklü olmalı ve oturum açılmış olmalıdır.</string>
+    <string name="app_not_installed_title">%1$s yüklü değil</string>
+    <string name="app_not_installed_message">Bu özelliği kullanmak için Google Play’den %1$s uygulamasını yükleyin.</string>
+    <string name="install_app">Yükle</string>
+    <string name="choose_from_files">Dosyalar’dan seç</string>
+    <string name="no_files_to_upload">Henüz yüklenecek dosya yok</string>
+    <string name="select_files">Dosya seç</string>
+    <string name="upload">Yükle</string>
+    <string name="pick_files_hint">Yüklenecek dosyaları seçin</string>
+    <string name="selected_count">Seçilen: %1$d</string>
+    <string name="deselect_all">Tüm seçimleri kaldır</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">Okuma dili</string>
+    <string name="tts_language_subtitle">Sesin doğru telaffuz etmesi için kitabın dilini seçin.</string>
+    <string name="tts_section_suggested">Bu kitap için önerilen</string>
+    <string name="tts_section_other">Diğer diller</string>
+    <string name="tts_section_languages">Diller</string>
+    <string name="tts_badge_detected">Algılandı</string>
+    <string name="tts_badge_previous">Son kullanılan</string>
+    <string name="tts_status_needs_download">Sesin indirilmesi gerekiyor</string>
+    <string name="tts_status_not_supported">Bu cihazda desteklenmiyor</string>
+    <string name="tts_start_reading">Okumayı başlat</string>
+    <string name="tts_open_settings">Cihaz ses ayarları</string>
+    <string name="tts_settings_footnote">Sesler cihazınızın metin okuma motorundan gelir. Ayarlardan başka sesler indirebilir veya Google motoruna geçebilirsiniz.</string>
+    <string name="tts_preparing">Ses hazırlanıyor…</string>
+    <string name="tts_started_language">Okunuyor · %1$s</string>
+    <string name="tts_voice_missing_title">Ses indirilmemiş</string>
+    <string name="tts_voice_missing_message">Bu cihazda %1$s sesi indirilmemiş. Sesi indirin, ardından okumaya tekrar dokunun.</string>
+    <string name="tts_voice_unsupported_title">%1$s desteklenmiyor</string>
+    <string name="tts_voice_unsupported_message">Bu cihazın ses motoru şu dili okuyamıyor: %1$s. Ses ayarlarından Google motorunu seçin veya başka bir dil seçin.</string>
+    <string name="tts_download_voice">Sesi indir</string>
+    <string name="tts_install_google">Google Metin Okuma’yı yükle</string>
+    <string name="tts_choose_other_language">Başka bir dil seç</string>
+    <string name="tts_lang_vi">Vietnamca</string>
+    <string name="tts_lang_en">İngilizce</string>
+    <string name="tts_lang_zh_cn">Çince (Basitleştirilmiş)</string>
+    <string name="tts_lang_zh_tw">Çince (Geleneksel)</string>
+    <string name="tts_lang_th">Tayca</string>
+    <string name="tts_lang_ja">Japonca</string>
+    <string name="tts_lang_ko">Korece</string>
+    <string name="tts_lang_fr">Fransızca</string>
+    <string name="tts_lang_de">Almanca</string>
+    <string name="tts_lang_es">İspanyolca</string>
+    <string name="tts_lang_pt">Portekizce</string>
+    <string name="tts_lang_it">İtalyanca</string>
+    <string name="tts_lang_ru">Rusça</string>
+    <string name="tts_lang_uk">Ukraynaca</string>
+    <string name="tts_lang_id">Endonezce</string>
+    <string name="tts_lang_ms">Malayca</string>
+    <string name="tts_lang_fil">Filipince</string>
+    <string name="tts_lang_km">Kmerce</string>
+    <string name="tts_lang_lo">Laoca</string>
+    <string name="tts_lang_my">Birmanca</string>
+    <string name="tts_lang_hi">Hintçe</string>
+    <string name="tts_lang_ar">Arapça</string>
+    <string name="tts_lang_tr">Türkçe</string>
+    <string name="tts_lang_pl">Lehçe</string>
+    <string name="tts_lang_nl">Felemenkçe</string>
+    <string name="tts_lang_sv">İsveççe</string>
+    <string name="tts_lang_da">Danca</string>
+    <string name="tts_lang_nb">Norveççe</string>
+    <string name="tts_lang_fi">Fince</string>
+    <string name="tts_lang_cs">Çekçe</string>
+    <string name="tts_lang_ro">Rumence</string>
+    <string name="tts_lang_hu">Macarca</string>
+    <string name="tts_lang_el">Yunanca</string>
+    <string name="tts_lang_he">İbranice</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">Bölüm %1$d</string>
+    <string name="theme_mode_light">Açık</string>
+    <string name="theme_mode_dark">Koyu</string>
+    <string name="theme_mode_auto">Otomatik</string>
+    <string name="bookmark_added">Yer imi kaydedildi (%1$d/%2$d)</string>
+    <string name="bookmark_removed">Yer imi kaldırıldı (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">Yeni parola oluştur</string>
+    <string name="passcode_verify_title">Açmak için parolayı girin</string>
+    <string name="passcode_remove_title">Kaldırmak için parolayı girin</string>
+    <string name="passcode_need_4_digits">Lütfen 4 rakamın tamamını girin</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">Anahtar kelime girin…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">Türkçe</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">Dosyaları (EPUB, TXT, PDF…) bu klasöre kopyalayın, ardından uygulamayı açın &gt; Aktarım &gt; iTunes Dosya Paylaşımı &gt; Dosyaları içe aktar.</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Wi-Fi ile Dosya Aktarımı</string>
+    <string name="web_drop_title">Dosyaları buraya bırakın</string>
+    <string name="web_drop_hint">veya dosya seçmek için aşağıdaki düğmeye tıklayın (EPUB, TXT, PDF…)</string>
+    <string name="web_choose_files">Dosya seç…</string>
+    <string name="web_uploading">Yükleniyor</string>
+    <string name="web_files_on_phone">Telefondaki dosyalar</string>
+    <string name="web_loading">Yükleniyor…</string>
+    <string name="web_footer">Dosya aktarırken telefondaki “Wi-Fi Aktarımı” ekranını açık tutun.</string>
+    <string name="web_waiting">Bekliyor</string>
+    <string name="web_done">Tamamlandı</string>
+    <string name="web_error">Hata</string>
+    <string name="web_connection_lost">Telefonla bağlantı kesildi</string>
+    <string name="web_no_files">Henüz dosya yok</string>
+    <string name="web_download">İndir</string>
+    <string name="web_cannot_connect">Telefona bağlanılamıyor</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">Kitapları Kolayca İndirin ve İçe\u00A0Aktarın</string>
+    <string name="onboarding_desc_import">Telefonunuzdan, Wi-Fi ile, Google Drive veya Dropbox\'tan birkaç dokunuşla EPUB dosyası ekleyin.</string>
+    <string name="onboarding_title_listen">Kesintisiz Okuyun ve\u00A0Dinleyin</string>
+    <string name="onboarding_desc_listen">Kitaplar etkileyici bir sesle otomatik olarak sesli okunur.</string>
+    <string name="onboarding_title_share">Kitaplığınızı Paylaşın ve\u00A0Keşfedin</string>
+    <string name="onboarding_desc_share">Kitaplığınızı düzenli tutun ve sevdiğiniz kitapları arkadaşlarınızla paylaşın.</string>
+    <string name="onboarding_next">İleri</string>
+    <string name="onboarding_start">Hemen Başlayın</string>
+</resources>

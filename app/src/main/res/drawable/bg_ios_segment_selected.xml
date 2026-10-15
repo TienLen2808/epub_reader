@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS UISegmentedControl selected thumb (white pill + soft shadow) -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="0.8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#14000000" />
+            <corners android:radius="7dp" />
+        </shape>
+    </item>
+    <item android:bottom="0.6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <stroke
+                android:width="0.5dp"
+                android:color="#0A000000" />
+            <corners android:radius="7dp" />
+        </shape>
+    </item>
+</layer-list>

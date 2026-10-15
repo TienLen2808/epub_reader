@@ -1,6 +1,7 @@
 package com.example.epub_reader
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.os.Bundle
@@ -13,11 +14,16 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.epub_reader.AdsManager.AdsManager
+import com.example.epub_reader.AdsManager.ApplovinNativeAdManager
+import com.example.epub_reader.AdsManager.FullScreenAdFragment
 import com.example.epub_reader.databinding.ActivityReaderBinding
 import com.example.epub_reader.epub.BookHolder
 import com.example.epub_reader.epub.EpubBook
@@ -25,15 +31,23 @@ import com.example.epub_reader.ui.ReaderProgressPanelController
 import com.example.epub_reader.ui.ReaderSearchBottomSheet
 import com.example.epub_reader.ui.ReaderSettingsPanelController
 import com.example.epub_reader.ui.ReaderTocBottomSheet
+import com.example.epub_reader.ui.TtsLanguageBottomSheet
+import com.example.epub_reader.ui.main.IosAlertDialogs
 import com.example.epub_reader.utils.AdPosition
+import com.example.epub_reader.utils.BookLanguageDetector
 import com.example.epub_reader.utils.BookmarkManager
 import com.example.epub_reader.utils.DisabledAdType
+import com.example.epub_reader.utils.PreferencesHelper
 import com.example.epub_reader.utils.ReaderSessionState
 import com.example.epub_reader.utils.ReaderThemeManager
+import com.example.epub_reader.utils.TtsLanguage
+import com.example.epub_reader.utils.TtsLanguages
 import com.example.epub_reader.utils.dpToPx
 import com.example.epub_reader.utils.getStatusBarHeight
 import com.example.epub_reader.utils.removeSubviews
-import java.util.Locale
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.abs
 
 class ReaderActivity : LocalizeBaseActivity() {
@@ -51,6 +65,19 @@ class ReaderActivity : LocalizeBaseActivity() {
     private var isTtsSpeaking = false
     private var isWaitingTtsForChapterLoad = false
     private var ttsRetryCount = 0
+    private var pageTurnCounter = 0
+
+    // Reading language (the user picks it before the book is read aloud)
+    private enum class TtsEngineState { INITIALIZING, READY, FAILED }
+    private var ttsEngineState = TtsEngineState.INITIALIZING
+    /** null = engine chosen in the system settings */
+    private var ttsEnginePackage: String? = null
+    /** Language picked while the engine was still starting */
+    private var pendingTtsLanguageCode: String? = null
+    private var detectedLanguageCode: String? = null
+    private var isLanguageDetected = false
+    private var isOpeningLanguagePicker = false
+    private var ttsAlertDialog: Dialog? = null
 
     enum class ThemeMode {
         LIGHT, DARK, REALTIME, SEPIA
@@ -98,7 +125,7 @@ class ReaderActivity : LocalizeBaseActivity() {
 
         book = BookHolder.currentBook
         if (book == null || book?.chapters.isNullOrEmpty()) {
-            Toast.makeText(this, "No book content available to read", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_no_book_content), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -114,6 +141,7 @@ class ReaderActivity : LocalizeBaseActivity() {
         setupProgressPanelController()
         setupWebView()
         setupListeners()
+        setupTtsLanguagePicker()
         setupSwipeGesture()
         setupToolbarOverlay()
         loadCurrentChapter()
@@ -169,17 +197,25 @@ class ReaderActivity : LocalizeBaseActivity() {
     override fun loadAd() {
         super.loadAd()
         if (canShowBanner(DisabledAdType.previewBanner)) {
-            adjustLayoutForAdState(isAdLoaded = false)
-            AdsManager.getInstance(this).loadApplovinInlineAdaptiveBannerWithTricky(
-                this,
-                DisabledAdType.previewBanner,
-                AdPosition.preview,
-                binding.adBannerContainer,
-                AdsManager.RETRY_COUNT,
-                {
-                    adjustLayoutForAdState(isAdLoaded = true)
+            val nativeManager = ApplovinNativeAdManager(this)
+            nativeManager.loadApplovinNativeAd(
+                context = this,
+                layoutResource = R.layout.native_custom_ad_banner,
+                adPosition = AdPosition.preview
+            ) { success ->
+                if (success) {
+                    nativeManager.populateNativeAdView(
+                        layoutResource = R.layout.native_custom_ad_banner,
+                        type = DisabledAdType.previewBanner,
+                        adFrame = binding.adBannerContainer,
+                        onAdReady = {
+                            adjustLayoutForAdState(isAdLoaded = true)
+                        }
+                    )
+                } else {
+                    adjustLayoutForAdState(isAdLoaded = false)
                 }
-            )
+            }
         } else {
             adjustLayoutForAdState(isAdLoaded = false)
         }
@@ -430,7 +466,11 @@ class ReaderActivity : LocalizeBaseActivity() {
             if (readerState.currentChapterIndex !in chapters.indices) return@setOnClickListener
 
             val chapter = chapters[readerState.currentChapterIndex]
-            val chapterTitle = if (chapter.title.isNotBlank()) chapter.title else "Chương ${readerState.currentChapterIndex + 1}"
+            val chapterTitle = if (chapter.title.isNotBlank()) {
+                chapter.title
+            } else {
+                getString(R.string.chapter_number, readerState.currentChapterIndex + 1)
+            }
 
             val totalBookPages = readerState.calculateGlobalTotalPages()
             val globalCurrentPage = readerState.calculateGlobalCurrentPage()
@@ -460,7 +500,11 @@ class ReaderActivity : LocalizeBaseActivity() {
 
             updateBookmarkIconState()
 
-            val msg = if (isAdded) "Đã lưu dấu trang ($globalCurrentPage/$totalBookPages)" else "Đã bỏ dấu trang ($globalCurrentPage/$totalBookPages)"
+            val msg = getString(
+                if (isAdded) R.string.bookmark_added else R.string.bookmark_removed,
+                globalCurrentPage,
+                totalBookPages
+            )
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         }
 
@@ -554,6 +598,14 @@ class ReaderActivity : LocalizeBaseActivity() {
         binding.tvSmallPageProgress.text = "$globalCurrentPage/$totalBookPages"
         updateBookmarkIconState()
 
+        loadAd()
+
+        pageTurnCounter++
+        if (pageTurnCounter >= 10) {
+            pageTurnCounter = 0
+            showFullScreenNativeAd()
+        }
+
         if (::progressPanelController.isInitialized) {
             val chapters = book?.chapters ?: emptyList()
             val currentTitle = if (chapters.isNotEmpty() && readerState.currentChapterIndex in chapters.indices) {
@@ -566,6 +618,19 @@ class ReaderActivity : LocalizeBaseActivity() {
                 globalPage = globalCurrentPage,
                 globalTotalPages = totalBookPages
             )
+        }
+    }
+
+    private fun showFullScreenNativeAd() {
+        if (!canShowBanner(DisabledAdType.onboardingFullscreen)) return
+        try {
+            val fullScreenAd = FullScreenAdFragment()
+            fullScreenAd.bindTo(DisabledAdType.onboardingFullscreen)
+            fullScreenAd.show(supportFragmentManager) {
+                // Resume reading after full-screen ad closes
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -862,7 +927,8 @@ class ReaderActivity : LocalizeBaseActivity() {
                             if (offset >= pageLeft - 40 && offset < pageLeft + clientW + 40) {
                                 var txt = (node.innerText || '').trim();
                                 if (txt.length > 0) {
-                                    if (!/[.!?:]$/.test(txt)) {
+                                    // Pause between paragraphs (CJK / Thai punctuation counts as an end too)
+                                    if (!/[.!?:;…。！？：；」』”）]$/.test(txt)) {
                                         txt += '.';
                                     }
                                     currentText += txt + ' ';
@@ -988,19 +1054,19 @@ class ReaderActivity : LocalizeBaseActivity() {
 
         when (themeManager.themeMode) {
             ThemeMode.LIGHT -> {
-                binding.tvThemeLabel.text = "Sáng"
+                binding.tvThemeLabel.text = getString(R.string.theme_mode_light)
                 binding.imgThemeIcon.setImageResource(R.drawable.ic_light_mode)
             }
             ThemeMode.DARK -> {
-                binding.tvThemeLabel.text = "Tối"
+                binding.tvThemeLabel.text = getString(R.string.theme_mode_dark)
                 binding.imgThemeIcon.setImageResource(R.drawable.ic_dark_mode)
             }
             ThemeMode.REALTIME -> {
-                binding.tvThemeLabel.text = "Tự động"
+                binding.tvThemeLabel.text = getString(R.string.theme_mode_auto)
                 binding.imgThemeIcon.setImageResource(R.drawable.ic_real_time_mode)
             }
             else -> {
-                binding.tvThemeLabel.text = "Sáng"
+                binding.tvThemeLabel.text = getString(R.string.theme_mode_light)
                 binding.imgThemeIcon.setImageResource(R.drawable.ic_light_mode)
             }
         }
@@ -1044,56 +1110,258 @@ class ReaderActivity : LocalizeBaseActivity() {
         }
     }
 
-    private fun detectBookLocale(): Locale {
-        val sampleText = book?.chapters?.firstOrNull()?.contentHtml ?: book?.title ?: ""
-        val hasVietnameseDiacritics = sampleText.contains(
-            Regex("[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđ]", RegexOption.IGNORE_CASE)
-        )
-        return if (hasVietnameseDiacritics) {
-            Locale("vi", "VN")
-        } else {
-            Locale.UK
-        }
-    }
+    // region Text-to-speech
 
     private fun initTts() {
-        textToSpeech = TextToSpeech(this) { status ->
+        ttsEngineState = TtsEngineState.INITIALIZING
+        val listener = TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
                 val audioAttributes = AudioAttributes.Builder()
                     .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                     .setUsage(AudioAttributes.USAGE_MEDIA)
                     .build()
                 textToSpeech?.setAudioAttributes(audioAttributes)
+                ttsEngineState = TtsEngineState.READY
 
-                val targetLocale = detectBookLocale()
-                val langResult = textToSpeech?.setLanguage(targetLocale)
-                if (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    val defResult = textToSpeech?.setLanguage(Locale.getDefault())
-                    if (defResult == TextToSpeech.LANG_MISSING_DATA || defResult == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        textToSpeech?.setLanguage(Locale.UK)
-                    }
+                // A language was picked while the engine was starting
+                val pending = pendingTtsLanguageCode
+                pendingTtsLanguageCode = null
+                if (pending != null && lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    startTtsInLanguage(pending)
                 }
             } else {
-                Toast.makeText(this, "Không thể khởi tạo công cụ đọc giọng nói", Toast.LENGTH_SHORT).show()
+                ttsEngineState = TtsEngineState.FAILED
+                // Next attempt uses the engine of the system settings again
+                ttsEnginePackage = null
+                pendingTtsLanguageCode = null
+                Toast.makeText(this, getString(R.string.error_init_tts), Toast.LENGTH_SHORT).show()
             }
+        }
+        val enginePackage = ttsEnginePackage
+        textToSpeech = if (enginePackage != null) {
+            TextToSpeech(this, listener, enginePackage)
+        } else {
+            TextToSpeech(this, listener)
         }
     }
 
+    /** Headphone button: stop reading, or choose the language then start reading */
     private fun toggleTts() {
         if (isTtsSpeaking) {
             stopTts()
-            Toast.makeText(this, "Đã dừng đọc", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.tts_stopped), Toast.LENGTH_SHORT).show()
         } else {
-            isTtsSpeaking = true
-            Toast.makeText(this, "Bắt đầu đọc...", Toast.LENGTH_SHORT).show()
-            speakCurrentPageText()
+            showTtsLanguagePicker()
         }
     }
 
     private fun stopTts() {
         isTtsSpeaking = false
         textToSpeech?.stop()
+        updateAudioButtonState()
     }
+
+    /** The headphone icon turns blue while the book is read aloud */
+    private fun updateAudioButtonState() {
+        if (!::binding.isInitialized) return
+        if (isTtsSpeaking) {
+            binding.btnAudio.setColorFilter(ContextCompat.getColor(this, R.color.ios_blue))
+        } else {
+            binding.btnAudio.clearColorFilter()
+        }
+    }
+
+    private fun setupTtsLanguagePicker() {
+        supportFragmentManager.setFragmentResultListener(TtsLanguageBottomSheet.REQUEST_KEY, this) { _, result ->
+            val code = result.getString(TtsLanguageBottomSheet.RESULT_CODE) ?: return@setFragmentResultListener
+            startTtsInLanguage(code)
+        }
+    }
+
+    /**
+     * "Ngôn ngữ đọc" sheet: the language detected from the book (or the one chosen last time
+     * for this book) is already checked.
+     */
+    private fun showTtsLanguagePicker() {
+        val currentBook = book ?: return
+        if (isOpeningLanguagePicker) return
+        if (supportFragmentManager.findFragmentByTag(TtsLanguageBottomSheet.TAG) != null) return
+        isOpeningLanguagePicker = true
+        val engine = if (ttsEngineState == TtsEngineState.READY) textToSpeech else null
+
+        lifecycleScope.launch {
+            try {
+                if (!isLanguageDetected) {
+                    detectedLanguageCode = withContext(Dispatchers.Default) {
+                        try {
+                            BookLanguageDetector.detect(currentBook)
+                        } catch (_: Exception) {
+                            null
+                        }
+                    }
+                    isLanguageDetected = true
+                }
+                val voiceStatuses = if (engine != null) {
+                    withContext(Dispatchers.Default) { TtsLanguages.voiceStatuses(engine) }
+                } else {
+                    emptyMap<String, Int>()
+                }
+                if (isFinishing || isDestroyed || supportFragmentManager.isStateSaved) return@launch
+                if (supportFragmentManager.findFragmentByTag(TtsLanguageBottomSheet.TAG) != null) return@launch
+
+                val previous = savedTtsLanguageCode()
+                val detected = detectedLanguageCode
+                TtsLanguageBottomSheet.newInstance(
+                    selected = previous ?: detected ?: TtsLanguages.defaultCode(),
+                    detected = detected,
+                    previous = previous,
+                    voiceStatuses = voiceStatuses
+                ).show(supportFragmentManager, TtsLanguageBottomSheet.TAG)
+            } finally {
+                isOpeningLanguagePicker = false
+            }
+        }
+    }
+
+    private fun startTtsInLanguage(code: String) {
+        val language = TtsLanguages.find(code) ?: return
+        saveTtsLanguageCode(code)
+
+        when (ttsEngineState) {
+            TtsEngineState.INITIALIZING -> {
+                pendingTtsLanguageCode = code
+                Toast.makeText(this, getString(R.string.tts_preparing), Toast.LENGTH_SHORT).show()
+                return
+            }
+            TtsEngineState.FAILED -> {
+                // Start the engine again (it may have been installed / enabled in the meantime)
+                pendingTtsLanguageCode = code
+                textToSpeech?.shutdown()
+                initTts()
+                if (ttsEngineState == TtsEngineState.INITIALIZING) {
+                    Toast.makeText(this, getString(R.string.tts_preparing), Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+            TtsEngineState.READY -> Unit
+        }
+
+        val tts = textToSpeech ?: return
+        val result = try {
+            tts.setLanguage(language.locale)
+        } catch (_: Exception) {
+            TextToSpeech.LANG_NOT_SUPPORTED
+        }
+        when (result) {
+            TextToSpeech.LANG_MISSING_DATA -> showVoiceMissingAlert(language)
+            TextToSpeech.LANG_NOT_SUPPORTED -> {
+                if (!switchToGoogleEngine(code)) showVoiceNotSupportedAlert(language)
+            }
+            else -> {
+                isTtsSpeaking = true
+                ttsRetryCount = 0
+                updateAudioButtonState()
+                Toast.makeText(
+                    this,
+                    getString(R.string.tts_started_language, getString(language.nameRes)),
+                    Toast.LENGTH_SHORT
+                ).show()
+                speakCurrentPageText()
+            }
+        }
+    }
+
+    /**
+     * The engine of the device (e.g. Samsung) has no voice for this language:
+     * use Google's engine when it is installed, then try again.
+     */
+    private fun switchToGoogleEngine(code: String): Boolean {
+        val google = TtsLanguages.GOOGLE_TTS_PACKAGE
+        if (ttsEnginePackage == google) return false
+        val currentEngine = try {
+            textToSpeech?.defaultEngine
+        } catch (_: Exception) {
+            null
+        }
+        if (currentEngine == google || !TtsLanguages.isInstalled(this, google)) return false
+
+        ttsEnginePackage = google
+        pendingTtsLanguageCode = code
+        textToSpeech?.shutdown()
+        initTts()
+        return true
+    }
+
+    private fun showVoiceMissingAlert(language: TtsLanguage) {
+        val name = getString(language.nameRes)
+        ttsAlertDialog?.dismiss()
+        ttsAlertDialog = IosAlertDialogs.showActions(
+            context = this,
+            title = getString(R.string.tts_voice_missing_title),
+            message = getString(R.string.tts_voice_missing_message, name),
+            actions = listOf(
+                IosAlertDialogs.Action(getString(R.string.tts_download_voice)) {
+                    val engine = ttsEnginePackage ?: try {
+                        textToSpeech?.defaultEngine
+                    } catch (_: Exception) {
+                        null
+                    }
+                    TtsLanguages.openVoiceDownload(this, engine)
+                },
+                IosAlertDialogs.Action(getString(R.string.tts_choose_other_language)) {
+                    showTtsLanguagePicker()
+                }
+            ),
+            cancelText = getString(R.string.cancel)
+        )
+    }
+
+    private fun showVoiceNotSupportedAlert(language: TtsLanguage) {
+        val name = getString(language.nameRes)
+        val actions = mutableListOf<IosAlertDialogs.Action>()
+        if (!TtsLanguages.isInstalled(this, TtsLanguages.GOOGLE_TTS_PACKAGE)) {
+            actions += IosAlertDialogs.Action(getString(R.string.tts_install_google)) {
+                TtsLanguages.openPlayStore(this, TtsLanguages.GOOGLE_TTS_PACKAGE)
+            }
+        }
+        actions += IosAlertDialogs.Action(getString(R.string.tts_open_settings)) {
+            TtsLanguages.openTtsSettings(this)
+        }
+        actions += IosAlertDialogs.Action(getString(R.string.tts_choose_other_language)) {
+            showTtsLanguagePicker()
+        }
+        ttsAlertDialog?.dismiss()
+        ttsAlertDialog = IosAlertDialogs.showActions(
+            context = this,
+            title = getString(R.string.tts_voice_unsupported_title, name),
+            message = getString(R.string.tts_voice_unsupported_message, name),
+            actions = actions,
+            cancelText = getString(R.string.cancel)
+        )
+    }
+
+    /** The reading language is remembered for each book */
+    private fun ttsLanguageKey(): String? = book?.title?.let { "$TTS_LANGUAGE_KEY_PREFIX$it" }
+
+    private fun savedTtsLanguageCode(): String? {
+        val key = ttsLanguageKey() ?: return null
+        val code = try {
+            PreferencesHelper.getInstance().getString(key)
+        } catch (_: Exception) {
+            null
+        }
+        return if (TtsLanguages.find(code) != null) code else null
+    }
+
+    private fun saveTtsLanguageCode(code: String) {
+        val key = ttsLanguageKey() ?: return
+        try {
+            PreferencesHelper.getInstance().putString(key, code)
+        } catch (_: Exception) {
+        }
+    }
+
+    // endregion
 
     private fun speakCurrentPageText() {
         if (!isTtsSpeaking) return
@@ -1155,7 +1423,7 @@ class ReaderActivity : LocalizeBaseActivity() {
                                             }, 600)
                                         } else {
                                             stopTts()
-                                            Toast.makeText(this@ReaderActivity, "Đã đọc xong cuốn sách", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(this@ReaderActivity, getString(R.string.tts_finished), Toast.LENGTH_SHORT).show()
                                         }
                                     }
                                 }
@@ -1170,7 +1438,7 @@ class ReaderActivity : LocalizeBaseActivity() {
                                 ttsRetryCount++
                                 binding.webViewContent.postDelayed({ speakCurrentPageText() }, 500)
                             } else {
-                                Toast.makeText(this@ReaderActivity, "Lỗi phát âm thanh", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@ReaderActivity, getString(R.string.tts_error_audio), Toast.LENGTH_SHORT).show()
                                 stopTts()
                             }
                         }
@@ -1184,13 +1452,13 @@ class ReaderActivity : LocalizeBaseActivity() {
                     val queueMode = if (index == 0) TextToSpeech.QUEUE_FLUSH else TextToSpeech.QUEUE_ADD
                     val speakResult = textToSpeech?.speak(chunk, queueMode, params, chunkId)
                     if (speakResult == TextToSpeech.ERROR) {
-                        Toast.makeText(this, "Không thể phát âm thanh giọng nói", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.tts_error_voice), Toast.LENGTH_SHORT).show()
                         stopTts()
                         return@evaluateJavascript
                     }
                 }
             } else {
-                Toast.makeText(this, "Không tìm thấy văn bản để đọc", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.tts_error_no_text), Toast.LENGTH_SHORT).show()
                 stopTts()
             }
         }
@@ -1202,8 +1470,14 @@ class ReaderActivity : LocalizeBaseActivity() {
     }
 
     override fun onDestroy() {
+        ttsAlertDialog?.dismiss()
+        ttsAlertDialog = null
         stopTts()
         textToSpeech?.shutdown()
         super.onDestroy()
+    }
+
+    companion object {
+        private const val TTS_LANGUAGE_KEY_PREFIX = "tts_language_"
     }
 }

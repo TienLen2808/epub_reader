@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Onboarding page indicator: orange when selected, light gray otherwise -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:enterFadeDuration="200"
+    android:exitFadeDuration="200">
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/onboarding_orange" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/onboarding_dot_inactive" />
+        </shape>
+    </item>
+</selector>

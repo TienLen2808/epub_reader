@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Arabic -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">جارٍ تحميل الإعلان…</string>
+    <string name="thanks_for_your_review">شكرًا على تقييمك!</string>
+    <string name="d_seconds_remaining">متبقٍ %1$d ثانية</string>
+    <string name="no_internet">لا يوجد اتصال بالإنترنت</string>
+    <string name="no_internet_message">يُرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.</string>
+    <string name="setting">الإعدادات</string>
+    <string name="language">اللغة</string>
+    <string name="files">الملفات</string>
+    <string name="file_transfer">النقل</string>
+    <string name="settings">الإعدادات</string>
+    <string name="table_of_contents">المحتويات</string>
+    <string name="progress">التقدم</string>
+    <string name="date">التاريخ</string>
+    <string name="rename">إعادة التسمية</string>
+    <string name="move_to_folder">نقل إلى مجلد</string>
+    <string name="send_open">إرسال/فتح…</string>
+    <string name="upload_google_drive">الرفع إلى Google Drive</string>
+    <string name="copy">نسخ</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">إلغاء</string>
+    <string name="enter_passcode">أدخل رمز المرور</string>
+    <string name="protect_your_file">احمِ ملفاتك برمز مرور</string>
+    <string name="wrong_password">رمز المرور غير صحيح</string>
+    <string name="cancel_action">إلغاء</string>
+    <string name="confirm">تأكيد</string>
+    <string name="passcode_lock">قفل برمز المرور</string>
+    <string name="search">بحث</string>
+    <string name="reader_settings">إعدادات القراءة</string>
+    <string name="font_size">حجم الخط</string>
+    <string name="reading_theme">مظهر القراءة</string>
+    <string name="light">فاتح</string>
+    <string name="sepia">بني داكن</string>
+    <string name="dark">داكن</string>
+    <string name="spacing">التباعد</string>
+    <string name="spacing_ellipsis">التباعد…</string>
+    <string name="notes">الملاحظات</string>
+    <string name="bookmarks">الإشارات المرجعية</string>
+    <string name="edit">تعديل</string>
+    <string name="name">الاسم</string>
+    <string name="category">النوع</string>
+    <string name="time">الوقت</string>
+    <string name="no_files_yet">لا توجد ملفات بعد</string>
+    <string name="share">مشاركة</string>
+    <string name="general_features">عام</string>
+    <string name="vietnamese">الفيتنامية</string>
+    <string name="feedback">الملاحظات والآراء</string>
+    <string name="rate_us">قيّمنا</string>
+    <string name="feedback_opinions">إرسال ملاحظات</string>
+    <string name="share_uppercase">المشاركة</string>
+    <string name="tell_a_friend">أخبر صديقًا</string>
+    <string name="import_files_icloud_drive">الاستيراد من الملفات / iCloud Drive</string>
+    <string name="wifi_transfer">النقل عبر Wi-Fi</string>
+    <string name="import_from_pc">الاستيراد من الكمبيوتر</string>
+    <string name="itunes_file_sharing">مشاركة ملفات iTunes</string>
+    <string name="support_batch_upload">يدعم رفع عدة ملفات معًا</string>
+    <string name="login_google_drive">تسجيل الدخول إلى Google Drive</string>
+    <string name="error_no_book_content">لا يحتوي الكتاب على محتوى للقراءة</string>
+    <string name="error_init_tts">تعذّر تشغيل محرك القراءة الصوتية</string>
+    <string name="tts_stopped">تم إيقاف القراءة</string>
+    <string name="tts_started">بدأت القراءة…</string>
+    <string name="tts_finished">انتهت قراءة الكتاب</string>
+    <string name="tts_error_audio">خطأ في تشغيل الصوت</string>
+    <string name="tts_error_voice">تعذّر تشغيل الصوت</string>
+    <string name="tts_error_no_text">لم يتم العثور على نص للقراءة</string>
+    <string name="please_select_file">يُرجى اختيار ملف لفتحه</string>
+    <string name="deleted_selected_files">تم حذف الملفات المحددة</string>
+    <string name="select_at_least_one_file">اختر ملفًا واحدًا على الأقل لحذفه</string>
+    <string name="share_multiple_files">مشاركة الملفات (%1$s)</string>
+    <string name="move_files">نقل الملفات</string>
+    <string name="copy_files">نسخ الملفات</string>
+    <string name="zip_files">ضغط الملفات</string>
+    <string name="error_launch_file_picker">تعذّر فتح أداة اختيار الملفات</string>
+    <string name="added_file">تمت إضافة %1$s</string>
+    <string name="deleted_file">تم حذف %1$s</string>
+    <string name="renamed_to">تمت إعادة التسمية إلى %1$s</string>
+    <string name="share_file">مشاركة %1$s</string>
+    <string name="error_read_epub">خطأ: تعذّرت قراءة ملف EPUB</string>
+    <string name="wrong_password_exclamation">رمز المرور غير صحيح!</string>
+    <string name="cannot_open_file">تعذّر فتح %1$s</string>
+    <string name="file_not_found">الملف غير موجود: %1$s</string>
+    <string name="passcode_removed">تمت إزالة رمز المرور</string>
+    <string name="passcode_set">تم تعيين رمز المرور</string>
+    <string name="thanks_for_5_stars">شكرًا على تقييمك بخمس نجوم!</string>
+    <string name="send_feedback">إرسال ملاحظات</string>
+    <string name="share_app_with_friends">شارك التطبيق مع أصدقائك</string>
+    <string name="import_from_icloud">الاستيراد من الملفات / iCloud Drive</string>
+    <string name="import_from_wifi">الاستيراد من الكمبيوتر عبر Wi-Fi</string>
+    <string name="share_itunes">مشاركة ملفات iTunes / الكمبيوتر</string>
+    <string name="login_dropbox">تسجيل الدخول إلى Dropbox</string>
+    <string name="storage_permission_required">يلزم إذن الوصول إلى مساحة التخزين لاستيراد الملفات</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">المساحة المتاحة</string>
+    <string name="done">تم</string>
+    <string name="search_hint">بحث</string>
+    <string name="select_all">تحديد الكل</string>
+    <string name="add_file">إضافة ملف</string>
+    <string name="clear_search">مسح البحث</string>
+    <string name="file_info">معلومات الملف</string>
+    <string name="save">حفظ</string>
+    <string name="no_results">لا توجد نتائج</string>
+    <string name="copied_files">الملفات المنسوخة: %1$d</string>
+    <string name="cannot_copy_file">تعذّر نسخ %1$s</string>
+    <string name="zipped_to">تم الضغط إلى %1$s</string>
+    <string name="zip_failed">تعذّر ضغط الملفات</string>
+    <string name="archive_name">أرشيف</string>
+    <string name="txt_part">الجزء %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">تظهر الملفات المستوردة في «الملفات».</string>
+    <string name="transfer_importing">جارٍ استيراد الملفات…</string>
+    <string name="transfer_import_failed">تعذّر استيراد الملفات</string>
+    <string name="transfer_imported_files">الملفات المستوردة إلى «الملفات»: %1$d</string>
+    <string name="ok">حسنًا</string>
+    <string name="guide">طريقة الاستخدام</string>
+    <string name="refresh">تحديث</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">قيد التشغيل</string>
+    <string name="wifi_starting">جارٍ البدء…</string>
+    <string name="wifi_status_no_wifi">غير متصل بشبكة Wi-Fi</string>
+    <string name="wifi_server_failed">تعذّر بدء النقل عبر Wi-Fi</string>
+    <string name="wifi_open_browser">افتح متصفحًا على الكمبيوتر وانتقل إلى العنوان التالي:</string>
+    <string name="copy_address">نسخ العنوان</string>
+    <string name="address_copied">تم نسخ العنوان</string>
+    <string name="wifi_step_1">1.  وصّل الهاتف والكمبيوتر بشبكة Wi-Fi نفسها.</string>
+    <string name="wifi_step_2">2.  افتح متصفحًا (Chrome أو Safari أو Edge…) على الكمبيوتر وأدخل العنوان أعلاه.</string>
+    <string name="wifi_step_3">3.  انقر على «اختيار ملفات…» أو اسحب الملفات إلى الصفحة. ستظهر الملفات في «الملفات».</string>
+    <string name="received_files">الملفات المستلمة</string>
+    <string name="no_received_files">لا توجد ملفات بعد</string>
+    <string name="wifi_keep_open">أبقِ هذه الشاشة مفتوحة أثناء نقل الملفات.</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">استيراد الملفات من الكمبيوتر عبر USB</string>
+    <string name="usb_header_sub">بديل لميزة مشاركة ملفات iTunes على iPhone</string>
+    <string name="usb_step_1">1.  وصّل الهاتف بالكمبيوتر بكابل USB.</string>
+    <string name="usb_step_2">2.  على الهاتف، اختر وضع USB «نقل الملفات».</string>
+    <string name="usb_step_3">3.  على الكمبيوتر، افتح المجلد التالي في مساحة تخزين الهاتف:</string>
+    <string name="usb_mac_note">على Mac: استخدم Android File Transfer أو OpenMTP.</string>
+    <string name="usb_step_4">4.  انسخ الملفات إلى ذلك المجلد، ثم انقر على «استيراد الملفات» أدناه.</string>
+    <string name="copy_path">نسخ المسار</string>
+    <string name="path_copied">تم نسخ المسار</string>
+    <string name="pending_files">الملفات في المجلد</string>
+    <string name="usb_no_files">لا توجد ملفات في المجلد بعد</string>
+    <string name="usb_copying">جارٍ النسخ…</string>
+    <string name="usb_import_none">استيراد الملفات</string>
+    <string name="usb_import_count">استيراد الملفات إلى «الملفات» (%1$d)</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">الاستيراد من Dropbox</string>
+    <string name="cloud_upload_dropbox">الرفع إلى Dropbox</string>
+    <string name="cloud_info_dropbox">اختر عدة ملفات معًا لاستيرادها من Dropbox إلى التطبيق، أو لرفع عدة ملفات من التطبيق إلى Dropbox.\n\nيجب تثبيت تطبيق Dropbox وتسجيل الدخول إليه.</string>
+    <string name="cloud_import_drive">الاستيراد من Google Drive</string>
+    <string name="cloud_upload_drive">الرفع إلى Google Drive</string>
+    <string name="cloud_info_drive">اختر عدة ملفات معًا لاستيرادها من Google Drive إلى التطبيق، أو لرفع عدة ملفات من التطبيق إلى Google Drive.\n\nيجب تثبيت تطبيق Google Drive وتسجيل الدخول إليه.</string>
+    <string name="app_not_installed_title">تطبيق %1$s غير مثبّت</string>
+    <string name="app_not_installed_message">ثبّت تطبيق %1$s من Google Play لاستخدام هذه الميزة.</string>
+    <string name="install_app">تثبيت</string>
+    <string name="choose_from_files">الاختيار من الملفات</string>
+    <string name="no_files_to_upload">لا توجد ملفات للرفع بعد</string>
+    <string name="select_files">اختيار ملفات</string>
+    <string name="upload">رفع</string>
+    <string name="pick_files_hint">اختر الملفات التي تريد رفعها</string>
+    <string name="selected_count">المحدد: %1$d</string>
+    <string name="deselect_all">إلغاء تحديد الكل</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">لغة القراءة</string>
+    <string name="tts_language_subtitle">اختر لغة الكتاب ليتم نطقه بشكل صحيح.</string>
+    <string name="tts_section_suggested">مقترحة لهذا الكتاب</string>
+    <string name="tts_section_other">لغات أخرى</string>
+    <string name="tts_section_languages">اللغات</string>
+    <string name="tts_badge_detected">تم اكتشافها</string>
+    <string name="tts_badge_previous">المستخدمة سابقًا</string>
+    <string name="tts_status_needs_download">يجب تنزيل الصوت</string>
+    <string name="tts_status_not_supported">غير مدعومة على هذا الجهاز</string>
+    <string name="tts_start_reading">بدء القراءة</string>
+    <string name="tts_open_settings">إعدادات الصوت في الجهاز</string>
+    <string name="tts_settings_footnote">تأتي الأصوات من محرك تحويل النص إلى كلام في جهازك. يمكنك تنزيل أصوات أخرى أو التبديل إلى محرك Google من الإعدادات.</string>
+    <string name="tts_preparing">جارٍ تجهيز الصوت…</string>
+    <string name="tts_started_language">جارٍ القراءة · %1$s</string>
+    <string name="tts_voice_missing_title">لم يتم تنزيل الصوت</string>
+    <string name="tts_voice_missing_message">صوت %1$s غير منزّل على هذا الجهاز. نزّله ثم انقر على القراءة مرة أخرى.</string>
+    <string name="tts_voice_unsupported_title">%1$s غير مدعومة</string>
+    <string name="tts_voice_unsupported_message">لا يستطيع محرك الصوت على هذا الجهاز قراءة %1$s. اختر محرك Google من إعدادات الصوت، أو اختر لغة أخرى.</string>
+    <string name="tts_download_voice">تنزيل الصوت</string>
+    <string name="tts_install_google">تثبيت تحويل النص إلى كلام من Google</string>
+    <string name="tts_choose_other_language">اختيار لغة أخرى</string>
+    <string name="tts_lang_vi">الفيتنامية</string>
+    <string name="tts_lang_en">الإنجليزية</string>
+    <string name="tts_lang_zh_cn">الصينية (المبسّطة)</string>
+    <string name="tts_lang_zh_tw">الصينية (التقليدية)</string>
+    <string name="tts_lang_th">التايلاندية</string>
+    <string name="tts_lang_ja">اليابانية</string>
+    <string name="tts_lang_ko">الكورية</string>
+    <string name="tts_lang_fr">الفرنسية</string>
+    <string name="tts_lang_de">الألمانية</string>
+    <string name="tts_lang_es">الإسبانية</string>
+    <string name="tts_lang_pt">البرتغالية</string>
+    <string name="tts_lang_it">الإيطالية</string>
+    <string name="tts_lang_ru">الروسية</string>
+    <string name="tts_lang_uk">الأوكرانية</string>
+    <string name="tts_lang_id">الإندونيسية</string>
+    <string name="tts_lang_ms">الملايوية</string>
+    <string name="tts_lang_fil">الفلبينية</string>
+    <string name="tts_lang_km">الخميرية</string>
+    <string name="tts_lang_lo">اللاوية</string>
+    <string name="tts_lang_my">البورمية</string>
+    <string name="tts_lang_hi">الهندية</string>
+    <string name="tts_lang_ar">العربية</string>
+    <string name="tts_lang_tr">التركية</string>
+    <string name="tts_lang_pl">البولندية</string>
+    <string name="tts_lang_nl">الهولندية</string>
+    <string name="tts_lang_sv">السويدية</string>
+    <string name="tts_lang_da">الدنماركية</string>
+    <string name="tts_lang_nb">النرويجية</string>
+    <string name="tts_lang_fi">الفنلندية</string>
+    <string name="tts_lang_cs">التشيكية</string>
+    <string name="tts_lang_ro">الرومانية</string>
+    <string name="tts_lang_hu">المجرية</string>
+    <string name="tts_lang_el">اليونانية</string>
+    <string name="tts_lang_he">العبرية</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">الفصل %1$d</string>
+    <string name="theme_mode_light">فاتح</string>
+    <string name="theme_mode_dark">داكن</string>
+    <string name="theme_mode_auto">تلقائي</string>
+    <string name="bookmark_added">تم حفظ الإشارة المرجعية (%1$d/%2$d)</string>
+    <string name="bookmark_removed">تمت إزالة الإشارة المرجعية (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">إنشاء رمز مرور جديد</string>
+    <string name="passcode_verify_title">أدخل رمز المرور للفتح</string>
+    <string name="passcode_remove_title">أدخل رمز المرور لإزالته</string>
+    <string name="passcode_need_4_digits">يُرجى إدخال الأرقام الأربعة</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">أدخل كلمة البحث…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">العربية</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">انسخ الملفات (EPUB وTXT وPDF…) إلى هذا المجلد، ثم افتح التطبيق &gt; النقل &gt; مشاركة ملفات iTunes &gt; استيراد الملفات.</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">نقل الملفات عبر Wi-Fi</string>
+    <string name="web_drop_title">أفلِت الملفات هنا</string>
+    <string name="web_drop_hint">أو انقر على الزر أدناه لاختيار الملفات (EPUB وTXT وPDF…)</string>
+    <string name="web_choose_files">اختيار ملفات…</string>
+    <string name="web_uploading">جارٍ الرفع</string>
+    <string name="web_files_on_phone">الملفات على الهاتف</string>
+    <string name="web_loading">جارٍ التحميل…</string>
+    <string name="web_footer">أبقِ شاشة «النقل عبر Wi-Fi» مفتوحة على الهاتف أثناء نقل الملفات.</string>
+    <string name="web_waiting">في الانتظار</string>
+    <string name="web_done">تم</string>
+    <string name="web_error">خطأ</string>
+    <string name="web_connection_lost">انقطع الاتصال بالهاتف</string>
+    <string name="web_no_files">لا توجد ملفات بعد</string>
+    <string name="web_download">تنزيل</string>
+    <string name="web_cannot_connect">تعذّر الاتصال بالهاتف</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">نزّل الكتب واستوردها بسهولة</string>
+    <string name="onboarding_desc_import">أضف ملفات EPUB من هاتفك أو عبر Wi-Fi أو من Google Drive أو Dropbox ببضع نقرات.</string>
+    <string name="onboarding_title_listen">اقرأ واستمع بلا\u00A0انقطاع</string>
+    <string name="onboarding_desc_listen">تُقرأ الكتب بصوت عالٍ تلقائيًا بصوت معبّر.</string>
+    <string name="onboarding_title_share">شارك مكتبتك واستكشفها</string>
+    <string name="onboarding_desc_share">حافظ على مكتبتك مرتبة وشارك كتبك المفضلة مع أصدقائك.</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_start">ابدأ الآن</string>
+</resources>

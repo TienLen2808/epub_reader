@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} · {{APP_NAME}}</title>
+<style>
+  :root { --blue:#007AFF; --bg:#F2F2F7; --card:#FFFFFF; --text:#000000; --sub:#8E8E93; --sep:#E5E5EA; --green:#34C759; --red:#FF3B30; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { background: #F7F7F7; border-bottom: 1px solid #D8D7DC; padding: 14px 20px; text-align: center; }
+  header h1 { margin: 0; font-size: 17px; font-weight: 600; }
+  header p { margin: 2px 0 0; color: var(--sub); font-size: 13px; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 40px; }
+  .drop { background: var(--card); border: 2px dashed #C7C7CC; border-radius: 14px; padding: 32px 16px;
+          text-align: center; transition: border-color .15s, background .15s; }
+  .drop.over { border-color: var(--blue); background: #EAF3FF; }
+  .drop svg { width: 48px; height: 48px; color: var(--blue); }
+  .drop h2 { margin: 10px 0 4px; font-size: 17px; font-weight: 600; }
+  .drop p { margin: 0 0 16px; color: var(--sub); font-size: 13px; }
+  .btn { appearance: none; border: 0; background: var(--blue); color: #fff; font: inherit; font-weight: 600;
+         padding: 10px 22px; border-radius: 10px; cursor: pointer; }
+  .btn:active { opacity: .8; }
+  h3 { margin: 26px 4px 8px; color: var(--sub); font-size: 13px; font-weight: 400; text-transform: uppercase;
+       display: flex; justify-content: space-between; align-items: baseline; }
+  h3 a { color: var(--blue); text-transform: none; cursor: pointer; font-size: 14px; }
+  ul { list-style: none; margin: 0; padding: 0; background: var(--card); border-radius: 12px; overflow: hidden; }
+  li { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--sep); min-height: 56px; }
+  li:last-child { border-bottom: 0; }
+  .icon { flex: none; width: 30px; height: 36px; border-radius: 4px; background: #EFFBDA; border: 1.5px solid #8AC43F; position: relative; }
+  .icon span { position: absolute; right: -5px; bottom: 6px; background: #8AC43F; color: #fff; font-size: 8px;
+               font-weight: 700; line-height: 1; padding: 2px 3px; border-radius: 2px; }
+  .meta { flex: 1; min-width: 0; }
+  .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { color: var(--sub); font-size: 12px; margin-top: 1px; }
+  .bar { height: 4px; background: #E5E5EA; border-radius: 2px; margin-top: 6px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .1s; }
+  li.ok .bar i { background: var(--green); }
+  li.err .bar i { background: var(--red); }
+  li.err .sub { color: var(--red); }
+  li.empty { color: var(--sub); justify-content: center; }
+  a.dl { color: var(--blue); text-decoration: none; font-size: 14px; white-space: nowrap; }
+  footer { text-align: center; color: var(--sub); font-size: 12px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>{{TITLE}}</h1>
+  <p>{{APP_NAME}}</p>
+</header>
+<main>
+  <section class="drop" id="drop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.5a4 4 0 0 1-.5 9.5"/>
+      <path d="M12 12v8M8.5 15.5 12 12l3.5 3.5"/>
+    </svg>
+    <h2>{{DROP_TITLE}}</h2>
+    <p>{{DROP_HINT}}</p>
+    <button class="btn" id="choose" type="button">{{CHOOSE}}</button>
+    <input id="picker" type="file" multiple hidden>
+  </section>
+
+  <h3 id="queueTitle" hidden>{{UPLOADING}}</h3>
+  <ul id="queue" hidden></ul>
+
+  <h3>{{FILES_ON_PHONE}} <a id="refresh">{{REFRESH}}</a></h3>
+  <ul id="files"><li class="empty">{{LOADING}}</li></ul>
+
+  <footer>{{FOOTER}}</footer>
+</main>
+<script>
+(function () {
+  // Texts in the language of the app (filled in by WifiTransferServer)
+  var T = {{JS_TEXTS}};
+  var $ = function (s) { return document.querySelector(s); };
+  var queue = [];
+  var busy = false;
+
+  function fmt(n) {
+    if (n < 1000) return n + ' B';
+    if (n < 1e6) return (n / 1e3).toFixed(1) + ' KB';
+    if (n < 1e9) return (n / 1e6).toFixed(1) + ' MB';
+    return (n / 1e9).toFixed(2) + ' GB';
+  }
+
+  function badge(name) {
+    var i = name.lastIndexOf('.');
+    return i > 0 ? name.slice(i + 1).toUpperCase().slice(0, 4) : 'FILE';
+  }
+
+  function icon(name) {
+    var box = document.createElement('div');
+    box.className = 'icon';
+    var label = document.createElement('span');
+    label.textContent = badge(name);
+    box.appendChild(label);
+    return box;
+  }
+
+  function row(name, subText) {
+    var li = document.createElement('li');
+    var meta = document.createElement('div');
+    meta.className = 'meta';
+    var title = document.createElement('div');
+    title.className = 'name';
+    title.textContent = name;
+    var sub = document.createElement('div');
+    sub.className = 'sub';
+    sub.textContent = subText;
+    meta.appendChild(title);
+    meta.appendChild(sub);
+    li.appendChild(icon(name));
+    li.appendChild(meta);
+    return { li: li, meta: meta, sub: sub };
+  }
+
+  function addFiles(list) {
+    if (!list || !list.length) return;
+    $('#queue').hidden = false;
+    $('#queueTitle').hidden = false;
+    for (var i = 0; i < list.length; i++) {
+      var file = list[i];
+      var r = row(file.name, fmt(file.size) + ' · ' + T.waiting);
+      var bar = document.createElement('div');
+      bar.className = 'bar';
+      bar.appendChild(document.createElement('i'));
+      r.meta.appendChild(bar);
+      $('#queue').appendChild(r.li);
+      queue.push({ file: file, li: r.li, sub: r.sub, fill: bar.firstChild });
+    }
+    next();
+  }
+
+  function next() {
+    if (busy || !queue.length) return;
+    busy = true;
+    var job = queue.shift();
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/upload');
+    xhr.setRequestHeader('X-File-Name', encodeURIComponent(job.file.name));
+    xhr.upload.onprogress = function (e) {
+      if (e.lengthComputable) {
+        var p = Math.round(e.loaded / e.total * 100);
+        job.fill.style.width = p + '%';
+        job.sub.textContent = fmt(job.file.size) + ' · ' + p + '%';
+      }
+    };
+    xhr.onload = function () {
+      var ok = xhr.status === 200;
+      job.li.className = ok ? 'ok' : 'err';
+      job.fill.style.width = '100%';
+      job.sub.textContent = fmt(job.file.size) + (ok ? ' · ' + T.done : ' · ' + T.error + ' (' + xhr.status + ')');
+      busy = false;
+      loadFiles();
+      next();
+    };
+    xhr.onerror = function () {
+      job.li.className = 'err';
+      job.sub.textContent = fmt(job.file.size) + ' · ' + T.connectionLost;
+      busy = false;
+      next();
+    };
+    xhr.send(job.file);
+  }
+
+  function loadFiles() {
+    fetch('/api/files', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (items) {
+        var ul = $('#files');
+        ul.innerHTML = '';
+        if (!items.length) {
+          var empty = document.createElement('li');
+          empty.className = 'empty';
+          empty.textContent = T.noFiles;
+          ul.appendChild(empty);
+          return;
+        }
+        items.forEach(function (it) {
+          var r = row(it.name, it.size + ' · ' + it.date);
+          var link = document.createElement('a');
+          link.className = 'dl';
+          link.textContent = T.download;
+          link.href = '/download/' + encodeURIComponent(it.id);
+          r.li.appendChild(link);
+          ul.appendChild(r.li);
+        });
+      })
+      .catch(function () {
+        var ul = $('#files');
+        ul.innerHTML = '';
+        var failed = document.createElement('li');
+        failed.className = 'empty';
+        failed.textContent = T.cannotConnect;
+        ul.appendChild(failed);
+      });
+  }
+
+  var drop = $('#drop');
+  ['dragenter', 'dragover'].forEach(function (type) {
+    drop.addEventListener(type, function (e) { e.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (type) {
+    drop.addEventListener(type, function (e) { e.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function (e) { addFiles(e.dataTransfer.files); });
+  document.addEventListener('dragover', function (e) { e.preventDefault(); });
+  document.addEventListener('drop', function (e) { e.preventDefault(); });
+  $('#choose').addEventListener('click', function () { $('#picker').click(); });
+  $('#picker').addEventListener('change', function () {
+    var picked = Array.prototype.slice.call(this.files);
+    this.value = '';
+    addFiles(picked);
+  });
+  $('#refresh').addEventListener('click', loadFiles);
+  loadFiles();
+})();
+</script>
+</body>
+</html>

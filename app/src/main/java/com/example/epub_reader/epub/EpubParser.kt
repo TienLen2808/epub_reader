@@ -43,6 +43,11 @@ object EpubParser {
                 .ifEmpty { getElementText(opfDoc.getElementsByTagName("creator")) }
                 .ifEmpty { "Unknown Author" }
 
+            // Used to pre-select the text-to-speech language
+            val language: String? = getElementText(opfDoc.getElementsByTagName("dc:language"))
+                .ifEmpty { getElementText(opfDoc.getElementsByTagName("language")) }
+                .ifEmpty { null }
+
             val manifestMap = mutableMapOf<String, String>()
             val manifestMediaTypeMap = mutableMapOf<String, String>()
             val manifestNodes = opfDoc.getElementsByTagName("item")
@@ -102,7 +107,8 @@ object EpubParser {
                 val fullChapterPath = normalizePath(opfDir + href)
                 val chapterBytes = entries[fullChapterPath] ?: entries[fullChapterPath.lowercase()]
                 val contentHtml = if (chapterBytes != null) String(chapterBytes, Charsets.UTF_8) else ""
-                val chapterTitle = extractChapterTitle(contentHtml, "Chapter ${index + 1}")
+                // No title: the reader shows "Chapter N" in the language of the app
+                val chapterTitle = extractChapterTitle(contentHtml, "")
 
                 chapters.add(
                     EpubChapter(
@@ -125,7 +131,8 @@ object EpubParser {
                 author = author,
                 coverBitmap = coverBitmap,
                 chapters = chapters,
-                images = images
+                images = images,
+                language = language
             )
         } catch (e: Exception) {
             Log.e(TAG, "Error parsing EPUB file", e)

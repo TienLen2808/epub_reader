@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -14,7 +15,7 @@
         android:id="@+id/tvBookmarkSnippet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="dụng tất cả lực lượng để tìm ra mình.\nTrần Mộ đối với mình có nhận thức rất tỉnh táo..."
+        tools:text="dụng tất cả lực lượng để tìm ra mình.\nTrần Mộ đối với mình có nhận thức rất tỉnh táo..."
         android:textColor="#333333"
         android:textSize="14sp"
         android:maxLines="2"
@@ -34,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="29. Chương 37: Bị Thương"
+            tools:text="29. Chương 37: Bị Thương"
             android:textColor="#888888"
             android:textSize="12sp"
             android:maxLines="1"
@@ -44,7 +45,7 @@
             android:id="@+id/tvBookmarkTimestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="14:37 13/10/26"
+            tools:text="14:37 13/10/26"
             android:textColor="#888888"
             android:textSize="12sp" />
 

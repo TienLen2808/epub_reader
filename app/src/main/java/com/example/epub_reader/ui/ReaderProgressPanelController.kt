@@ -2,6 +2,7 @@ package com.example.epub_reader.ui
 
 import android.view.View
 import android.widget.SeekBar
+import com.example.epub_reader.R
 import com.example.epub_reader.databinding.DialogReaderProgressSheetBinding
 
 class ReaderProgressPanelController(
@@ -41,7 +42,10 @@ class ReaderProgressPanelController(
     }
 
     fun updateData(chapterIndex: Int, totalChapters: Int, chapterTitle: String, globalPage: Int, globalTotalPages: Int) {
-        val displayTitle = "${chapterIndex + 1}. ${chapterTitle.ifBlank { "Chương ${chapterIndex + 1}" }}"
+        val title = chapterTitle.ifBlank {
+            binding.root.context.getString(R.string.chapter_number, chapterIndex + 1)
+        }
+        val displayTitle = "${chapterIndex + 1}. $title"
         binding.tvProgressChapterTitle.text = displayTitle
         binding.tvProgressPages.text = "$globalPage/$globalTotalPages"
 

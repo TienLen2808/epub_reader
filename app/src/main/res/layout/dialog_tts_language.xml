@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Ngôn ngữ đọc": choose the language of the book before it is read aloud (iOS sheet) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutTtsSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_ios_sheet"
+    android:orientation="vertical">
+
+    <!-- Grabber -->
+    <View
+        android:layout_width="36dp"
+        android:layout_height="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_ios_grabber" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <TextView
+            android:id="@+id/btnTtsCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp"
+            android:text="@string/cancel"
+            android:textColor="@color/ios_blue"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tvTtsSheetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/tts_language_title"
+            android:textColor="@color/ios_label"
+            android:textSize="17sp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTtsSheetSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="1dp"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingBottom="2dp"
+        android:text="@string/tts_language_subtitle"
+        android:textColor="@color/ios_placeholder"
+        android:textSize="13sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTtsLanguages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/ios_bar_separator" />
+
+    <FrameLayout
+        android:id="@+id/layoutTtsBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ios_bar_bg"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/btnTtsStart"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_ios_button_primary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/tts_start_reading"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </FrameLayout>
+
+</LinearLayout>

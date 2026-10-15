@@ -14,6 +14,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.epub_reader.R
 import com.example.epub_reader.databinding.DialogReaderSearchSheetBinding
 import com.example.epub_reader.databinding.ItemSearchResultEntryBinding
 import com.example.epub_reader.databinding.ItemSearchSectionHeaderBinding
@@ -116,7 +117,9 @@ class ReaderSearchBottomSheet(
     }
 
     private fun performSearch(query: String) {
-        val sections = searchHelper.searchBook(book, query)
+        val sections = searchHelper.searchBook(book, query) { number ->
+            getString(R.string.chapter_number, number)
+        }
         binding.rvSearchResults.adapter = SearchAdapter(sections)
     }
 

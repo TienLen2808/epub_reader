@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -21,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="29. Chương 37: Bị Thương"
+            tools:text="29. Chương 37: Bị Thương"
             android:textColor="#333333"
             android:textSize="15sp"
             android:maxLines="2"
@@ -38,7 +39,7 @@
                 android:id="@+id/tvTocStartPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="316"
+                tools:text="316"
                 android:textColor="#666666"
                 android:textSize="14sp" />
 
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="320/8387"
+                tools:text="320/8387"
                 android:textColor="#1E88E5"
                 android:textSize="12sp"
                 android:visibility="gone" />

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Android 12+: the system launch screen is drawn with these (solid orange + the logo in the middle).
+         SplashActivity then fades it out over the same logo, so the switch is not visible. -->
+    <style name="Theme.Epub_reader.Splash" parent="Base.Theme.Epub_reader.Splash">
+        <item name="android:windowSplashScreenBackground">@color/splash_gradient_center</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+    </style>
+</resources>

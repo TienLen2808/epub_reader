@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/bg_ios_row">
+
+    <!-- Edit-mode selection circle (slides in from the left together with the row content) -->
+    <ImageView
+        android:id="@+id/imgSelectCheck"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="17dp"
+        android:alpha="0"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_check_circle_unselected" />
+
+    <!-- Row content: shifted to the right in edit mode (like UITableView editing) -->
+    <LinearLayout
+        android:id="@+id/layoutRowContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Thumbnail: light gray box + document icon with file type badge -->
+        <FrameLayout
+            android:layout_width="66dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/ios_thumb_bg">
+
+            <FrameLayout
+                android:id="@+id/layoutFileIcon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="7.5dp">
+
+                <ImageView
+                    android:id="@+id/imgFileIconFill"
+                    android:layout_width="31dp"
+                    android:layout_height="36dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_file_doc_fill" />
+
+                <ImageView
+                    android:id="@+id/imgFileIconStroke"
+                    android:layout_width="31dp"
+                    android:layout_height="36dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_file_doc_stroke" />
+
+                <TextView
+                    android:id="@+id/tvFileBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="8.5dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/bg_file_badge"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxWidth="36dp"
+                    android:maxLines="1"
+                    android:minWidth="25dp"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="6sp"
+                    android:textStyle="bold"
+                    tools:text="EPUB" />
+            </FrameLayout>
+
+            <!-- EPUB cover (saved after the book has been opened once) -->
+            <ImageView
+                android:id="@+id/imgCoverAvatar"
+                android:layout_width="34dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <!-- Passcode lock badge -->
+            <ImageView
+                android:id="@+id/imgFileLock"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="3dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_file_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- Name (centered above) + size / date (pinned to the bottom), like the iOS cell -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="9.5dp"
+            android:layout_marginEnd="11dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvFileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="0.95"
+                android:maxLines="2"
+                android:textColor="@color/ios_label"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvFileSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="[Dịch] Tạp Đồ - Phương Tưởng.epub" />
+
+            <TextView
+                android:id="@+id/tvFileSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="7dp"
+                android:maxLines="1"
+                android:textColor="@color/ios_secondary_label"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvFileDate"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="4.1MB" />
+
+            <TextView
+                android:id="@+id/tvFileDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:maxLines="1"
+                android:textColor="@color/ios_secondary_label"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="13/10/26" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- (i) button -->
+        <ImageView
+            android:id="@+id/btnFileInfo"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="7dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/file_info"
+            android:padding="11dp"
+            android:src="@drawable/ic_ios_info" />
+    </LinearLayout>
+
+    <!-- Blue corner check for selected rows (edit mode) -->
+    <ImageView
+        android:id="@+id/imgSelectedCorner"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom|end"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_selected_corner"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/viewRowSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="16dp"
+        android:background="@color/ios_row_separator" />
+
+</FrameLayout>

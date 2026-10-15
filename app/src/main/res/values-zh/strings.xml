@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chinese (Simplified) -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">正在加载广告…</string>
+    <string name="thanks_for_your_review">感谢您的评价！</string>
+    <string name="d_seconds_remaining">还剩 %1$d 秒</string>
+    <string name="no_internet">无网络连接</string>
+    <string name="no_internet_message">请检查网络连接后重试。</string>
+    <string name="setting">设置</string>
+    <string name="language">语言</string>
+    <string name="files">文件</string>
+    <string name="file_transfer">传输</string>
+    <string name="settings">设置</string>
+    <string name="table_of_contents">目录</string>
+    <string name="progress">进度</string>
+    <string name="date">日期</string>
+    <string name="rename">重命名</string>
+    <string name="move_to_folder">移到文件夹</string>
+    <string name="send_open">发送/打开…</string>
+    <string name="upload_google_drive">上传到 Google 云端硬盘</string>
+    <string name="copy">复制</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+    <string name="enter_passcode">输入密码</string>
+    <string name="protect_your_file">用密码保护您的文件</string>
+    <string name="wrong_password">密码错误</string>
+    <string name="cancel_action">取消</string>
+    <string name="confirm">确认</string>
+    <string name="passcode_lock">密码锁</string>
+    <string name="search">搜索</string>
+    <string name="reader_settings">阅读设置</string>
+    <string name="font_size">字号</string>
+    <string name="reading_theme">阅读主题</string>
+    <string name="light">浅色</string>
+    <string name="sepia">护眼</string>
+    <string name="dark">深色</string>
+    <string name="spacing">行距</string>
+    <string name="spacing_ellipsis">行距…</string>
+    <string name="notes">笔记</string>
+    <string name="bookmarks">书签</string>
+    <string name="edit">编辑</string>
+    <string name="name">名称</string>
+    <string name="category">类型</string>
+    <string name="time">时间</string>
+    <string name="no_files_yet">还没有文件</string>
+    <string name="share">分享</string>
+    <string name="general_features">通用</string>
+    <string name="vietnamese">越南语</string>
+    <string name="feedback">反馈</string>
+    <string name="rate_us">给我们评分</string>
+    <string name="feedback_opinions">发送反馈</string>
+    <string name="share_uppercase">分享</string>
+    <string name="tell_a_friend">推荐给朋友</string>
+    <string name="import_files_icloud_drive">从“文件”/ iCloud 云盘导入</string>
+    <string name="wifi_transfer">Wi-Fi 传输</string>
+    <string name="import_from_pc">从电脑导入</string>
+    <string name="itunes_file_sharing">iTunes 文件共享</string>
+    <string name="support_batch_upload">支持批量上传</string>
+    <string name="login_google_drive">登录 Google 云端硬盘</string>
+    <string name="error_no_book_content">这本书没有可阅读的内容</string>
+    <string name="error_init_tts">无法启动语音朗读引擎</string>
+    <string name="tts_stopped">已停止朗读</string>
+    <string name="tts_started">开始朗读…</string>
+    <string name="tts_finished">本书已朗读完毕</string>
+    <string name="tts_error_audio">音频播放出错</string>
+    <string name="tts_error_voice">无法播放语音</string>
+    <string name="tts_error_no_text">找不到可朗读的文字</string>
+    <string name="please_select_file">请选择要打开的文件</string>
+    <string name="deleted_selected_files">已删除所选文件</string>
+    <string name="select_at_least_one_file">请至少选择 1 个要删除的文件</string>
+    <string name="share_multiple_files">分享 %1$s 个文件</string>
+    <string name="move_files">移动文件</string>
+    <string name="copy_files">复制文件</string>
+    <string name="zip_files">压缩文件</string>
+    <string name="error_launch_file_picker">无法打开文件选择器</string>
+    <string name="added_file">已添加 %1$s</string>
+    <string name="deleted_file">已删除 %1$s</string>
+    <string name="renamed_to">已重命名为 %1$s</string>
+    <string name="share_file">分享 %1$s</string>
+    <string name="error_read_epub">错误：无法读取 EPUB 文件</string>
+    <string name="wrong_password_exclamation">密码错误！</string>
+    <string name="cannot_open_file">无法打开 %1$s</string>
+    <string name="file_not_found">找不到文件：%1$s</string>
+    <string name="passcode_removed">已移除密码</string>
+    <string name="passcode_set">已设置密码</string>
+    <string name="thanks_for_5_stars">感谢您的五星好评！</string>
+    <string name="send_feedback">发送反馈</string>
+    <string name="share_app_with_friends">把应用分享给朋友</string>
+    <string name="import_from_icloud">从“文件”/ iCloud 云盘导入</string>
+    <string name="import_from_wifi">通过 Wi-Fi 从电脑导入</string>
+    <string name="share_itunes">iTunes / 电脑文件共享</string>
+    <string name="login_dropbox">登录 Dropbox</string>
+    <string name="storage_permission_required">导入文件需要存储权限</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">可用空间</string>
+    <string name="done">完成</string>
+    <string name="search_hint">搜索</string>
+    <string name="select_all">全选</string>
+    <string name="add_file">添加文件</string>
+    <string name="clear_search">清除搜索</string>
+    <string name="file_info">文件信息</string>
+    <string name="save">保存</string>
+    <string name="no_results">无结果</string>
+    <string name="copied_files">已复制文件：%1$d</string>
+    <string name="cannot_copy_file">无法复制 %1$s</string>
+    <string name="zipped_to">已压缩为 %1$s</string>
+    <string name="zip_failed">无法压缩文件</string>
+    <string name="archive_name">压缩包</string>
+    <string name="txt_part">第 %1$d 部分</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">导入的文件会显示在“文件”中。</string>
+    <string name="transfer_importing">正在导入文件…</string>
+    <string name="transfer_import_failed">无法导入文件</string>
+    <string name="transfer_imported_files">已导入到“文件”：%1$d</string>
+    <string name="ok">好</string>
+    <string name="guide">使用说明</string>
+    <string name="refresh">刷新</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">运行中</string>
+    <string name="wifi_starting">正在启动…</string>
+    <string name="wifi_status_no_wifi">未连接 Wi-Fi</string>
+    <string name="wifi_server_failed">无法启动 Wi-Fi 传输</string>
+    <string name="wifi_open_browser">在电脑上打开浏览器并访问以下地址：</string>
+    <string name="copy_address">复制地址</string>
+    <string name="address_copied">地址已复制</string>
+    <string name="wifi_step_1">1.  将手机和电脑连接到同一个 Wi-Fi 网络。</string>
+    <string name="wifi_step_2">2.  在电脑上打开浏览器（Chrome、Safari、Edge 等），输入上面的地址。</string>
+    <string name="wifi_step_3">3.  点击“选择文件…”或将文件拖到网页上。文件会显示在“文件”中。</string>
+    <string name="received_files">已接收的文件</string>
+    <string name="no_received_files">还没有文件</string>
+    <string name="wifi_keep_open">传输文件时请保持此页面打开。</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">通过 USB 从电脑导入文件</string>
+    <string name="usb_header_sub">代替 iPhone 上的 iTunes 文件共享</string>
+    <string name="usb_step_1">1.  用 USB 数据线将手机连接到电脑。</string>
+    <string name="usb_step_2">2.  在手机上将 USB 模式设为“文件传输”。</string>
+    <string name="usb_step_3">3.  在电脑上打开手机存储中的以下文件夹：</string>
+    <string name="usb_mac_note">Mac：请使用 Android File Transfer 或 OpenMTP。</string>
+    <string name="usb_step_4">4.  将文件复制到该文件夹，然后点按下方的“导入文件”。</string>
+    <string name="copy_path">复制路径</string>
+    <string name="path_copied">路径已复制</string>
+    <string name="pending_files">文件夹中的文件</string>
+    <string name="usb_no_files">文件夹中还没有文件</string>
+    <string name="usb_copying">正在复制…</string>
+    <string name="usb_import_none">导入文件</string>
+    <string name="usb_import_count">将 %1$d 个文件导入“文件”</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">从 Dropbox 导入</string>
+    <string name="cloud_upload_dropbox">上传到 Dropbox</string>
+    <string name="cloud_info_dropbox">可一次选择多个文件，从 Dropbox 导入到应用，或将应用中的多个文件上传到 Dropbox。\n\n需要安装 Dropbox 应用并登录账号。</string>
+    <string name="cloud_import_drive">从 Google 云端硬盘导入</string>
+    <string name="cloud_upload_drive">上传到 Google 云端硬盘</string>
+    <string name="cloud_info_drive">可一次选择多个文件，从 Google 云端硬盘导入到应用，或将应用中的多个文件上传到 Google 云端硬盘。\n\n需要安装 Google 云端硬盘应用并登录账号。</string>
+    <string name="app_not_installed_title">未安装 %1$s</string>
+    <string name="app_not_installed_message">请从 Google Play 安装 %1$s 应用以使用此功能。</string>
+    <string name="install_app">安装</string>
+    <string name="choose_from_files">从“文件”中选择</string>
+    <string name="no_files_to_upload">还没有可上传的文件</string>
+    <string name="select_files">选择文件</string>
+    <string name="upload">上传</string>
+    <string name="pick_files_hint">选择要上传的文件</string>
+    <string name="selected_count">已选择：%1$d</string>
+    <string name="deselect_all">取消全选</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">朗读语言</string>
+    <string name="tts_language_subtitle">请选择书籍的语言，让语音发音准确。</string>
+    <string name="tts_section_suggested">为本书推荐</string>
+    <string name="tts_section_other">其他语言</string>
+    <string name="tts_section_languages">语言</string>
+    <string name="tts_badge_detected">自动识别</string>
+    <string name="tts_badge_previous">上次使用</string>
+    <string name="tts_status_needs_download">需要下载语音</string>
+    <string name="tts_status_not_supported">此设备不支持</string>
+    <string name="tts_start_reading">开始朗读</string>
+    <string name="tts_open_settings">设备语音设置</string>
+    <string name="tts_settings_footnote">语音来自设备的文字转语音引擎。您可以在设置中下载更多语音，或切换到 Google 引擎。</string>
+    <string name="tts_preparing">正在准备语音…</string>
+    <string name="tts_started_language">正在朗读 · %1$s</string>
+    <string name="tts_voice_missing_title">未下载语音</string>
+    <string name="tts_voice_missing_message">此设备尚未下载%1$s语音。请下载后再点按朗读。</string>
+    <string name="tts_voice_unsupported_title">不支持%1$s</string>
+    <string name="tts_voice_unsupported_message">此设备的语音引擎无法朗读%1$s。请在语音设置中选择 Google 引擎，或选择其他语言。</string>
+    <string name="tts_download_voice">下载语音</string>
+    <string name="tts_install_google">安装 Google 文字转语音</string>
+    <string name="tts_choose_other_language">选择其他语言</string>
+    <string name="tts_lang_vi">越南语</string>
+    <string name="tts_lang_en">英语</string>
+    <string name="tts_lang_zh_cn">中文（简体）</string>
+    <string name="tts_lang_zh_tw">中文（繁体）</string>
+    <string name="tts_lang_th">泰语</string>
+    <string name="tts_lang_ja">日语</string>
+    <string name="tts_lang_ko">韩语</string>
+    <string name="tts_lang_fr">法语</string>
+    <string name="tts_lang_de">德语</string>
+    <string name="tts_lang_es">西班牙语</string>
+    <string name="tts_lang_pt">葡萄牙语</string>
+    <string name="tts_lang_it">意大利语</string>
+    <string name="tts_lang_ru">俄语</string>
+    <string name="tts_lang_uk">乌克兰语</string>
+    <string name="tts_lang_id">印度尼西亚语</string>
+    <string name="tts_lang_ms">马来语</string>
+    <string name="tts_lang_fil">菲律宾语</string>
+    <string name="tts_lang_km">高棉语</string>
+    <string name="tts_lang_lo">老挝语</string>
+    <string name="tts_lang_my">缅甸语</string>
+    <string name="tts_lang_hi">印地语</string>
+    <string name="tts_lang_ar">阿拉伯语</string>
+    <string name="tts_lang_tr">土耳其语</string>
+    <string name="tts_lang_pl">波兰语</string>
+    <string name="tts_lang_nl">荷兰语</string>
+    <string name="tts_lang_sv">瑞典语</string>
+    <string name="tts_lang_da">丹麦语</string>
+    <string name="tts_lang_nb">挪威语</string>
+    <string name="tts_lang_fi">芬兰语</string>
+    <string name="tts_lang_cs">捷克语</string>
+    <string name="tts_lang_ro">罗马尼亚语</string>
+    <string name="tts_lang_hu">匈牙利语</string>
+    <string name="tts_lang_el">希腊语</string>
+    <string name="tts_lang_he">希伯来语</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">第 %1$d 章</string>
+    <string name="theme_mode_light">浅色</string>
+    <string name="theme_mode_dark">深色</string>
+    <string name="theme_mode_auto">自动</string>
+    <string name="bookmark_added">已添加书签（%1$d/%2$d）</string>
+    <string name="bookmark_removed">已删除书签（%1$d/%2$d）</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">创建新密码</string>
+    <string name="passcode_verify_title">输入密码以打开</string>
+    <string name="passcode_remove_title">输入密码以移除</string>
+    <string name="passcode_need_4_digits">请输入全部 4 位数字</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">输入关键词…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">中文</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">将文件（EPUB、TXT、PDF 等）复制到此文件夹，然后打开应用 &gt; 传输 &gt; iTunes 文件共享 &gt; 导入文件。</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Wi-Fi 文件传输</string>
+    <string name="web_drop_title">将文件拖到这里</string>
+    <string name="web_drop_hint">或点击下方按钮选择文件（EPUB、TXT、PDF 等）</string>
+    <string name="web_choose_files">选择文件…</string>
+    <string name="web_uploading">正在上传</string>
+    <string name="web_files_on_phone">手机上的文件</string>
+    <string name="web_loading">正在加载…</string>
+    <string name="web_footer">传输文件时，请在手机上保持“Wi-Fi 传输”页面打开。</string>
+    <string name="web_waiting">等待中</string>
+    <string name="web_done">已完成</string>
+    <string name="web_error">错误</string>
+    <string name="web_connection_lost">与手机的连接已断开</string>
+    <string name="web_no_files">还没有文件</string>
+    <string name="web_download">下载</string>
+    <string name="web_cannot_connect">无法连接到手机</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">轻松下载和导入图书</string>
+    <string name="onboarding_desc_import">轻点几下，即可从手机、Wi-Fi、Google Drive 或 Dropbox 添加 EPUB 文件。</string>
+    <string name="onboarding_title_listen">畅快阅读与收听</string>
+    <string name="onboarding_desc_listen">用富有感情的声音自动朗读图书。</string>
+    <string name="onboarding_title_share">分享和探索您的书库</string>
+    <string name="onboarding_desc_share">让书库井井有条，并与朋友分享喜爱的图书。</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_start">立即开始</string>
+</resources>

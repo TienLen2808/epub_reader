@@ -5,7 +5,14 @@ import com.example.epub_reader.epub.EpubBook
 
 class ReaderSearchHelper {
 
-    fun searchBook(book: EpubBook?, query: String): List<SearchResultSection> {
+    /**
+     * @param untitledChapter title shown for a chapter without title (1-based number), e.g. "Chapter 3"
+     */
+    fun searchBook(
+        book: EpubBook?,
+        query: String,
+        untitledChapter: (Int) -> String = { number -> "Chapter $number" }
+    ): List<SearchResultSection> {
         if (book == null) return emptyList()
         val cleanQuery = query.trim()
         if (cleanQuery.isBlank() || cleanQuery.length < 2) return emptyList()
@@ -26,7 +33,7 @@ class ReaderSearchHelper {
                     .trim()
             }
 
-            val chapterTitle = if (chapter.title.isNotBlank()) chapter.title else "Chương ${chapterIdx + 1}"
+            val chapterTitle = if (chapter.title.isNotBlank()) chapter.title else untitledChapter(chapterIdx + 1)
             val matches = mutableListOf<SearchResultItem>()
 
             var index = plainText.indexOf(cleanQuery, ignoreCase = true)

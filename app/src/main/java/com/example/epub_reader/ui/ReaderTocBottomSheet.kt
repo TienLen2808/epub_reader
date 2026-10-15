@@ -136,7 +136,11 @@ class ReaderTocBottomSheet(
 
         override fun onBindViewHolder(holder: TocViewHolder, position: Int) {
             val chapter = chapters[position]
-            val titleStr = if (chapter.title.isNotBlank()) chapter.title else "Chương ${position + 1}"
+            val titleStr = if (chapter.title.isNotBlank()) {
+                chapter.title
+            } else {
+                getString(R.string.chapter_number, position + 1)
+            }
             val isActive = position == activeChapterIndex
 
             holder.binding.tvTocChapterTitle.text = "${position + 1}. $titleStr"

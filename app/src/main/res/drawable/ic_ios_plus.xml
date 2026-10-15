@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS thin "plus" (nav bar add) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M12,3V21M3,12H21"
+        android:strokeWidth="1.8"
+        android:strokeColor="#007AFF"
+        android:strokeLineCap="round" />
+</vector>

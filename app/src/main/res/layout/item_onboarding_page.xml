@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One onboarding page: illustration (as large as the space allows, kept close to the title), title, description.
+     Title and description keep 2 lines of height so the illustration stays at the same place on every page. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgOnboardingIllustration"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="@dimen/onboarding_illustration_gap"
+        android:importantForAccessibility="no"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/tvOnboardingTitle"
+        app:layout_constraintDimensionRatio="300:312"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_max="360dp"
+        tools:src="@drawable/img_onboarding_import" />
+
+    <TextView
+        android:id="@+id/tvOnboardingTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:lineBreakWordStyle="phrase"
+        android:lineSpacingMultiplier="1.05"
+        android:minLines="2"
+        android:textColor="@color/onboarding_title"
+        android:textSize="@dimen/onboarding_title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvOnboardingDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnusedAttribute"
+        tools:text="@string/onboarding_title_import" />
+
+    <TextView
+        android:id="@+id/tvOnboardingDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:lineBreakWordStyle="phrase"
+        android:lineSpacingMultiplier="1.2"
+        android:minLines="2"
+        android:textColor="@color/onboarding_body"
+        android:textSize="@dimen/onboarding_desc_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnusedAttribute"
+        tools:text="@string/onboarding_desc_import" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

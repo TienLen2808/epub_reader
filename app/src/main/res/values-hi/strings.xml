@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Hindi -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">विज्ञापन लोड हो रहा है…</string>
+    <string name="thanks_for_your_review">आपकी समीक्षा के लिए धन्यवाद!</string>
+    <string name="d_seconds_remaining">%1$d सेकंड बाकी</string>
+    <string name="no_internet">इंटरनेट कनेक्शन नहीं है</string>
+    <string name="no_internet_message">कृपया अपना इंटरनेट कनेक्शन जाँचें और फिर से कोशिश करें।</string>
+    <string name="setting">सेटिंग</string>
+    <string name="language">भाषा</string>
+    <string name="files">फ़ाइलें</string>
+    <string name="file_transfer">ट्रांसफ़र</string>
+    <string name="settings">सेटिंग</string>
+    <string name="table_of_contents">विषय-सूची</string>
+    <string name="progress">प्रगति</string>
+    <string name="date">तारीख</string>
+    <string name="rename">नाम बदलें</string>
+    <string name="move_to_folder">फ़ोल्डर में ले जाएँ</string>
+    <string name="send_open">भेजें/खोलें…</string>
+    <string name="upload_google_drive">Google Drive पर अपलोड करें</string>
+    <string name="copy">कॉपी करें</string>
+    <string name="delete">मिटाएँ</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="enter_passcode">पासकोड डालें</string>
+    <string name="protect_your_file">अपनी फ़ाइलों को पासकोड से सुरक्षित करें</string>
+    <string name="wrong_password">गलत पासकोड</string>
+    <string name="cancel_action">रद्द करें</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="passcode_lock">पासकोड लॉक</string>
+    <string name="search">खोजें</string>
+    <string name="reader_settings">पढ़ने की सेटिंग</string>
+    <string name="font_size">फ़ॉन्ट आकार</string>
+    <string name="reading_theme">पढ़ने की थीम</string>
+    <string name="light">हल्की</string>
+    <string name="sepia">सीपिया</string>
+    <string name="dark">गहरी</string>
+    <string name="spacing">दूरी</string>
+    <string name="spacing_ellipsis">दूरी…</string>
+    <string name="notes">नोट्स</string>
+    <string name="bookmarks">बुकमार्क</string>
+    <string name="edit">बदलें</string>
+    <string name="name">नाम</string>
+    <string name="category">प्रकार</string>
+    <string name="time">समय</string>
+    <string name="no_files_yet">अभी कोई फ़ाइल नहीं है</string>
+    <string name="share">शेयर करें</string>
+    <string name="general_features">सामान्य</string>
+    <string name="vietnamese">वियतनामी</string>
+    <string name="feedback">सुझाव</string>
+    <string name="rate_us">हमें रेटिंग दें</string>
+    <string name="feedback_opinions">सुझाव भेजें</string>
+    <string name="share_uppercase">शेयर करें</string>
+    <string name="tell_a_friend">किसी दोस्त को बताएँ</string>
+    <string name="import_files_icloud_drive">Files / iCloud Drive से इंपोर्ट करें</string>
+    <string name="wifi_transfer">वाई-फ़ाई ट्रांसफ़र</string>
+    <string name="import_from_pc">पीसी से इंपोर्ट करें</string>
+    <string name="itunes_file_sharing">iTunes फ़ाइल शेयरिंग</string>
+    <string name="support_batch_upload">एक साथ कई फ़ाइलें अपलोड करें</string>
+    <string name="login_google_drive">Google Drive में साइन इन करें</string>
+    <string name="error_no_book_content">किताब में पढ़ने लायक कुछ नहीं है</string>
+    <string name="error_init_tts">टेक्स्ट-टू-स्पीच इंजन शुरू नहीं हो सका</string>
+    <string name="tts_stopped">पढ़ना बंद हुआ</string>
+    <string name="tts_started">पढ़ना शुरू हुआ…</string>
+    <string name="tts_finished">किताब पूरी पढ़ ली गई</string>
+    <string name="tts_error_audio">ऑडियो चलाने में गड़बड़ी</string>
+    <string name="tts_error_voice">आवाज़ नहीं चल सकी</string>
+    <string name="tts_error_no_text">पढ़ने के लिए कोई टेक्स्ट नहीं मिला</string>
+    <string name="please_select_file">खोलने के लिए कोई फ़ाइल चुनें</string>
+    <string name="deleted_selected_files">चुनी गई फ़ाइलें मिटा दी गईं</string>
+    <string name="select_at_least_one_file">मिटाने के लिए कम से कम 1 फ़ाइल चुनें</string>
+    <string name="share_multiple_files">%1$s फ़ाइलें शेयर करें</string>
+    <string name="move_files">फ़ाइलें ले जाएँ</string>
+    <string name="copy_files">फ़ाइलें कॉपी करें</string>
+    <string name="zip_files">फ़ाइलें ज़िप करें</string>
+    <string name="error_launch_file_picker">फ़ाइल पिकर नहीं खुल सका</string>
+    <string name="added_file">%1$s जोड़ी गई</string>
+    <string name="deleted_file">%1$s मिटा दी गई</string>
+    <string name="renamed_to">नाम बदलकर %1$s किया गया</string>
+    <string name="share_file">%1$s शेयर करें</string>
+    <string name="error_read_epub">गड़बड़ी: EPUB फ़ाइल नहीं पढ़ी जा सकी</string>
+    <string name="wrong_password_exclamation">गलत पासकोड!</string>
+    <string name="cannot_open_file">%1$s नहीं खुल सकी</string>
+    <string name="file_not_found">फ़ाइल नहीं मिली: %1$s</string>
+    <string name="passcode_removed">पासकोड हटा दिया गया</string>
+    <string name="passcode_set">पासकोड सेट हो गया</string>
+    <string name="thanks_for_5_stars">5 स्टार देने के लिए धन्यवाद!</string>
+    <string name="send_feedback">सुझाव भेजें</string>
+    <string name="share_app_with_friends">ऐप को दोस्तों के साथ शेयर करें</string>
+    <string name="import_from_icloud">Files / iCloud Drive से इंपोर्ट करें</string>
+    <string name="import_from_wifi">वाई-फ़ाई से पीसी से इंपोर्ट करें</string>
+    <string name="share_itunes">iTunes / पीसी फ़ाइल शेयरिंग</string>
+    <string name="login_dropbox">Dropbox में साइन इन करें</string>
+    <string name="storage_permission_required">फ़ाइलें इंपोर्ट करने के लिए स्टोरेज की अनुमति ज़रूरी है</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">खाली जगह</string>
+    <string name="done">हो गया</string>
+    <string name="search_hint">खोजें</string>
+    <string name="select_all">सभी चुनें</string>
+    <string name="add_file">फ़ाइल जोड़ें</string>
+    <string name="clear_search">खोज साफ़ करें</string>
+    <string name="file_info">फ़ाइल की जानकारी</string>
+    <string name="save">सेव करें</string>
+    <string name="no_results">कोई नतीजा नहीं</string>
+    <string name="copied_files">कॉपी की गई फ़ाइलें: %1$d</string>
+    <string name="cannot_copy_file">%1$s कॉपी नहीं हो सकी</string>
+    <string name="zipped_to">%1$s में ज़िप किया गया</string>
+    <string name="zip_failed">फ़ाइलें ज़िप नहीं हो सकीं</string>
+    <string name="archive_name">संग्रह</string>
+    <string name="txt_part">भाग %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">इंपोर्ट की गई फ़ाइलें “फ़ाइलें” में दिखेंगी।</string>
+    <string name="transfer_importing">फ़ाइलें इंपोर्ट हो रही हैं…</string>
+    <string name="transfer_import_failed">फ़ाइलें इंपोर्ट नहीं हो सकीं</string>
+    <string name="transfer_imported_files">“फ़ाइलें” में इंपोर्ट की गई फ़ाइलें: %1$d</string>
+    <string name="ok">ठीक है</string>
+    <string name="guide">कैसे करें</string>
+    <string name="refresh">रीफ़्रेश करें</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">चालू है</string>
+    <string name="wifi_starting">शुरू हो रहा है…</string>
+    <string name="wifi_status_no_wifi">वाई-फ़ाई से कनेक्ट नहीं है</string>
+    <string name="wifi_server_failed">वाई-फ़ाई ट्रांसफ़र शुरू नहीं हो सका</string>
+    <string name="wifi_open_browser">अपने कंप्यूटर पर ब्राउज़र खोलें और यह पता डालें:</string>
+    <string name="copy_address">पता कॉपी करें</string>
+    <string name="address_copied">पता कॉपी हो गया</string>
+    <string name="wifi_step_1">1.  फ़ोन और कंप्यूटर को एक ही वाई-फ़ाई नेटवर्क से कनेक्ट करें।</string>
+    <string name="wifi_step_2">2.  कंप्यूटर पर ब्राउज़र (Chrome, Safari, Edge…) खोलें और ऊपर दिया गया पता डालें।</string>
+    <string name="wifi_step_3">3.  “फ़ाइलें चुनें…” पर क्लिक करें या फ़ाइलों को पेज पर खींचें। फ़ाइलें “फ़ाइलें” में दिखेंगी।</string>
+    <string name="received_files">मिली हुई फ़ाइलें</string>
+    <string name="no_received_files">अभी कोई फ़ाइल नहीं है</string>
+    <string name="wifi_keep_open">फ़ाइलें ट्रांसफ़र होते समय यह स्क्रीन खुली रखें।</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">USB से कंप्यूटर से फ़ाइलें इंपोर्ट करें</string>
+    <string name="usb_header_sub">iPhone की iTunes फ़ाइल शेयरिंग की जगह</string>
+    <string name="usb_step_1">1.  USB केबल से फ़ोन को कंप्यूटर से जोड़ें।</string>
+    <string name="usb_step_2">2.  फ़ोन पर USB मोड “फ़ाइल ट्रांसफ़र” चुनें।</string>
+    <string name="usb_step_3">3.  कंप्यूटर पर, फ़ोन के स्टोरेज में यह फ़ोल्डर खोलें:</string>
+    <string name="usb_mac_note">Mac पर: Android File Transfer या OpenMTP इस्तेमाल करें।</string>
+    <string name="usb_step_4">4.  फ़ाइलों को उस फ़ोल्डर में कॉपी करें, फिर नीचे “फ़ाइलें इंपोर्ट करें” पर टैप करें।</string>
+    <string name="copy_path">पाथ कॉपी करें</string>
+    <string name="path_copied">पाथ कॉपी हो गया</string>
+    <string name="pending_files">फ़ोल्डर में मौजूद फ़ाइलें</string>
+    <string name="usb_no_files">फ़ोल्डर में अभी कोई फ़ाइल नहीं है</string>
+    <string name="usb_copying">कॉपी हो रही है…</string>
+    <string name="usb_import_none">फ़ाइलें इंपोर्ट करें</string>
+    <string name="usb_import_count">%1$d फ़ाइलें “फ़ाइलें” में इंपोर्ट करें</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Dropbox से इंपोर्ट करें</string>
+    <string name="cloud_upload_dropbox">Dropbox पर अपलोड करें</string>
+    <string name="cloud_info_dropbox">एक साथ कई फ़ाइलें चुनकर उन्हें Dropbox से ऐप में इंपोर्ट करें, या ऐप से कई फ़ाइलें Dropbox पर अपलोड करें।\n\nDropbox ऐप इंस्टॉल होना और उसमें साइन इन होना ज़रूरी है।</string>
+    <string name="cloud_import_drive">Google Drive से इंपोर्ट करें</string>
+    <string name="cloud_upload_drive">Google Drive पर अपलोड करें</string>
+    <string name="cloud_info_drive">एक साथ कई फ़ाइलें चुनकर उन्हें Google Drive से ऐप में इंपोर्ट करें, या ऐप से कई फ़ाइलें Google Drive पर अपलोड करें।\n\nGoogle Drive ऐप इंस्टॉल होना और उसमें साइन इन होना ज़रूरी है।</string>
+    <string name="app_not_installed_title">%1$s इंस्टॉल नहीं है</string>
+    <string name="app_not_installed_message">इस सुविधा के लिए Google Play से %1$s ऐप इंस्टॉल करें।</string>
+    <string name="install_app">इंस्टॉल करें</string>
+    <string name="choose_from_files">Files से चुनें</string>
+    <string name="no_files_to_upload">अपलोड करने के लिए अभी कोई फ़ाइल नहीं है</string>
+    <string name="select_files">फ़ाइलें चुनें</string>
+    <string name="upload">अपलोड करें</string>
+    <string name="pick_files_hint">अपलोड करने के लिए फ़ाइलें चुनें</string>
+    <string name="selected_count">चुनी गई: %1$d</string>
+    <string name="deselect_all">सभी का चयन हटाएँ</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">पढ़ने की भाषा</string>
+    <string name="tts_language_subtitle">किताब की भाषा चुनें ताकि आवाज़ सही उच्चारण करे।</string>
+    <string name="tts_section_suggested">इस किताब के लिए सुझाव</string>
+    <string name="tts_section_other">दूसरी भाषाएँ</string>
+    <string name="tts_section_languages">भाषाएँ</string>
+    <string name="tts_badge_detected">पहचानी गई</string>
+    <string name="tts_badge_previous">पिछली बार चुनी गई</string>
+    <string name="tts_status_needs_download">आवाज़ डाउनलोड करनी होगी</string>
+    <string name="tts_status_not_supported">इस डिवाइस पर उपलब्ध नहीं</string>
+    <string name="tts_start_reading">पढ़ना शुरू करें</string>
+    <string name="tts_open_settings">डिवाइस की आवाज़ सेटिंग</string>
+    <string name="tts_settings_footnote">आवाज़ें आपके डिवाइस के टेक्स्ट-टू-स्पीच इंजन से आती हैं। सेटिंग में आप और आवाज़ें डाउनलोड कर सकते हैं या Google इंजन पर बदल सकते हैं।</string>
+    <string name="tts_preparing">आवाज़ तैयार हो रही है…</string>
+    <string name="tts_started_language">पढ़ा जा रहा है · %1$s</string>
+    <string name="tts_voice_missing_title">आवाज़ डाउनलोड नहीं हुई है</string>
+    <string name="tts_voice_missing_message">इस डिवाइस पर %1$s की आवाज़ डाउनलोड नहीं है। उसे डाउनलोड करें, फिर से पढ़ें पर टैप करें।</string>
+    <string name="tts_voice_unsupported_title">%1$s समर्थित नहीं है</string>
+    <string name="tts_voice_unsupported_message">इस डिवाइस का वॉइस इंजन %1$s नहीं पढ़ सकता। आवाज़ सेटिंग में Google इंजन चुनें या कोई दूसरी भाषा चुनें।</string>
+    <string name="tts_download_voice">आवाज़ डाउनलोड करें</string>
+    <string name="tts_install_google">Google टेक्स्ट-टू-स्पीच इंस्टॉल करें</string>
+    <string name="tts_choose_other_language">दूसरी भाषा चुनें</string>
+    <string name="tts_lang_vi">वियतनामी</string>
+    <string name="tts_lang_en">अंग्रेज़ी</string>
+    <string name="tts_lang_zh_cn">चीनी (सरलीकृत)</string>
+    <string name="tts_lang_zh_tw">चीनी (पारंपरिक)</string>
+    <string name="tts_lang_th">थाई</string>
+    <string name="tts_lang_ja">जापानी</string>
+    <string name="tts_lang_ko">कोरियाई</string>
+    <string name="tts_lang_fr">फ़्रेंच</string>
+    <string name="tts_lang_de">जर्मन</string>
+    <string name="tts_lang_es">स्पैनिश</string>
+    <string name="tts_lang_pt">पुर्तगाली</string>
+    <string name="tts_lang_it">इतालवी</string>
+    <string name="tts_lang_ru">रूसी</string>
+    <string name="tts_lang_uk">यूक्रेनियन</string>
+    <string name="tts_lang_id">इंडोनेशियाई</string>
+    <string name="tts_lang_ms">मलय</string>
+    <string name="tts_lang_fil">फ़िलिपीनो</string>
+    <string name="tts_lang_km">ख़मेर</string>
+    <string name="tts_lang_lo">लाओ</string>
+    <string name="tts_lang_my">बर्मी</string>
+    <string name="tts_lang_hi">हिन्दी</string>
+    <string name="tts_lang_ar">अरबी</string>
+    <string name="tts_lang_tr">तुर्की</string>
+    <string name="tts_lang_pl">पोलिश</string>
+    <string name="tts_lang_nl">डच</string>
+    <string name="tts_lang_sv">स्वीडिश</string>
+    <string name="tts_lang_da">डेनिश</string>
+    <string name="tts_lang_nb">नॉर्वेजियन</string>
+    <string name="tts_lang_fi">फ़िनिश</string>
+    <string name="tts_lang_cs">चेक</string>
+    <string name="tts_lang_ro">रोमानियाई</string>
+    <string name="tts_lang_hu">हंगेरियन</string>
+    <string name="tts_lang_el">यूनानी</string>
+    <string name="tts_lang_he">हिब्रू</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">अध्याय %1$d</string>
+    <string name="theme_mode_light">हल्की</string>
+    <string name="theme_mode_dark">गहरी</string>
+    <string name="theme_mode_auto">ऑटो</string>
+    <string name="bookmark_added">बुकमार्क सेव हुआ (%1$d/%2$d)</string>
+    <string name="bookmark_removed">बुकमार्क हटाया गया (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">नया पासकोड बनाएँ</string>
+    <string name="passcode_verify_title">खोलने के लिए पासकोड डालें</string>
+    <string name="passcode_remove_title">हटाने के लिए पासकोड डालें</string>
+    <string name="passcode_need_4_digits">कृपया चारों अंक डालें</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">कीवर्ड डालें…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">हिन्दी</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">फ़ाइलें (EPUB, TXT, PDF…) इस फ़ोल्डर में कॉपी करें, फिर ऐप खोलें &gt; ट्रांसफ़र &gt; iTunes फ़ाइल शेयरिंग &gt; फ़ाइलें इंपोर्ट करें।</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">वाई-फ़ाई से फ़ाइल ट्रांसफ़र</string>
+    <string name="web_drop_title">फ़ाइलें यहाँ छोड़ें</string>
+    <string name="web_drop_hint">या फ़ाइलें चुनने के लिए नीचे दिए बटन पर क्लिक करें (EPUB, TXT, PDF…)</string>
+    <string name="web_choose_files">फ़ाइलें चुनें…</string>
+    <string name="web_uploading">अपलोड हो रहा है</string>
+    <string name="web_files_on_phone">फ़ोन पर मौजूद फ़ाइलें</string>
+    <string name="web_loading">लोड हो रहा है…</string>
+    <string name="web_footer">फ़ाइलें ट्रांसफ़र होते समय फ़ोन पर “वाई-फ़ाई ट्रांसफ़र” स्क्रीन खुली रखें।</string>
+    <string name="web_waiting">इंतज़ार में</string>
+    <string name="web_done">पूरा हुआ</string>
+    <string name="web_error">गड़बड़ी</string>
+    <string name="web_connection_lost">फ़ोन से कनेक्शन टूट गया</string>
+    <string name="web_no_files">अभी कोई फ़ाइल नहीं है</string>
+    <string name="web_download">डाउनलोड करें</string>
+    <string name="web_cannot_connect">फ़ोन से कनेक्ट नहीं हो सका</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">किताबें आसानी से डाउनलोड और इम्पोर्ट करें</string>
+    <string name="onboarding_desc_import">फ़ोन, Wi-Fi, Google Drive या Dropbox से कुछ ही टैप में EPUB फ़ाइलें जोड़ें।</string>
+    <string name="onboarding_title_listen">बिना रुकावट पढ़ें और\u00A0सुनें</string>
+    <string name="onboarding_desc_listen">किताबें भावपूर्ण आवाज़ में अपने-आप पढ़कर सुनाई जाती हैं।</string>
+    <string name="onboarding_title_share">अपनी लाइब्रेरी शेयर करें और\u00A0खोजें</string>
+    <string name="onboarding_desc_share">अपनी लाइब्रेरी व्यवस्थित रखें और पसंदीदा किताबें दोस्तों के साथ शेयर करें।</string>
+    <string name="onboarding_next">आगे</string>
+    <string name="onboarding_start">अभी शुरू करें</string>
+</resources>

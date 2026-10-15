@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Last item of the reading language list: link to the text-to-speech settings of the device -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="28dp">
+
+    <TextView
+        android:id="@+id/btnTtsSettings"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_ios_group_single"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/tts_open_settings"
+        android:textColor="@color/ios_blue"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tvTtsFootnote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="1dp"
+        android:paddingStart="32dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="32dp"
+        android:text="@string/tts_settings_footnote"
+        android:textColor="@color/ios_placeholder"
+        android:textSize="13sp" />
+
+</LinearLayout>

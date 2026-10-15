@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Indonesian -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">Memuat iklan…</string>
+    <string name="thanks_for_your_review">Terima kasih atas ulasan Anda!</string>
+    <string name="d_seconds_remaining">Tersisa %1$d detik</string>
+    <string name="no_internet">Tidak ada koneksi internet</string>
+    <string name="no_internet_message">Periksa koneksi internet Anda, lalu coba lagi.</string>
+    <string name="setting">Setelan</string>
+    <string name="language">Bahasa</string>
+    <string name="files">File</string>
+    <string name="file_transfer">Transfer</string>
+    <string name="settings">Setelan</string>
+    <string name="table_of_contents">Daftar isi</string>
+    <string name="progress">Progres</string>
+    <string name="date">Tanggal</string>
+    <string name="rename">Ganti nama</string>
+    <string name="move_to_folder">Pindahkan ke folder</string>
+    <string name="send_open">Kirim/Buka…</string>
+    <string name="upload_google_drive">Unggah ke Google Drive</string>
+    <string name="copy">Salin</string>
+    <string name="delete">Hapus</string>
+    <string name="cancel">Batal</string>
+    <string name="enter_passcode">Masukkan kode sandi</string>
+    <string name="protect_your_file">Lindungi file Anda dengan kode sandi</string>
+    <string name="wrong_password">Kode sandi salah</string>
+    <string name="cancel_action">Batal</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="passcode_lock">Kunci kode sandi</string>
+    <string name="search">Cari</string>
+    <string name="reader_settings">Setelan baca</string>
+    <string name="font_size">Ukuran huruf</string>
+    <string name="reading_theme">Tema baca</string>
+    <string name="light">Terang</string>
+    <string name="sepia">Sepia</string>
+    <string name="dark">Gelap</string>
+    <string name="spacing">Spasi</string>
+    <string name="spacing_ellipsis">Spasi…</string>
+    <string name="notes">Catatan</string>
+    <string name="bookmarks">Penanda</string>
+    <string name="edit">Edit</string>
+    <string name="name">Nama</string>
+    <string name="category">Jenis</string>
+    <string name="time">Waktu</string>
+    <string name="no_files_yet">Belum ada file</string>
+    <string name="share">Bagikan</string>
+    <string name="general_features">UMUM</string>
+    <string name="vietnamese">Bahasa Vietnam</string>
+    <string name="feedback">MASUKAN</string>
+    <string name="rate_us">Beri kami rating</string>
+    <string name="feedback_opinions">Kirim masukan</string>
+    <string name="share_uppercase">BAGIKAN</string>
+    <string name="tell_a_friend">Beri tahu teman</string>
+    <string name="import_files_icloud_drive">Impor dari File / iCloud Drive</string>
+    <string name="wifi_transfer">Transfer Wi-Fi</string>
+    <string name="import_from_pc">Impor dari PC</string>
+    <string name="itunes_file_sharing">Berbagi File iTunes</string>
+    <string name="support_batch_upload">Mendukung unggah banyak file</string>
+    <string name="login_google_drive">Masuk ke Google Drive</string>
+    <string name="error_no_book_content">Buku ini tidak memiliki konten untuk dibaca</string>
+    <string name="error_init_tts">Tidak dapat memulai mesin teks ke ucapan</string>
+    <string name="tts_stopped">Berhenti membaca</string>
+    <string name="tts_started">Mulai membaca…</string>
+    <string name="tts_finished">Buku selesai dibacakan</string>
+    <string name="tts_error_audio">Kesalahan pemutaran audio</string>
+    <string name="tts_error_voice">Tidak dapat memutar suara</string>
+    <string name="tts_error_no_text">Tidak ada teks untuk dibaca</string>
+    <string name="please_select_file">Pilih file yang akan dibuka</string>
+    <string name="deleted_selected_files">File yang dipilih telah dihapus</string>
+    <string name="select_at_least_one_file">Pilih minimal 1 file untuk dihapus</string>
+    <string name="share_multiple_files">Bagikan %1$s file</string>
+    <string name="move_files">Pindahkan file</string>
+    <string name="copy_files">Salin file</string>
+    <string name="zip_files">Kompres file</string>
+    <string name="error_launch_file_picker">Tidak dapat membuka pemilih file</string>
+    <string name="added_file">%1$s ditambahkan</string>
+    <string name="deleted_file">%1$s dihapus</string>
+    <string name="renamed_to">Nama diganti menjadi %1$s</string>
+    <string name="share_file">Bagikan %1$s</string>
+    <string name="error_read_epub">Kesalahan: file EPUB tidak dapat dibaca</string>
+    <string name="wrong_password_exclamation">Kode sandi salah!</string>
+    <string name="cannot_open_file">Tidak dapat membuka %1$s</string>
+    <string name="file_not_found">File tidak ditemukan: %1$s</string>
+    <string name="passcode_removed">Kode sandi dihapus</string>
+    <string name="passcode_set">Kode sandi disetel</string>
+    <string name="thanks_for_5_stars">Terima kasih atas 5 bintangnya!</string>
+    <string name="send_feedback">Kirim masukan</string>
+    <string name="share_app_with_friends">Bagikan aplikasi ke teman</string>
+    <string name="import_from_icloud">Impor dari File / iCloud Drive</string>
+    <string name="import_from_wifi">Impor dari PC lewat Wi-Fi</string>
+    <string name="share_itunes">Berbagi File iTunes / PC</string>
+    <string name="login_dropbox">Masuk ke Dropbox</string>
+    <string name="storage_permission_required">Izin penyimpanan diperlukan untuk mengimpor file</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">Ruang kosong</string>
+    <string name="done">Selesai</string>
+    <string name="search_hint">Cari</string>
+    <string name="select_all">Pilih semua</string>
+    <string name="add_file">Tambah file</string>
+    <string name="clear_search">Hapus pencarian</string>
+    <string name="file_info">Info file</string>
+    <string name="save">Simpan</string>
+    <string name="no_results">Tidak ada hasil</string>
+    <string name="copied_files">File disalin: %1$d</string>
+    <string name="cannot_copy_file">Tidak dapat menyalin %1$s</string>
+    <string name="zipped_to">Dikompres menjadi %1$s</string>
+    <string name="zip_failed">File tidak dapat dikompres</string>
+    <string name="archive_name">Arsip</string>
+    <string name="txt_part">Bagian %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">File yang diimpor muncul di “File”.</string>
+    <string name="transfer_importing">Mengimpor file…</string>
+    <string name="transfer_import_failed">File tidak dapat diimpor</string>
+    <string name="transfer_imported_files">File diimpor ke File: %1$d</string>
+    <string name="ok">OK</string>
+    <string name="guide">Cara pakai</string>
+    <string name="refresh">Muat ulang</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">Aktif</string>
+    <string name="wifi_starting">Memulai…</string>
+    <string name="wifi_status_no_wifi">Tidak terhubung ke Wi-Fi</string>
+    <string name="wifi_server_failed">Tidak dapat memulai transfer Wi-Fi</string>
+    <string name="wifi_open_browser">Buka browser di komputer, lalu buka alamat ini:</string>
+    <string name="copy_address">Salin alamat</string>
+    <string name="address_copied">Alamat disalin</string>
+    <string name="wifi_step_1">1.  Hubungkan ponsel dan komputer ke jaringan Wi-Fi yang sama.</string>
+    <string name="wifi_step_2">2.  Buka browser (Chrome, Safari, Edge…) di komputer, lalu masukkan alamat di atas.</string>
+    <string name="wifi_step_3">3.  Klik “Pilih file…” atau seret file ke halaman. File akan muncul di “File”.</string>
+    <string name="received_files">File diterima</string>
+    <string name="no_received_files">Belum ada file</string>
+    <string name="wifi_keep_open">Biarkan layar ini terbuka selama transfer file.</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">Impor file dari komputer lewat USB</string>
+    <string name="usb_header_sub">Pengganti Berbagi File iTunes di iPhone</string>
+    <string name="usb_step_1">1.  Hubungkan ponsel ke komputer dengan kabel USB.</string>
+    <string name="usb_step_2">2.  Di ponsel, pilih mode USB “Transfer file”.</string>
+    <string name="usb_step_3">3.  Di komputer, buka folder ini di penyimpanan ponsel:</string>
+    <string name="usb_mac_note">Mac: gunakan Android File Transfer atau OpenMTP.</string>
+    <string name="usb_step_4">4.  Salin file ke folder tersebut, lalu ketuk “Impor file” di bawah.</string>
+    <string name="copy_path">Salin jalur</string>
+    <string name="path_copied">Jalur disalin</string>
+    <string name="pending_files">File di folder</string>
+    <string name="usb_no_files">Belum ada file di folder</string>
+    <string name="usb_copying">Menyalin…</string>
+    <string name="usb_import_none">Impor file</string>
+    <string name="usb_import_count">Impor %1$d file ke File</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Impor dari Dropbox</string>
+    <string name="cloud_upload_dropbox">Unggah ke Dropbox</string>
+    <string name="cloud_info_dropbox">Pilih beberapa file sekaligus untuk mengimpornya dari Dropbox ke aplikasi, atau unggah beberapa file dari aplikasi ke Dropbox.\n\nAplikasi Dropbox harus terpasang dan sudah masuk ke akun.</string>
+    <string name="cloud_import_drive">Impor dari Google Drive</string>
+    <string name="cloud_upload_drive">Unggah ke Google Drive</string>
+    <string name="cloud_info_drive">Pilih beberapa file sekaligus untuk mengimpornya dari Google Drive ke aplikasi, atau unggah beberapa file dari aplikasi ke Google Drive.\n\nAplikasi Google Drive harus terpasang dan sudah masuk ke akun.</string>
+    <string name="app_not_installed_title">%1$s belum terpasang</string>
+    <string name="app_not_installed_message">Pasang aplikasi %1$s dari Google Play untuk memakai fitur ini.</string>
+    <string name="install_app">Pasang</string>
+    <string name="choose_from_files">Pilih dari File</string>
+    <string name="no_files_to_upload">Belum ada file untuk diunggah</string>
+    <string name="select_files">Pilih file</string>
+    <string name="upload">Unggah</string>
+    <string name="pick_files_hint">Pilih file yang ingin diunggah</string>
+    <string name="selected_count">Dipilih: %1$d</string>
+    <string name="deselect_all">Batalkan semua pilihan</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">Bahasa baca</string>
+    <string name="tts_language_subtitle">Pilih bahasa buku agar suara melafalkannya dengan benar.</string>
+    <string name="tts_section_suggested">Disarankan untuk buku ini</string>
+    <string name="tts_section_other">Bahasa lain</string>
+    <string name="tts_section_languages">Bahasa</string>
+    <string name="tts_badge_detected">Terdeteksi</string>
+    <string name="tts_badge_previous">Terakhir dipakai</string>
+    <string name="tts_status_needs_download">Suara perlu diunduh</string>
+    <string name="tts_status_not_supported">Tidak didukung di perangkat ini</string>
+    <string name="tts_start_reading">Mulai membaca</string>
+    <string name="tts_open_settings">Setelan suara perangkat</string>
+    <string name="tts_settings_footnote">Suara berasal dari mesin teks ke ucapan di perangkat Anda. Di setelan, Anda bisa mengunduh suara lain atau beralih ke mesin Google.</string>
+    <string name="tts_preparing">Menyiapkan suara…</string>
+    <string name="tts_started_language">Membaca · %1$s</string>
+    <string name="tts_voice_missing_title">Suara belum diunduh</string>
+    <string name="tts_voice_missing_message">Suara %1$s belum diunduh di perangkat ini. Unduh suaranya, lalu ketuk baca lagi.</string>
+    <string name="tts_voice_unsupported_title">%1$s tidak didukung</string>
+    <string name="tts_voice_unsupported_message">Mesin suara di perangkat ini tidak bisa membaca %1$s. Pilih mesin Google di setelan suara, atau pilih bahasa lain.</string>
+    <string name="tts_download_voice">Unduh suara</string>
+    <string name="tts_install_google">Pasang Google Text-to-speech</string>
+    <string name="tts_choose_other_language">Pilih bahasa lain</string>
+    <string name="tts_lang_vi">Bahasa Vietnam</string>
+    <string name="tts_lang_en">Bahasa Inggris</string>
+    <string name="tts_lang_zh_cn">Bahasa Mandarin (Sederhana)</string>
+    <string name="tts_lang_zh_tw">Bahasa Mandarin (Tradisional)</string>
+    <string name="tts_lang_th">Bahasa Thai</string>
+    <string name="tts_lang_ja">Bahasa Jepang</string>
+    <string name="tts_lang_ko">Bahasa Korea</string>
+    <string name="tts_lang_fr">Bahasa Prancis</string>
+    <string name="tts_lang_de">Bahasa Jerman</string>
+    <string name="tts_lang_es">Bahasa Spanyol</string>
+    <string name="tts_lang_pt">Bahasa Portugis</string>
+    <string name="tts_lang_it">Bahasa Italia</string>
+    <string name="tts_lang_ru">Bahasa Rusia</string>
+    <string name="tts_lang_uk">Bahasa Ukraina</string>
+    <string name="tts_lang_id">Bahasa Indonesia</string>
+    <string name="tts_lang_ms">Bahasa Melayu</string>
+    <string name="tts_lang_fil">Bahasa Filipina</string>
+    <string name="tts_lang_km">Bahasa Khmer</string>
+    <string name="tts_lang_lo">Bahasa Laos</string>
+    <string name="tts_lang_my">Bahasa Burma</string>
+    <string name="tts_lang_hi">Bahasa Hindi</string>
+    <string name="tts_lang_ar">Bahasa Arab</string>
+    <string name="tts_lang_tr">Bahasa Turki</string>
+    <string name="tts_lang_pl">Bahasa Polandia</string>
+    <string name="tts_lang_nl">Bahasa Belanda</string>
+    <string name="tts_lang_sv">Bahasa Swedia</string>
+    <string name="tts_lang_da">Bahasa Denmark</string>
+    <string name="tts_lang_nb">Bahasa Norwegia</string>
+    <string name="tts_lang_fi">Bahasa Finlandia</string>
+    <string name="tts_lang_cs">Bahasa Ceko</string>
+    <string name="tts_lang_ro">Bahasa Rumania</string>
+    <string name="tts_lang_hu">Bahasa Hungaria</string>
+    <string name="tts_lang_el">Bahasa Yunani</string>
+    <string name="tts_lang_he">Bahasa Ibrani</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">Bab %1$d</string>
+    <string name="theme_mode_light">Terang</string>
+    <string name="theme_mode_dark">Gelap</string>
+    <string name="theme_mode_auto">Otomatis</string>
+    <string name="bookmark_added">Penanda disimpan (%1$d/%2$d)</string>
+    <string name="bookmark_removed">Penanda dihapus (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">Buat kode sandi baru</string>
+    <string name="passcode_verify_title">Masukkan kode sandi untuk membuka</string>
+    <string name="passcode_remove_title">Masukkan kode sandi untuk menghapusnya</string>
+    <string name="passcode_need_4_digits">Masukkan ke-4 digit</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">Masukkan kata kunci…</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">Bahasa Indonesia</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">Salin file (EPUB, TXT, PDF…) ke folder ini, lalu buka aplikasi &gt; Transfer &gt; Berbagi File iTunes &gt; Impor file.</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Transfer File lewat Wi-Fi</string>
+    <string name="web_drop_title">Letakkan file di sini</string>
+    <string name="web_drop_hint">atau klik tombol di bawah untuk memilih file (EPUB, TXT, PDF…)</string>
+    <string name="web_choose_files">Pilih file…</string>
+    <string name="web_uploading">Mengunggah</string>
+    <string name="web_files_on_phone">File di ponsel</string>
+    <string name="web_loading">Memuat…</string>
+    <string name="web_footer">Biarkan layar “Transfer Wi-Fi” di ponsel tetap terbuka selama transfer file.</string>
+    <string name="web_waiting">Menunggu</string>
+    <string name="web_done">Selesai</string>
+    <string name="web_error">Kesalahan</string>
+    <string name="web_connection_lost">Koneksi ke ponsel terputus</string>
+    <string name="web_no_files">Belum ada file</string>
+    <string name="web_download">Unduh</string>
+    <string name="web_cannot_connect">Tidak dapat terhubung ke ponsel</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">Unduh &amp; Impor Buku dengan\u00A0Mudah</string>
+    <string name="onboarding_desc_import">Tambahkan file EPUB dari ponsel, Wi-Fi, Google Drive, atau Dropbox hanya dengan beberapa ketukan.</string>
+    <string name="onboarding_title_listen">Baca &amp; Dengarkan Tanpa\u00A0Jeda</string>
+    <string name="onboarding_desc_listen">Buku dibacakan secara otomatis dengan suara yang ekspresif.</string>
+    <string name="onboarding_title_share">Bagikan &amp; Jelajahi Perpustakaan Anda</string>
+    <string name="onboarding_desc_share">Jaga perpustakaan Anda tetap rapi dan bagikan buku favorit dengan teman.</string>
+    <string name="onboarding_next">Berikutnya</string>
+    <string name="onboarding_start">Mulai Sekarang</string>
+</resources>

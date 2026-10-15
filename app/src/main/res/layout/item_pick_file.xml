@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/bg_ios_row">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgPickCheck"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="17dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_check_circle_unselected" />
+
+        <FrameLayout
+            android:layout_width="32dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="14dp">
+
+            <ImageView
+                android:id="@+id/imgPickIconFill"
+                android:layout_width="28dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_file_doc_fill" />
+
+            <ImageView
+                android:id="@+id/imgPickIconStroke"
+                android:layout_width="28dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_file_doc_stroke" />
+
+            <TextView
+                android:id="@+id/tvPickBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="7.5dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="9dp"
+                android:background="@drawable/bg_file_badge"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:minWidth="22dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:textColor="@color/white"
+                android:textSize="5.5sp"
+                android:textStyle="bold"
+                tools:text="EPUB" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPickName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="middle"
+                android:maxLines="1"
+                android:textColor="@color/ios_label"
+                android:textSize="16sp"
+                tools:text="[Dịch] Tạp Đồ - Phương Tưởng.epub" />
+
+            <TextView
+                android:id="@+id/tvPickSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:textColor="@color/ios_secondary_label"
+                android:textSize="12sp"
+                tools:text="4.1MB · 13/10/26" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgPickCorner"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="bottom|end"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_selected_corner"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/viewPickSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="56dp"
+        android:background="@color/ios_row_separator" />
+
+</FrameLayout>

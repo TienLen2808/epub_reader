@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File row: white, gray while pressed, gray when selected (activated) in edit mode -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:exitFadeDuration="250">
+    <item android:drawable="@color/ios_row_selected" android:state_activated="true" />
+    <item android:drawable="@color/ios_row_pressed" android:state_pressed="true" />
+    <item android:drawable="@color/white" />
+</selector>

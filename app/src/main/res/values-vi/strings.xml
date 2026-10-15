@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vietnamese -->
+<resources>
+    <!-- General -->
+    <string name="ad_loading">Đang tải quảng cáo…</string>
+    <string name="thanks_for_your_review">Cảm ơn bạn đã đánh giá!</string>
+    <string name="d_seconds_remaining">Còn %1$d giây</string>
+    <string name="no_internet">Không có kết nối Internet</string>
+    <string name="no_internet_message">Vui lòng kiểm tra kết nối Internet và thử lại.</string>
+    <string name="setting">Cài đặt</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="files">Các tập tin</string>
+    <string name="file_transfer">Chuyển tệp</string>
+    <string name="settings">Cài đặt</string>
+    <string name="table_of_contents">Mục lục</string>
+    <string name="progress">Tiến trình</string>
+    <string name="date">Ngày</string>
+    <string name="rename">Đổi tên</string>
+    <string name="move_to_folder">di chuyển đến thư mục</string>
+    <string name="send_open">Gửi/Mở ra...</string>
+    <string name="upload_google_drive">Tải lên Google Drive</string>
+    <string name="copy">Sao chép</string>
+    <string name="delete">Xóa bỏ</string>
+    <string name="cancel">Hủy</string>
+    <string name="enter_passcode">Nhập Passcode</string>
+    <string name="protect_your_file">Mật khẩu bảo vệ tệp tin của bạn</string>
+    <string name="wrong_password">Sai mật khẩu</string>
+    <string name="cancel_action">Hủy bỏ</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="passcode_lock">Khóa Passcode</string>
+    <string name="search">Tìm</string>
+    <string name="reader_settings">Cài đặt đọc</string>
+    <string name="font_size">Cỡ chữ</string>
+    <string name="reading_theme">Giao diện đọc</string>
+    <string name="light">Sáng</string>
+    <string name="sepia">Nâu</string>
+    <string name="dark">Tối</string>
+    <string name="spacing">Khoảng cách</string>
+    <string name="spacing_ellipsis">Khoảng cách...</string>
+    <string name="notes">Ghi chú</string>
+    <string name="bookmarks">Dấu trang</string>
+    <string name="edit">Sửa</string>
+    <string name="name">Tên</string>
+    <string name="category">Thể loại</string>
+    <string name="time">Thời gian</string>
+    <string name="no_files_yet">Chưa có tập tin nào</string>
+    <string name="share">Chia sẻ</string>
+    <string name="general_features">TÍNH NĂNG CHUNG</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="feedback">PHẢN HỒI</string>
+    <string name="rate_us">Đánh giá chúng tôi</string>
+    <string name="feedback_opinions">Ý kiến phản hồi</string>
+    <string name="share_uppercase">CHIA SẺ</string>
+    <string name="tell_a_friend">Nói với một người bạn</string>
+    <string name="import_files_icloud_drive">Nhập tệp từ Tệp / iCloud Drive</string>
+    <string name="wifi_transfer">Chuyển Wifi</string>
+    <string name="import_from_pc">Nhập từ PC</string>
+    <string name="itunes_file_sharing">Chia sẻ tệp tin iTunes</string>
+    <string name="support_batch_upload">Hỗ trợ tải lên hàng loạt</string>
+    <string name="login_google_drive">Đăng nhập Google Drive</string>
+    <string name="error_no_book_content">Sách không có nội dung để đọc</string>
+    <string name="error_init_tts">Không thể khởi tạo công cụ đọc giọng nói</string>
+    <string name="tts_stopped">Đã dừng đọc</string>
+    <string name="tts_started">Bắt đầu đọc...</string>
+    <string name="tts_finished">Đã đọc xong cuốn sách</string>
+    <string name="tts_error_audio">Lỗi phát âm thanh</string>
+    <string name="tts_error_voice">Không thể phát âm thanh giọng nói</string>
+    <string name="tts_error_no_text">Không tìm thấy văn bản để đọc</string>
+    <string name="please_select_file">Hãy chọn một tập tin để mở</string>
+    <string name="deleted_selected_files">Đã xóa các tập tin được chọn</string>
+    <string name="select_at_least_one_file">Hãy chọn ít nhất 1 tập tin để xóa</string>
+    <string name="share_multiple_files">Chia sẻ %1$s tập tin</string>
+    <string name="move_files">Di chuyển tập tin</string>
+    <string name="copy_files">Sao chép tập tin</string>
+    <string name="zip_files">Nén Zip tập tin</string>
+    <string name="error_launch_file_picker">Không thể mở trình chọn tệp</string>
+    <string name="added_file">Đã thêm tệp %1$s</string>
+    <string name="deleted_file">Đã xóa tệp %1$s</string>
+    <string name="renamed_to">Đã đổi tên thành %1$s</string>
+    <string name="share_file">Chia sẻ tệp %1$s</string>
+    <string name="error_read_epub">Lỗi: không đọc được tệp EPUB</string>
+    <string name="wrong_password_exclamation">Mật khẩu không đúng!</string>
+    <string name="cannot_open_file">Không thể mở tệp %1$s</string>
+    <string name="file_not_found">Tệp không tồn tại: %1$s</string>
+    <string name="passcode_removed">Đã gỡ khóa Passcode</string>
+    <string name="passcode_set">Đã cài khóa Passcode</string>
+    <string name="thanks_for_5_stars">Cảm ơn bạn đã đánh giá 5 sao!</string>
+    <string name="send_feedback">Gửi ý kiến phản hồi</string>
+    <string name="share_app_with_friends">Chia sẻ ứng dụng tới bạn bè</string>
+    <string name="import_from_icloud">Nhập tệp từ Files / iCloud Drive</string>
+    <string name="import_from_wifi">Nhập tệp từ PC qua Wi-Fi</string>
+    <string name="share_itunes">Chia sẻ tệp tin iTunes / PC</string>
+    <string name="login_dropbox">Đăng nhập Dropbox</string>
+    <string name="storage_permission_required">Cần quyền truy cập bộ nhớ để nhập tệp</string>
+
+    <!-- Home screen ("Files" tab) -->
+    <string name="free_space">Không gian trống</string>
+    <string name="done">Xong</string>
+    <string name="search_hint">Tìm kiếm</string>
+    <string name="select_all">Chọn tất cả</string>
+    <string name="add_file">Thêm tập tin</string>
+    <string name="clear_search">Xóa nội dung tìm kiếm</string>
+    <string name="file_info">Thông tin tập tin</string>
+    <string name="save">Lưu</string>
+    <string name="no_results">Không có kết quả</string>
+    <string name="copied_files">Đã sao chép %1$d tập tin</string>
+    <string name="cannot_copy_file">Không thể sao chép tệp %1$s</string>
+    <string name="zipped_to">Đã nén thành %1$s</string>
+    <string name="zip_failed">Không thể nén tập tin</string>
+    <string name="archive_name">Archive</string>
+    <string name="txt_part">Phần %1$d</string>
+
+    <!-- Transfer tab -->
+    <string name="transfer_footer">Tệp được nhập sẽ nằm trong mục “Các tập tin”.</string>
+    <string name="transfer_importing">Đang nhập tệp…</string>
+    <string name="transfer_import_failed">Không thể nhập tệp</string>
+    <string name="transfer_imported_files">Đã nhập %1$d tệp vào Các tập tin</string>
+    <string name="ok">OK</string>
+    <string name="guide">Hướng dẫn</string>
+    <string name="refresh">Làm mới</string>
+
+    <!-- Wi-Fi transfer -->
+    <string name="wifi_status_running">Đang hoạt động</string>
+    <string name="wifi_starting">Đang khởi động…</string>
+    <string name="wifi_status_no_wifi">Chưa kết nối Wi-Fi</string>
+    <string name="wifi_server_failed">Không thể khởi động chuyển Wi-Fi</string>
+    <string name="wifi_open_browser">Mở trình duyệt trên máy tính và truy cập địa chỉ:</string>
+    <string name="copy_address">Sao chép địa chỉ</string>
+    <string name="address_copied">Đã sao chép địa chỉ</string>
+    <string name="wifi_step_1">1.  Kết nối điện thoại và máy tính vào cùng một mạng Wi-Fi.</string>
+    <string name="wifi_step_2">2.  Mở trình duyệt (Chrome, Safari, Edge…) trên máy tính và nhập địa chỉ ở trên.</string>
+    <string name="wifi_step_3">3.  Bấm “Chọn tệp…” hoặc kéo thả tệp vào trang web. Tệp sẽ xuất hiện trong “Các tập tin”.</string>
+    <string name="received_files">Tệp đã nhận</string>
+    <string name="no_received_files">Chưa có tệp nào</string>
+    <string name="wifi_keep_open">Giữ màn hình này mở trong khi chuyển tệp.</string>
+
+    <!-- iTunes file sharing (USB) -->
+    <string name="usb_header">Nhập tệp từ máy tính qua cáp USB</string>
+    <string name="usb_header_sub">Thay cho Chia sẻ tệp tin iTunes trên iPhone</string>
+    <string name="usb_step_1">1.  Kết nối điện thoại với máy tính bằng cáp USB.</string>
+    <string name="usb_step_2">2.  Trên điện thoại, chọn chế độ USB là “Truyền tệp”.</string>
+    <string name="usb_step_3">3.  Trên máy tính, mở thư mục sau trong bộ nhớ điện thoại:</string>
+    <string name="usb_mac_note">Máy Mac: dùng ứng dụng Android File Transfer hoặc OpenMTP.</string>
+    <string name="usb_step_4">4.  Chép tệp vào thư mục đó, sau đó bấm “Nhập tệp” ở bên dưới.</string>
+    <string name="copy_path">Sao chép đường dẫn</string>
+    <string name="path_copied">Đã sao chép đường dẫn</string>
+    <string name="pending_files">Tệp trong thư mục</string>
+    <string name="usb_no_files">Chưa có tệp nào trong thư mục</string>
+    <string name="usb_copying">Đang chép…</string>
+    <string name="usb_import_none">Nhập tệp</string>
+    <string name="usb_import_count">Nhập %1$d tệp vào Các tập tin</string>
+
+    <!-- Dropbox / Google Drive -->
+    <string name="cloud_import_dropbox">Nhập tệp từ Dropbox</string>
+    <string name="cloud_upload_dropbox">Tải tệp lên Dropbox</string>
+    <string name="cloud_info_dropbox">Chọn nhiều tệp cùng lúc để nhập từ Dropbox vào ứng dụng, hoặc tải nhiều tệp trong ứng dụng lên Dropbox.\n\nCần cài ứng dụng Dropbox và đăng nhập tài khoản.</string>
+    <string name="cloud_import_drive">Nhập tệp từ Google Drive</string>
+    <string name="cloud_upload_drive">Tải tệp lên Google Drive</string>
+    <string name="cloud_info_drive">Chọn nhiều tệp cùng lúc để nhập từ Google Drive vào ứng dụng, hoặc tải nhiều tệp trong ứng dụng lên Google Drive.\n\nCần cài ứng dụng Google Drive và đăng nhập tài khoản.</string>
+    <string name="app_not_installed_title">Chưa cài %1$s</string>
+    <string name="app_not_installed_message">Hãy cài ứng dụng %1$s từ Google Play để dùng tính năng này.</string>
+    <string name="install_app">Cài đặt</string>
+    <string name="choose_from_files">Chọn từ Tệp</string>
+    <string name="no_files_to_upload">Chưa có tập tin nào để tải lên</string>
+    <string name="select_files">Chọn tệp</string>
+    <string name="upload">Tải lên</string>
+    <string name="pick_files_hint">Chọn các tệp muốn tải lên</string>
+    <string name="selected_count">Đã chọn %1$d tệp</string>
+    <string name="deselect_all">Bỏ chọn tất cả</string>
+
+    <!-- Reader: reading language (text-to-speech) -->
+    <string name="tts_language_title">Ngôn ngữ đọc</string>
+    <string name="tts_language_subtitle">Chọn đúng ngôn ngữ của sách để giọng đọc phát âm chuẩn.</string>
+    <string name="tts_section_suggested">Đề xuất cho sách này</string>
+    <string name="tts_section_other">Ngôn ngữ khác</string>
+    <string name="tts_section_languages">Ngôn ngữ</string>
+    <string name="tts_badge_detected">Tự nhận diện</string>
+    <string name="tts_badge_previous">Đã chọn lần trước</string>
+    <string name="tts_status_needs_download">Cần tải giọng đọc</string>
+    <string name="tts_status_not_supported">Máy chưa hỗ trợ</string>
+    <string name="tts_start_reading">Bắt đầu đọc</string>
+    <string name="tts_open_settings">Cài đặt giọng đọc của máy</string>
+    <string name="tts_settings_footnote">Giọng đọc lấy từ công cụ chuyển văn bản thành giọng nói của máy. Bạn có thể tải thêm giọng đọc hoặc đổi sang công cụ của Google trong phần cài đặt.</string>
+    <string name="tts_preparing">Đang chuẩn bị giọng đọc…</string>
+    <string name="tts_started_language">Bắt đầu đọc · %1$s</string>
+    <string name="tts_voice_missing_title">Chưa tải giọng đọc</string>
+    <string name="tts_voice_missing_message">Máy chưa tải giọng đọc %1$s. Hãy tải giọng đọc rồi bấm đọc lại.</string>
+    <string name="tts_voice_unsupported_title">Chưa hỗ trợ %1$s</string>
+    <string name="tts_voice_unsupported_message">Công cụ giọng nói trên máy chưa đọc được %1$s. Hãy chọn công cụ của Google trong cài đặt giọng đọc, hoặc chọn ngôn ngữ khác.</string>
+    <string name="tts_download_voice">Tải giọng đọc</string>
+    <string name="tts_install_google">Cài Google Text-to-Speech</string>
+    <string name="tts_choose_other_language">Chọn ngôn ngữ khác</string>
+    <string name="tts_lang_vi">Tiếng Việt</string>
+    <string name="tts_lang_en">Tiếng Anh</string>
+    <string name="tts_lang_zh_cn">Tiếng Trung (giản thể)</string>
+    <string name="tts_lang_zh_tw">Tiếng Trung (phồn thể)</string>
+    <string name="tts_lang_th">Tiếng Thái</string>
+    <string name="tts_lang_ja">Tiếng Nhật</string>
+    <string name="tts_lang_ko">Tiếng Hàn</string>
+    <string name="tts_lang_fr">Tiếng Pháp</string>
+    <string name="tts_lang_de">Tiếng Đức</string>
+    <string name="tts_lang_es">Tiếng Tây Ban Nha</string>
+    <string name="tts_lang_pt">Tiếng Bồ Đào Nha</string>
+    <string name="tts_lang_it">Tiếng Ý</string>
+    <string name="tts_lang_ru">Tiếng Nga</string>
+    <string name="tts_lang_uk">Tiếng Ukraina</string>
+    <string name="tts_lang_id">Tiếng Indonesia</string>
+    <string name="tts_lang_ms">Tiếng Mã Lai</string>
+    <string name="tts_lang_fil">Tiếng Philippines</string>
+    <string name="tts_lang_km">Tiếng Khmer</string>
+    <string name="tts_lang_lo">Tiếng Lào</string>
+    <string name="tts_lang_my">Tiếng Myanmar</string>
+    <string name="tts_lang_hi">Tiếng Hindi</string>
+    <string name="tts_lang_ar">Tiếng Ả Rập</string>
+    <string name="tts_lang_tr">Tiếng Thổ Nhĩ Kỳ</string>
+    <string name="tts_lang_pl">Tiếng Ba Lan</string>
+    <string name="tts_lang_nl">Tiếng Hà Lan</string>
+    <string name="tts_lang_sv">Tiếng Thụy Điển</string>
+    <string name="tts_lang_da">Tiếng Đan Mạch</string>
+    <string name="tts_lang_nb">Tiếng Na Uy</string>
+    <string name="tts_lang_fi">Tiếng Phần Lan</string>
+    <string name="tts_lang_cs">Tiếng Séc</string>
+    <string name="tts_lang_ro">Tiếng Romania</string>
+    <string name="tts_lang_hu">Tiếng Hungary</string>
+    <string name="tts_lang_el">Tiếng Hy Lạp</string>
+    <string name="tts_lang_he">Tiếng Do Thái</string>
+
+    <!-- Reader -->
+    <string name="chapter_number">Chương %1$d</string>
+    <string name="theme_mode_light">Sáng</string>
+    <string name="theme_mode_dark">Tối</string>
+    <string name="theme_mode_auto">Tự động</string>
+    <string name="bookmark_added">Đã lưu dấu trang (%1$d/%2$d)</string>
+    <string name="bookmark_removed">Đã bỏ dấu trang (%1$d/%2$d)</string>
+
+    <!-- Passcode -->
+    <string name="passcode_create_title">Tạo Passcode mới</string>
+    <string name="passcode_verify_title">Nhập Passcode để mở</string>
+    <string name="passcode_remove_title">Nhập Passcode để xóa</string>
+    <string name="passcode_need_4_digits">Vui lòng nhập đủ 4 số</string>
+
+    <!-- Search in the book -->
+    <string name="search_keyword_hint">Nhập từ khóa tìm kiếm...</string>
+
+    <!-- Settings > Language: name of the language of this file, written in that language -->
+    <string name="current_language_name">Tiếng Việt</string>
+
+    <!-- Help file written in the USB import folder -->
+    <string name="usb_readme_text">Chép tệp (EPUB, TXT, PDF…) vào thư mục này, sau đó mở ứng dụng &gt; Chuyển tệp &gt; Chia sẻ tệp tin iTunes &gt; Nhập tệp.</string>
+
+    <!-- Wi-Fi transfer web page (opened in the browser of the computer) -->
+    <string name="web_page_title">Chuyển tệp qua Wi-Fi</string>
+    <string name="web_drop_title">Kéo thả tệp vào đây</string>
+    <string name="web_drop_hint">hoặc bấm nút bên dưới để chọn tệp (EPUB, TXT, PDF…)</string>
+    <string name="web_choose_files">Chọn tệp…</string>
+    <string name="web_uploading">Đang tải lên</string>
+    <string name="web_files_on_phone">Tệp trên điện thoại</string>
+    <string name="web_loading">Đang tải…</string>
+    <string name="web_footer">Giữ màn hình “Chuyển Wifi” trên điện thoại mở trong khi chuyển tệp.</string>
+    <string name="web_waiting">Đang chờ</string>
+    <string name="web_done">Đã xong</string>
+    <string name="web_error">Lỗi</string>
+    <string name="web_connection_lost">Mất kết nối với điện thoại</string>
+    <string name="web_no_files">Chưa có tệp nào</string>
+    <string name="web_download">Tải xuống</string>
+    <string name="web_cannot_connect">Không kết nối được với điện thoại</string>
+
+    <!-- Onboarding (first launch) -->
+    <string name="onboarding_title_import">Tải &amp; Nhập Truyện Dễ\u00A0Dàng</string>
+    <string name="onboarding_desc_import">Nhập file EPUB từ máy, Wi-Fi, Google Drive hay Dropbox chỉ với vài chạm.</string>
+    <string name="onboarding_title_listen">Đọc &amp; Nghe Truyện Liền\u00A0Mạch</string>
+    <string name="onboarding_desc_listen">Tự động đọc truyện với giọng đọc truyền cảm.</string>
+    <string name="onboarding_title_share">Chia Sẻ &amp; Khám Phá Thư\u00A0Viện</string>
+    <string name="onboarding_desc_share">Sắp xếp thư viện gọn gàng và chia sẻ truyện hay với bạn bè.</string>
+    <string name="onboarding_next">Tiếp Theo</string>
+    <string name="onboarding_start">Bắt Đầu Ngay</string>
+</resources>
