@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_sheet_rounded"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <!-- File Name Header -->
+    <TextView
+        android:id="@+id/tvDialogFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="[Dịch] Tạp Đồ - Phương Tưởng.epub"
+        android:textColor="#111111"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginBottom="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#E0E0E0" />
+
+    <!-- Option 1: Đổi tên -->
+    <TextView
+        android:id="@+id/btnRename"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Đổi tên"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#EFEFEF" />
+
+    <!-- Option 2: di chuyển đến thư mục -->
+    <TextView
+        android:id="@+id/btnMove"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="di chuyển đến thư mục"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#EFEFEF" />
+
+    <!-- Option 3: Gửi/Mở ra... -->
+    <TextView
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Gửi/Mở ra..."
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#EFEFEF" />
+
+    <!-- Option 4: Tải lên Google Drive -->
+    <TextView
+        android:id="@+id/btnUploadDrive"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Tải lên Google Drive"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#EFEFEF" />
+
+    <!-- Option 5: Sao chép -->
+    <TextView
+        android:id="@+id/btnCopy"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Sao chép"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#EFEFEF" />
+
+    <!-- Option 6: Xóa bỏ (RED) -->
+    <TextView
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Xóa bỏ"
+        android:textColor="#E53935"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackground" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#E0E0E0" />
+
+    <!-- Option 7: Hủy -->
+    <TextView
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="Hủy"
+        android:textColor="#1E88E5"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackground" />
+
+</LinearLayout>

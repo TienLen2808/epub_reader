@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- Selection Checkbox for Edit Mode -->
+        <ImageView
+            android:id="@+id/imgSelectCheck"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/bg_circle_blue"
+            android:visibility="gone"
+            android:contentDescription="Check" />
+
+        <!-- File Type Green Icon / Book Cover Avatar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="48dp"
+            android:layout_height="56dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#E8F5E9">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgCoverAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:contentDescription="Cover" />
+
+                <TextView
+                    android:id="@+id/tvFileBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="EPUB"
+                    android:textColor="#388E3C"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- File Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="12dp">
+
+            <TextView
+                android:id="@+id/tvFileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[Dịch] Tạp Đồ - Phương Tưởng.epub"
+                android:textColor="#222222"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/tvFileSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="4.1MB"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvFileDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="13/10/26"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!-- Info Action Button (i) -->
+        <ImageView
+            android:id="@+id/btnFileInfo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:padding="2dp"
+            android:src="@android:drawable/ic_dialog_info"
+            app:tint="#1E88E5"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Info" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginStart="78dp"
+        android:background="#EFEFEF" />
+
+</LinearLayout>

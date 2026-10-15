@@ -18,6 +18,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import com.example.epub_reader.AdsManager.AdsManager
+import com.example.epub_reader.AdsManager.ApplovinNativeAdManager
+import com.example.epub_reader.AdsManager.FullScreenAdFragment
 import com.example.epub_reader.databinding.ActivityReaderBinding
 import com.example.epub_reader.epub.BookHolder
 import com.example.epub_reader.epub.EpubBook
@@ -51,6 +53,7 @@ class ReaderActivity : LocalizeBaseActivity() {
     private var isTtsSpeaking = false
     private var isWaitingTtsForChapterLoad = false
     private var ttsRetryCount = 0
+    private var pageTurnCounter = 0
 
     enum class ThemeMode {
         LIGHT, DARK, REALTIME, SEPIA
@@ -169,17 +172,25 @@ class ReaderActivity : LocalizeBaseActivity() {
     override fun loadAd() {
         super.loadAd()
         if (canShowBanner(DisabledAdType.previewBanner)) {
-            adjustLayoutForAdState(isAdLoaded = false)
-            AdsManager.getInstance(this).loadApplovinInlineAdaptiveBannerWithTricky(
-                this,
-                DisabledAdType.previewBanner,
-                AdPosition.preview,
-                binding.adBannerContainer,
-                AdsManager.RETRY_COUNT,
-                {
-                    adjustLayoutForAdState(isAdLoaded = true)
+            val nativeManager = ApplovinNativeAdManager(this)
+            nativeManager.loadApplovinNativeAd(
+                context = this,
+                layoutResource = R.layout.native_custom_ad_banner,
+                adPosition = AdPosition.preview
+            ) { success ->
+                if (success) {
+                    nativeManager.populateNativeAdView(
+                        layoutResource = R.layout.native_custom_ad_banner,
+                        type = DisabledAdType.previewBanner,
+                        adFrame = binding.adBannerContainer,
+                        onAdReady = {
+                            adjustLayoutForAdState(isAdLoaded = true)
+                        }
+                    )
+                } else {
+                    adjustLayoutForAdState(isAdLoaded = false)
                 }
-            )
+            }
         } else {
             adjustLayoutForAdState(isAdLoaded = false)
         }
@@ -554,6 +565,14 @@ class ReaderActivity : LocalizeBaseActivity() {
         binding.tvSmallPageProgress.text = "$globalCurrentPage/$totalBookPages"
         updateBookmarkIconState()
 
+        loadAd()
+
+        pageTurnCounter++
+        if (pageTurnCounter >= 10) {
+            pageTurnCounter = 0
+            showFullScreenNativeAd()
+        }
+
         if (::progressPanelController.isInitialized) {
             val chapters = book?.chapters ?: emptyList()
             val currentTitle = if (chapters.isNotEmpty() && readerState.currentChapterIndex in chapters.indices) {
@@ -566,6 +585,19 @@ class ReaderActivity : LocalizeBaseActivity() {
                 globalPage = globalCurrentPage,
                 globalTotalPages = totalBookPages
             )
+        }
+    }
+
+    private fun showFullScreenNativeAd() {
+        if (!canShowBanner(DisabledAdType.onboardingFullscreen)) return
+        try {
+            val fullScreenAd = FullScreenAdFragment()
+            fullScreenAd.bindTo(DisabledAdType.onboardingFullscreen)
+            fullScreenAd.show(supportFragmentManager) {
+                // Resume reading after full-screen ad closes
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
