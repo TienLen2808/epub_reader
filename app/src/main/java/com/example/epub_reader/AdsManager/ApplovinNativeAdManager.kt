@@ -156,6 +156,9 @@ class ApplovinNativeAdManager(var context: Context) {
         this.layoutResource = layoutResource
         this.adPosition = adPosition
 
+        val nativeUnitId = AdsManager.getInstance(context).applovinNativeId
+        Log.d("AdLog", "📥 [NativeAd] Start loading Native Ad. Unit ID: $nativeUnitId, Position: $adPosition")
+
         if (maxCurrentNativeAd != null && maxCurrentNativeAdView != null) {
             adLoadedSuccess = true
             completion?.invoke(true)
@@ -196,6 +199,7 @@ class ApplovinNativeAdManager(var context: Context) {
 
         maxNativeAdLoader?.setNativeAdListener(object : MaxNativeAdListener() {
             override fun onNativeAdLoaded(adView: MaxNativeAdView?, ad: MaxAd) {
+                Log.d("AdLog", "✅ [NativeAd] Loaded SUCCESS! Network: ${ad.networkName}, Position: $adPosition, Title: ${ad.nativeAd?.title}")
                 loadingMaxNativeTime = null
                 pushTracking(
                     EventName.ad_loaded, AdFormat.native, adPosition, 1, null, null,
@@ -231,6 +235,7 @@ class ApplovinNativeAdManager(var context: Context) {
             }
 
             override fun onNativeAdLoadFailed(adUnitId: String, error: MaxError) {
+                Log.e("AdLog", "❌ [NativeAd] Load FAILED! UnitID: $adUnitId, Error: ${error.message} (code: ${error.code})")
                 loadingMaxNativeTime = null
                 pushTracking(
                     EventName.ad_loaded, AdFormat.native, adPosition, 0, null, null,
@@ -325,6 +330,7 @@ class ApplovinNativeAdManager(var context: Context) {
         trickyOverlay: FrameLayout?,
         extraExpandDp: Int
     ) {
+        Log.d("AdLog", "📺 [NativeAd] RENDER / SHOWING Native Ad in Frame! Type: $type, Position: $adPosition, Network: ${maxCurrentNativeAd?.networkName}")
         (maxCurrentNativeAdView?.parent as? ViewGroup)?.removeView(maxCurrentNativeAdView)
         adFrame.removeAllViews()
 

@@ -8,6 +8,7 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.util.Log
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -59,6 +60,7 @@ class FullScreenAdFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("AdLog", "📺 [FullScreenAdDialog] Dialog onViewCreated. Type: $type")
         val binding = _binding ?: return
 
         dialog?.window?.setBackgroundDrawable(Color.WHITE.toDrawable())
@@ -125,6 +127,7 @@ class FullScreenAdFragment : DialogFragment() {
         val binding = _binding ?: return
         if (isAdPopulated) return
         isAdPopulated = true
+        Log.d("AdLog", "✅ [FullScreenAdDialog] SHOWING Full Screen Native Ad on screen!")
         binding.adLoading.isVisible = false
         startCloseCountdown()
     }
@@ -161,6 +164,7 @@ class FullScreenAdFragment : DialogFragment() {
     }
 
     private fun close() {
+        Log.d("AdLog", "🙈 [FullScreenAdDialog] Closing Full Screen Native Dialog")
         if (!isAdded) return
         if (parentFragmentManager.isStateSaved) dismissAllowingStateLoss() else dismiss()
     }

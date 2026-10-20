@@ -39,10 +39,9 @@ import kotlin.math.roundToInt
  * "Next" goes to the following page, "Get started" on the last page opens the home screen.
  * It is shown once: Constants.ONBOARDING_COMPLETED is saved at the end.
  *
- * Ads (as in MemeMixClone):
- * - small native ad at the top of the screen (far from the "Next" button), a new one per page when the pool has one;
- * - full screen native ad once when reaching page 2 and page 3 (remote config
- *   android_onboarding_full_screen_native_ads, bit 1 = page 2, bit 2 = page 3), only when an ad is already loaded.
+ * Ads:
+ * - small native ad at the top of the screen;
+ * - full screen native ad once when reaching page 2 (onb2), only when an ad is already loaded.
  */
 class OnboardingActivity : LocalizeBaseActivity() {
 
@@ -191,12 +190,12 @@ class OnboardingActivity : LocalizeBaseActivity() {
         )
     }
 
-    /** Full screen native ad when reaching page 2 / page 3, once each. Returns true when one is about to show */
+    /** Full screen native ad when reaching page 2 (onb2), once only. Returns true when one is about to show */
     private fun maybeShowFullScreenAd(position: Int): Boolean {
-        if (position == 0 || isShowingFullScreenAd || position in fullScreenAdPages) return false
+        if (position != 1 || isShowingFullScreenAd || position in fullScreenAdPages) return false
         val pagesMask = PreferencesHelper.getInstance()
             .getInt(Constants.android_onboarding_full_screen_native_ads, FULL_SCREEN_AD_PAGES_DEFAULT)
-        if (pagesMask and (1 shl (position - 1)) == 0) return false
+        if (pagesMask and 1 == 0) return false
         if (remoteAdDisabled(DisabledAdType.onboardingFullscreen) || !NativeAdsPool.getInstance().hasAvailableItemAd) {
             return false
         }
@@ -239,8 +238,8 @@ class OnboardingActivity : LocalizeBaseActivity() {
         const val DOT_SIZE_DP = 8f
         const val DOT_GAP_DP = 8f
 
-        /** Full screen ad on page 2 (bit 1) and page 3 (bit 2), like MemeMixClone's default */
-        const val FULL_SCREEN_AD_PAGES_DEFAULT = 3
+        /** Full screen ad on page 2 (onb2) only */
+        const val FULL_SCREEN_AD_PAGES_DEFAULT = 1
         const val FULL_SCREEN_AD_DELAY_MS = 500L
         const val AD_REVEAL_MS = 250L
     }

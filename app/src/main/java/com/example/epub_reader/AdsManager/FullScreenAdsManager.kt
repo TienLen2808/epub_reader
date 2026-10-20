@@ -65,6 +65,7 @@ class FullScreenAdsManager(var context: Context) {
 
     fun showAdLoadingFragment() {
         try {
+            Log.d("AdLog", "⏳ [FullScreenAdsManager] Showing Ad Loading Fragment...")
             val activity = BaseApp.instance.currentActivity
             val fm = (BaseApp.instance.currentActivity as LocalizeBaseActivity).supportFragmentManager
             val existingFragment = fm.findFragmentByTag("AdLoadingFragment")
@@ -128,13 +129,16 @@ class FullScreenAdsManager(var context: Context) {
             interstitialAdDisplaying ||
             !didCooldown
         ) {
+            Log.d("AdLog", "⚠️ [Interstitial] Skipped show. Valid: ${activity.isValidActivity()}, Premium: $isPremium, Consent: ${googleMobileAdsConsentManager.canRequestAds}, Displaying: $interstitialAdDisplaying, Cooldown: $didCooldown")
             completion(false)
             return
         }
 
         if (maxInter?.isReady == true) {
+            Log.d("AdLog", "🚀 [Interstitial] Ad is ready. Showing immediately for position: $adPosition")
             showInterstitialApplovinAd(isOpenAd, adPosition, completion)
         } else {
+            Log.d("AdLog", "⌛ [Interstitial] Ad not ready yet. Loading now for position: $adPosition")
             interstitialAdCompletion = completion
             maxInterShouldShowNow = true
             loadInterstitialApplovinAd(isOpenAd, adPosition)
@@ -205,11 +209,13 @@ class FullScreenAdsManager(var context: Context) {
                 AdLevel.main -> AdsManager.getInstance(context).applovinInterMainId
             }
 
+            Log.d("AdLog", "📥 [Interstitial] Loading Interstitial level: $adLevel, Unit ID: $adUnitId, Position: $adPosition")
             maxInterIsLoading = true
             val timeLoadStart = System.currentTimeMillis()
             maxInter = MaxInterstitialAd(adUnitId)
             maxInter?.setListener(object : MaxAdListener {
                 override fun onAdLoaded(ad: MaxAd) {
+                    Log.d("AdLog", "✅ [Interstitial] Loaded SUCCESS! Level: $adLevel, Network: ${ad.networkName}, UnitID: $adUnitId")
                     maxInterIsLoading = false
                     BaseApp.instance.currentActivity?.safeRunOnUiThread {
                         maxInter?.setRevenueListener(MaxAdRevenueListener { maxAd ->
@@ -251,6 +257,7 @@ class FullScreenAdsManager(var context: Context) {
                 }
 
                 override fun onAdLoadFailed(adUnitId: String, p1: MaxError) {
+                    Log.e("AdLog", "❌ [Interstitial] Load FAILED! Level: $adLevel, UnitID: $adUnitId, Error: ${p1.message} (code: ${p1.code})")
                     maxInterIsLoading = false
                     BaseApp.instance.currentActivity?.safeRunOnUiThread {
                         try {
@@ -322,6 +329,7 @@ class FullScreenAdsManager(var context: Context) {
             override fun onAdLoaded(p0: MaxAd) {}
 
             override fun onAdDisplayed(ad: MaxAd) {
+                Log.d("AdLog", "📺 [Interstitial] SHOWING Interstitial Ad on screen! Network: ${ad.networkName}, Position: $adPosition")
                 FirebaseEventTracking.adTracking(
                     context = context,
                     event = EventName.ad_displayed,
@@ -334,6 +342,7 @@ class FullScreenAdsManager(var context: Context) {
             }
 
             override fun onAdHidden(ad: MaxAd) {
+                Log.d("AdLog", "🙈 [Interstitial] Interstitial Ad CLOSED. Network: ${ad.networkName}")
                 interstitialAdDisplaying = false
                 BaseApp.lastMaxAdShown = Date().time
 
@@ -355,6 +364,7 @@ class FullScreenAdsManager(var context: Context) {
             override fun onAdClicked(ad: MaxAd) {}
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {}
             override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
+                Log.e("AdLog", "❌ [Interstitial] Display FAILED! Error: ${error.message} (code: ${error.code})")
                 interstitialAdDisplaying = false
                 maxInter = null
                 FirebaseEventTracking.adTracking(
@@ -430,9 +440,11 @@ class FullScreenAdsManager(var context: Context) {
             AdLevel.main -> AdsManager.getInstance(context).applovinRewardMainId
         }
 
+        Log.d("AdLog", "📥 [Rewarded] Loading Rewarded Ad level: $adLevel, Unit ID: $adUnitId, Position: $adPosition")
         maxRewarded = MaxRewardedAd.getInstance(adUnitId)
         maxRewarded?.setListener(object : MaxAdListener, MaxRewardedAdListener {
             override fun onAdLoaded(ad: MaxAd) {
+                Log.d("AdLog", "✅ [Rewarded] Loaded SUCCESS! Network: ${ad.networkName}, Unit ID: $adUnitId")
                 maxRewardedIsLoading = false
                 maxRewarded?.setRevenueListener(MaxAdRevenueListener { maxAd ->
                     PaidAdEventCounter.increment(PaidAdEventCounter.Kind.REWARDED, maxAd.revenue)
@@ -462,6 +474,7 @@ class FullScreenAdsManager(var context: Context) {
             }
 
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
+                Log.e("AdLog", "❌ [Rewarded] Load FAILED! Unit ID: $adUnitId, Error: ${error.message} (code: ${error.code})")
                 maxRewarded = null
                 FirebaseEventTracking.adTracking(
                     context = context,
@@ -524,6 +537,7 @@ class FullScreenAdsManager(var context: Context) {
         maxRewarded?.setListener(object : MaxRewardedAdListener {
             override fun onAdLoaded(p0: MaxAd) {}
             override fun onAdDisplayed(ad: MaxAd) {
+                Log.d("AdLog", "📺 [Rewarded] SHOWING Rewarded Ad on screen! Network: ${ad.networkName}, Position: $adPosition")
                 FirebaseEventTracking.adTracking(
                     context = context,
                     event = EventName.ad_displayed,
@@ -536,6 +550,7 @@ class FullScreenAdsManager(var context: Context) {
             }
 
             override fun onAdHidden(ad: MaxAd) {
+                Log.d("AdLog", "🙈 [Rewarded] Rewarded Ad CLOSED. Network: ${ad.networkName}, Success: $maxRewardedSuccess")
                 BaseApp.lastMaxAdShown = Date().time
                 maxRewarded = null
                 completion(maxRewardedSuccess)

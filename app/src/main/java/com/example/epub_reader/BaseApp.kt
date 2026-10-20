@@ -231,6 +231,7 @@ class BaseApp : Application(), DefaultLifecycleObserver, Application.ActivityLif
 
         private val adListener = object : MaxAdListener {
             override fun onAdLoaded(ad: MaxAd) {
+                Log.d("AdLog", "✅ [AppOpenAd] Loaded SUCCESS! Network: ${ad.networkName}, UnitID: ${ad.adUnitId}")
                 isLoading = false
                 track(EventName.ad_loaded, ad.networkName, result = 1, duration = SystemClock.elapsedRealtime() - loadStartedAt)
                 pending?.let { showNow(it) }
@@ -238,7 +239,7 @@ class BaseApp : Application(), DefaultLifecycleObserver, Application.ActivityLif
 
             override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
                 isLoading = false
-                Log.w("BaseApp", "App-open ad failed to load: ${error.message}")
+                Log.e("AdLog", "❌ [AppOpenAd] Load FAILED! UnitID: $adUnitId, Error: ${error.message} (code: ${error.code})")
                 track(EventName.ad_loaded, null, result = 0, duration = SystemClock.elapsedRealtime() - loadStartedAt)
                 val request = pending ?: return
                 pending = null
@@ -246,10 +247,12 @@ class BaseApp : Application(), DefaultLifecycleObserver, Application.ActivityLif
             }
 
             override fun onAdDisplayed(ad: MaxAd) {
+                Log.d("AdLog", "📺 [AppOpenAd] SHOWING App Open Ad on screen! Network: ${ad.networkName}")
                 track(EventName.ad_displayed, ad.networkName, result = 1)
             }
 
             override fun onAdHidden(ad: MaxAd) {
+                Log.d("AdLog", "🙈 [AppOpenAd] App Open Ad CLOSED. Network: ${ad.networkName}")
                 lastMaxAdShown = Date().time
                 isShowing = false
                 track(EventName.ad_closed, ad.networkName, duration = SystemClock.elapsedRealtime() - shownAt)
@@ -260,6 +263,7 @@ class BaseApp : Application(), DefaultLifecycleObserver, Application.ActivityLif
             override fun onAdClicked(ad: MaxAd) {}
 
             override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
+                Log.e("AdLog", "❌ [AppOpenAd] Display FAILED! Network: ${ad.networkName}, Error: ${error.message}")
                 isShowing = false
                 track(EventName.ad_displayed, ad.networkName, result = 0)
                 showing?.finish(false)
@@ -292,6 +296,7 @@ class BaseApp : Application(), DefaultLifecycleObserver, Application.ActivityLif
             if (!consentManager.canRequestAds || PreferencesHelper.getInstance().getBoolean(Constants.IS_PREMIUM)) return
 
             val adUnitId = AdsManager.getInstance(this@BaseApp).applovinOpenadsId
+            Log.d("AdLog", "📥 [AppOpenAd] Start loading App Open Ad. Unit ID: $adUnitId")
             val ad = appOpenAd?.takeIf { it.adUnitId == adUnitId } ?: MaxAppOpenAd(adUnitId).also {
                 appOpenAd?.destroy()
                 it.setListener(adListener)
