@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Language screen on screens at least 680dp tall: native ad with image / video -->
+    <item name="native_ad_language" type="layout">@layout/native_ad_medium</item>
+</resources>

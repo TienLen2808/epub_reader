@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">Gardez votre bibliothèque bien rangée et partagez vos livres préférés avec vos amis.</string>
     <string name="onboarding_next">Suivant</string>
     <string name="onboarding_start">Commencer</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Annonce</string>
+    <string name="splash_ad_notice">Cette action peut contenir des annonces</string>
+    <string name="ad_close">Fermer l\'annonce</string>
 </resources>

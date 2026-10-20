@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">حافظ على مكتبتك مرتبة وشارك كتبك المفضلة مع أصدقائك.</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_start">ابدأ الآن</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">إعلان</string>
+    <string name="splash_ad_notice">قد يتضمن هذا الإجراء إعلانات</string>
+    <string name="ad_close">إغلاق الإعلان</string>
 </resources>

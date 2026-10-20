@@ -4,4 +4,6 @@
     <dimen name="onboarding_title_text_size">32sp</dimen>
     <dimen name="onboarding_desc_text_size">17sp</dimen>
     <dimen name="onboarding_illustration_gap">36dp</dimen>
+
+    <dimen name="native_ad_media_height">150dp</dimen>
 </resources>

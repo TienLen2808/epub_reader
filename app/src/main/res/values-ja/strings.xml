@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">ライブラリをすっきり整理して、お気に入りの本を友だちと共有しましょう。</string>
     <string name="onboarding_next">次へ</string>
     <string name="onboarding_start">今すぐ始める</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">広告</string>
+    <string name="splash_ad_notice">この操作には広告が含まれる場合があります</string>
+    <string name="ad_close">広告を閉じる</string>
 </resources>

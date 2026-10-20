@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">서재를 깔끔하게 정리하고 좋아하는 책을 친구와 공유하세요.</string>
     <string name="onboarding_next">다음</string>
     <string name="onboarding_start">지금 시작하기</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">광고</string>
+    <string name="splash_ad_notice">이 작업에는 광고가 포함될 수 있습니다</string>
+    <string name="ad_close">광고 닫기</string>
 </resources>

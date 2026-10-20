@@ -69,6 +69,10 @@ open class LocalizeBaseActivity : AppCompatActivity() {
     protected val remoteShowBanner by lazy { PreferencesHelper.getInstance().getBoolean("android_banner_armaster_screen", true) }
     var isAdSystemInitialized = false
 
+    /** The UMP consent form is on screen (the splash does not leave while the user answers it) */
+    var isConsentFormShowing = false
+        private set
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -96,6 +100,9 @@ open class LocalizeBaseActivity : AppCompatActivity() {
 
     var networkCallback: Any? = null
     open fun shouldRunBaseOnStart(): Boolean = true
+
+    /** "No Internet" dialog when the connection is lost. The splash turns it off: it never blocks the app offline */
+    open fun showsNoInternetDialog(): Boolean = true
 
     override fun onStart() {
         super.onStart()
@@ -130,7 +137,9 @@ open class LocalizeBaseActivity : AppCompatActivity() {
                 }
             },
             onLost = {
-                Utils.NetworkDialogManager.showNoInternetDialog(this)
+                if (showsNoInternetDialog()) {
+                    Utils.NetworkDialogManager.showNoInternetDialog(this)
+                }
             }
         )
     }
@@ -369,7 +378,9 @@ open class LocalizeBaseActivity : AppCompatActivity() {
                             { consentForm ->
                                 if (this@LocalizeBaseActivity.isValidActivity()) {
                                     if (consentInformation?.consentStatus == ConsentInformation.ConsentStatus.REQUIRED) {
+                                        isConsentFormShowing = true
                                         consentForm.show(this) {
+                                            isConsentFormShowing = false
                                             BaseApp.instance.gatherConsentFinished.set(true)
                                             maybeInitSdks()
                                             NativeAdsPool.getInstance().createAdManagers(true)

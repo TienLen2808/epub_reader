@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Native ad of the language screen: the small card on short screens (and landscape), so the list keeps
+         room for several languages. Screens at least 680dp tall use the card with image / video
+         (values-h680dp/layout_aliases.xml). -->
+    <item name="native_ad_language" type="layout">@layout/native_ad_small</item>
+</resources>

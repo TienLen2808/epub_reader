@@ -296,4 +296,9 @@
     <string name="onboarding_desc_share">Keep your library tidy and share your favorite books with friends.</string>
     <string name="onboarding_next">Next</string>
     <string name="onboarding_start">Get Started</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Ad</string>
+    <string name="splash_ad_notice">This action may contain ads</string>
+    <string name="ad_close">Close ad</string>
 </resources>

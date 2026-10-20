@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Small native ad: onboarding (top of the screen, far from the "Next" button) and language screen on short
+     screens (values/layout_aliases.xml). Icon, "Ad" label, title, text and the advertiser's button.
+     Bound in ApplovinNativeAdManager: icon_image_view, title_text_view, body_text_view, cta_button and
+     ad_options_view (AdChoices icon). Only those views react to taps: the card background does not. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/native_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_native_ad_card"
+    android:minHeight="76dp"
+    android:paddingStart="10dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/icon_image_view"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ad_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_native_ad_badge"
+        android:paddingStart="4dp"
+        android:paddingTop="1dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="1dp"
+        android:text="@string/ad_badge"
+        android:textColor="@color/native_ad_badge_text"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/title_text_view"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintTop_toTopOf="@+id/title_text_view" />
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/native_ad_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/ad_options_view"
+        app:layout_constraintStart_toEndOf="@+id/ad_badge"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- AdChoices icon, added by the ad network -->
+    <FrameLayout
+        android:id="@+id/ad_options_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/body_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/native_ad_body"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/cta_button"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+
+    <Button
+        android:id="@+id/cta_button"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_native_ad_cta"
+        android:ellipsize="end"
+        android:maxWidth="128dp"
+        android:maxLines="1"
+        android:minWidth="64dp"
+        android:minHeight="0dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+        app:layout_constraintVertical_bias="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

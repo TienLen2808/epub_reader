@@ -12,6 +12,7 @@ enum class DisabledAdType {
     splashMrec,
     splashBanner,
     languageMrec,
+    languageNative,
     onboardingBanner,
     onboardingMrec,
     onboardingFullscreen,
@@ -53,6 +54,7 @@ data class DisabledAds(
     @SerializedName("splash_mrec") var splashMrec: List<String> = emptyList(),
     @SerializedName("splash_banner") var splashBanner: List<String> = emptyList(),
     @SerializedName("language_mrec") var languageMrec: List<String> = emptyList(),
+    @SerializedName("language_native") var languageNative: List<String> = emptyList(),
     @SerializedName("onboarding_banner") var onboardingBanner: List<String> = emptyList(),
     @SerializedName("onboarding_mrec") var onboardingMrec: List<String> = emptyList(),
     @SerializedName("onboarding_fullscreen") var onboardingFullscreen: List<String> = emptyList(),
@@ -97,6 +99,7 @@ data class DisabledAds(
                 splashMrec = parsed.splashMrec
                 splashBanner = parsed.splashBanner
                 languageMrec = parsed.languageMrec
+                languageNative = parsed.languageNative
                 onboardingBanner = parsed.onboardingBanner
                 onboardingMrec = parsed.onboardingMrec
                 onboardingFullscreen = parsed.onboardingFullscreen
@@ -153,6 +156,7 @@ fun remoteAdDisabled(adType: DisabledAdType): Boolean {
         DisabledAdType.splashMrec -> disabledAds.splashMrec
         DisabledAdType.splashBanner -> disabledAds.splashBanner
         DisabledAdType.languageMrec -> disabledAds.languageMrec
+        DisabledAdType.languageNative -> disabledAds.languageNative
         DisabledAdType.onboardingBanner -> disabledAds.onboardingBanner
         DisabledAdType.onboardingMrec -> disabledAds.onboardingMrec
         DisabledAdType.onboardingFullscreen -> disabledAds.onboardingFullscreen

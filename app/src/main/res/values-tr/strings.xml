@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">Kitaplığınızı düzenli tutun ve sevdiğiniz kitapları arkadaşlarınızla paylaşın.</string>
     <string name="onboarding_next">İleri</string>
     <string name="onboarding_start">Hemen Başlayın</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Reklam</string>
+    <string name="splash_ad_notice">Bu işlem reklam içerebilir</string>
+    <string name="ad_close">Reklamı kapat</string>
 </resources>

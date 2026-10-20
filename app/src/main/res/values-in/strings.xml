@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">Jaga perpustakaan Anda tetap rapi dan bagikan buku favorit dengan teman.</string>
     <string name="onboarding_next">Berikutnya</string>
     <string name="onboarding_start">Mulai Sekarang</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Iklan</string>
+    <string name="splash_ad_notice">Tindakan ini mungkin berisi iklan</string>
+    <string name="ad_close">Tutup iklan</string>
 </resources>

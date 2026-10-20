@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">Panatilihing maayos ang iyong library at ibahagi ang mga paboritong libro sa mga kaibigan.</string>
     <string name="onboarding_next">Susunod</string>
     <string name="onboarding_start">Magsimula Na</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Ad</string>
+    <string name="splash_ad_notice">Maaaring may mga ad ang aksyong ito</string>
+    <string name="ad_close">Isara ang ad</string>
 </resources>

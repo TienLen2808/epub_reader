@@ -1,111 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Full screen native ad (FullScreenAdFragment, under its top bar with the close button):
+     icon, "Ad" label, title, advertiser, image / video, text and the advertiser's button.
+     Bound in ApplovinNativeAdManager: icon_image_view, title_text_view, advertiser_textView, body_text_view,
+     media_view_container, cta_button and ad_options_view (AdChoices icon). Only those views react to taps:
+     the white background does not. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/native_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent">
+    android:background="@color/white"
+    android:paddingStart="20dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="20dp">
 
     <ImageView
-        android:id="@+id/background_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/icon_image_view"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="fitXY"
-        android:background="@color/red"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/top_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/ad_badge"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginHorizontal="16dp">
+        android:layout_marginStart="12dp"
+        android:background="@drawable/bg_native_ad_badge"
+        android:paddingStart="5dp"
+        android:paddingTop="1dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="1dp"
+        android:text="@string/ad_badge"
+        android:textColor="@color/native_ad_badge_text"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/icon_image_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/native_ad_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/native_badge_row_bottom" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/advertiser_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/native_ad_body"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+
+    <!-- AdChoices icon, added by the ad network -->
+    <FrameLayout
+        android:id="@+id/ad_options_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- The title starts under the "Ad" label and the AdChoices icon -->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/native_badge_row_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="ad_badge,ad_options_view" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/native_header_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="icon_image_view,advertiser_textView,title_text_view" />
 
     <FrameLayout
         android:id="@+id/media_view_container"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/body_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="120dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_layout"
-        app:layout_constraintBottom_toTopOf="@id/bottom_layout"/>
+        app:layout_constraintTop_toBottomOf="@+id/native_header_bottom" />
 
-    <LinearLayout
-        android:id="@+id/bottom_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/body_text_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginBottom="16dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="@color/native_ad_body"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/cta_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/title_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:maxLines="2"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/advertiser_textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#888888"
-                android:textSize="12sp"
-                android:visibility="gone" />
-
-            <FrameLayout
-                android:id="@+id/star_rating_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/body_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:textColor="#444444"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/cta_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="Install"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:backgroundTint="@color/border_select" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/cta_button"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_native_ad_cta"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:minHeight="0dp"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

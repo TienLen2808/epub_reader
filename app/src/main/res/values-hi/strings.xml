@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">अपनी लाइब्रेरी व्यवस्थित रखें और पसंदीदा किताबें दोस्तों के साथ शेयर करें।</string>
     <string name="onboarding_next">आगे</string>
     <string name="onboarding_start">अभी शुरू करें</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">विज्ञापन</string>
+    <string name="splash_ad_notice">इस कार्रवाई में विज्ञापन हो सकते हैं</string>
+    <string name="ad_close">विज्ञापन बंद करें</string>
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Native ad card: light blue-grey, so it does not look like the app's own rows / cards -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/native_ad_card_bg" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/native_ad_card_stroke" />
+    <corners android:radius="12dp" />
+</shape>

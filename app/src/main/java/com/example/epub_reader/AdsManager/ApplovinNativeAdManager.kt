@@ -114,16 +114,23 @@ class ApplovinNativeAdManager(var context: Context) {
 
     private fun createMaxNativeView(context: Context, layoutResource: Int? = null): MaxNativeAdView {
         val layout = layoutResource ?: R.layout.native_custom_ad_view
-        val binder = MaxNativeAdViewBinder.Builder(layout)
+        return MaxNativeAdView(nativeAdViewBinder(layout), context)
+    }
+
+    /**
+     * Views of the native ad layouts. ad_options_view receives the AdChoices icon of the ad network
+     * (layouts without that id simply get no AdChoices container).
+     */
+    private fun nativeAdViewBinder(layoutResource: Int): MaxNativeAdViewBinder {
+        return MaxNativeAdViewBinder.Builder(layoutResource)
             .setTitleTextViewId(R.id.title_text_view)
             .setBodyTextViewId(R.id.body_text_view)
             .setAdvertiserTextViewId(R.id.advertiser_textView)
             .setIconImageViewId(R.id.icon_image_view)
             .setMediaContentViewGroupId(R.id.media_view_container)
+            .setOptionsContentViewGroupId(R.id.ad_options_view)
             .setCallToActionButtonId(R.id.cta_button)
             .build()
-
-        return MaxNativeAdView(binder, context)
     }
 
     fun loadApplovinNativeAd(
@@ -321,16 +328,7 @@ class ApplovinNativeAdManager(var context: Context) {
         (maxCurrentNativeAdView?.parent as? ViewGroup)?.removeView(maxCurrentNativeAdView)
         adFrame.removeAllViews()
 
-        val binder = MaxNativeAdViewBinder.Builder(layoutResource)
-            .setTitleTextViewId(R.id.title_text_view)
-            .setBodyTextViewId(R.id.body_text_view)
-            .setAdvertiserTextViewId(R.id.advertiser_textView)
-            .setIconImageViewId(R.id.icon_image_view)
-            .setMediaContentViewGroupId(R.id.media_view_container)
-            .setCallToActionButtonId(R.id.cta_button)
-            .build()
-
-        val expandedAdView = MaxNativeAdView(binder, context)
+        val expandedAdView = MaxNativeAdView(nativeAdViewBinder(layoutResource), context)
         maxNativeAdLoader?.render(expandedAdView, maxCurrentNativeAd)
         maxCurrentNativeAdView = expandedAdView
 

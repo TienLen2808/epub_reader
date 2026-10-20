@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">Sắp xếp thư viện gọn gàng và chia sẻ truyện hay với bạn bè.</string>
     <string name="onboarding_next">Tiếp Theo</string>
     <string name="onboarding_start">Bắt Đầu Ngay</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">Quảng cáo</string>
+    <string name="splash_ad_notice">Hành động này có thể chứa quảng cáo</string>
+    <string name="ad_close">Đóng quảng cáo</string>
 </resources>

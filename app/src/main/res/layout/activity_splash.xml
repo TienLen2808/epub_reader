@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Splash: logo + app name on the orange gradient, version at the bottom.
      The root fills the whole window (edge to edge): SplashActivity starts the logo at the window centre,
-     where the launch screen drew it, then moves it to its place. -->
+     where the launch screen drew it, then moves it to its place.
+     Ads (first launch): MREC under the name when the screen is tall enough, adaptive banner at the bottom.
+     Both stay hidden (gone) until an ad is loaded; the "may contain ads" line shows when ads can load. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,17 +43,58 @@
         app:layout_constraintTop_toBottomOf="@+id/imgSplashLogo"
         tools:ignore="SpUsage" />
 
+    <!-- MREC 300 x 250 (SplashActivity moves the logo and the name above it when it shows) -->
+    <FrameLayout
+        android:id="@+id/splashMrecSlot"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvSplashAdNotice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSplashAdNotice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="@string/splash_ad_notice"
+        android:textColor="@color/splash_version_text"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvSplashVersion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <!-- 12dp above the banner; 36dp (+ navigation bar, added in code) above the bottom edge without a banner -->
     <TextView
         android:id="@+id/tvSplashVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="12dp"
         android:fontFamily="sans-serif"
         android:textColor="@color/splash_version_text"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/splashBannerSlot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginBottom="36dp"
         tools:text="V1.0" />
+
+    <!-- Adaptive banner, on top of the navigation bar (bottom margin set in code) -->
+    <FrameLayout
+        android:id="@+id/splashBannerSlot"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -274,4 +274,9 @@
     <string name="onboarding_desc_share">让书库井井有条，并与朋友分享喜爱的图书。</string>
     <string name="onboarding_next">下一步</string>
     <string name="onboarding_start">立即开始</string>
+
+    <!-- Ads: label of the native ads, splash notice, close button of the full screen ad -->
+    <string name="ad_badge">广告</string>
+    <string name="splash_ad_notice">此操作可能包含广告</string>
+    <string name="ad_close">关闭广告</string>
 </resources>

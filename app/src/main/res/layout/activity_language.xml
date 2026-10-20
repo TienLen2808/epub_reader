@@ -32,6 +32,17 @@
             android:textColor="#222222"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnDone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_check"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/confirm" />
     </RelativeLayout>
 
     <View
@@ -46,5 +57,18 @@
         android:layout_weight="1"
         android:paddingVertical="16dp"
         android:clipToPadding="false"/>
+
+    <!-- Native ad under the list, in its own area (nothing of the list overlaps it).
+         Gone until an ad is loaded (LanguageActivity). -->
+    <FrameLayout
+        android:id="@+id/adContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F9F9FB"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp"
+        android:visibility="gone" />
 
 </LinearLayout>
